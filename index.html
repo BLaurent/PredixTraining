@@ -220,7 +220,8 @@
                         <ul>
                             <li>UAA Database</li>
                             <li>SAML support (for SSO
-                                integration) and Active Directory support with the VMWare SSO Appliance</li>
+                                integration) and Active Directory support with the VMWare SSO Appliance
+                            </li>
                         </ul>
                         <li>Access auditing</li>
                     </ul>
@@ -244,7 +245,8 @@
                             <li>Apps, services, organizations, spaces, service instances, user roles, and more ...</li>
                         </ul>
                         <li>Multiple Cloud Controllers
-                            possible</li>
+                            possible
+                        </li>
                         <ul>
                             <li>Configurable by Admin</li>
                         </ul>
@@ -260,6 +262,62 @@
                         <li>Services management</li>
                         <li>Auditing/Journaling and billing events</li>
                         <li>Blob Storage</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Cloud Controller Database (CCDB)</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Storage for application metadata</li>
+                        <li>Used exclusively by the Cloud Controller</li>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Stores information like</li>
+                        <ul>
+                            <li>Application Name</li>
+                            <li># of instances requested</li>
+                            <li>Memory Limits</li>
+                            <li>Routes</li>
+                            <li>Bound Services</li>
+                        </ul>
+                        <li>A Postgres DB instance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>BlobStore</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Storage for binary large objects</li>
+                        <li>Eliminates need for upload / re- staging when scaling applications</li>
+                        <li>Currently NFS mounted storage</li>
+                        <ul>
+                            <li>Or Amazon S3 store</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Stores uploaded application packages (cf push)</li>
+                        <li>Stores Droplets</li>
+                        <ul>
+                            <li>As a compressed tar file</li>
+                            <li>Or Docker containers</li>
+                            <li>Or (coming) Windows .NET applications</li>
+                        </ul>
                     </ul>
                 </div>
             </div>
