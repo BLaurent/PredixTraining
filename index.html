@@ -1,50 +1,138 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>GE Foundyr Predix Training</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown="slides/index.md"></section>
+        <section>
+            <h3>Startup and Ingestion Lvl 1</h3>
+            <ul>
+                <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Architectural Overview & Predix Tooling</li>
+                <li><b style="color:grey">10:45 – 11:00</b> Break</li>
+                <li><b style="color:grey">11:00 – 12:45</b> Machine Setup (Devp environment)</li>
+                <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
+                <li><b style="color:grey">13:45 – 14:45</b> Security Model & UAA</li>
+                <li><b style="color:grey">14:45 – 15:00</b> Break</li>
+                <li><b style="color:grey">15:00 – 17:00</b> Time Series</li>
+                <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
+            </ul>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section>
+            <em>"The cloud is not about where computing is done, it’s about how computing is done.”</em>
+            <br>
+            <br>
+            <p align="right">
+                Paul Maritz!<br>
+                Executive Chairman, Pivotal!
+            </p>
+        </section>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+        <section>
+            <h4>Predix Architecture Overview</h4>
+            <img src="./images/home_diagrame_2x.png"
+                 style="background-color:white;width:1175px;height:404px;">
+        </section>
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        <section>
+            <h4>Why such choice !</h4>
+            <img src="./images/slide-1.png"
+                 style="background-color:white;width:1600px;height:100%;">
+        </section>
+
+        <section>
+            <h3 align="left">Cloud Foundry is a bit ironic</h3>
+            <h6 align="left">it is <em> opinionated</em></h6>
+            It allows you to organize, simplify and lock down your IT infrastructure
+            <br>
+            <br>
+            <h6 align="left">It is <em>open and flexible</em></h6>
+            <ul>
+                <li> It works on multiple infrastructures (Amazon Web Services,
+                    vSphere, OpenStack...)
+                </li>
+                <li> It works in conjunction with your existing applications, tools and services</li>
+                <li> It works with many languages and frameworks</li>
+            </ul>
+        </section>
+
+        <section>
+            <h4>CEO Perspective- Focus on the Business Domain</h4> <br>
+            <p align="left">What is Cloud Foundry from a CEO’s perspective? </p>
+            <br>
+            <p align="left">Google, Facebook, Twitter, Netflix, etc. have thousands of engineers working on their
+                unique, consumer-grade platforms</p>
+            <br>
+            <p align="left">Cloud Foundry encapsulates industry best practices in a platform, allowing enterprises to
+                <b>focus on their business domain</b></p>
+        </section>
+
+        <section>
+            <h4>CEO Perspective- Transformational </h4> <br>
+            <p align="left">Cloud Foundry is transformational in two ways:</p> <br>
+            <ol>
+                <li>Business- it facilitates the change to agile, cloud-native software development processes</li>
+                <br>
+                <li>Technology- enables a simplified, efficient, scalable infrastructure</li>
+            </ol>
+        </section>
+
+        <section>
+            <h6>Predix Cloud Foundry Commercialization Model</h6>
+            <div>
+                <div style="float: left;width:25%;font-size: xx-large;" align="left"> <br>Open source software provides the basis for the platform <br><br><br>
+                    Commercial distribution provides value add features, enterprise services, support, docs, certs, etc.
+                </div>
+                <div style="float: right;width:70%;">
+                    <img src="./images/predix-cf.png" style="background-color:white;width:120%;height:120%;">
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
 </html>
