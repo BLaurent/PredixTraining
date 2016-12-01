@@ -101,11 +101,205 @@
         <section>
             <h6>Predix Cloud Foundry Commercialization Model</h6>
             <div>
-                <div style="float: left;width:25%;font-size: xx-large;" align="left"> <br>Open source software provides the basis for the platform <br><br><br>
+                <div style="float: left;width:25%;font-size: xx-large;" align="left"><br>Open source software provides
+                    the basis for the platform <br><br><br>
                     Commercial distribution provides value add features, enterprise services, support, docs, certs, etc.
                 </div>
                 <div style="float: right;width:70%;">
                     <img src="./images/predix-cf.png" style="background-color:white;width:120%;height:120%;">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Predix CF Components - 1.4</h6>
+            <img src="./images/cf-nodiego.png">
+        </section>
+
+        <section>
+            <h6>Predix CF Components - Diego</h6>
+            <img src="./images/cf-diego.png">
+        </section>
+
+        <section>
+            <h6>Load Balancer (HA Proxy)</h6>
+            <div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul>
+                        <li>HAProxy is separate component from the Router</li>
+                        <ul>
+                            <li>Sits in front of the router</li>
+                            <li>By default only one instance defined</li>
+                        </ul>
+                        <li>Cloud Foundry can only have one IP address visible to outside world</li>
+                        <ul>
+                            <li>This is the Load Balancer</li>
+                            <li>It passes requests to the Router(s) to send to the right CF component</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul>
+                        <li>Load-balancing across multiple routers (if used)</li>
+                        <li>SSL Termination</li>
+                        <br>
+                        <li><b>Note:</b> Typically need to configure your own HAProxy (in an HA configuration) or other
+                            load- balancer (such as F5 or NSX) for improved performance/SSL handling
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h6>(Go) Router</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul>
+                        <li>Routes all incoming HTTP traffic</li>
+                        <ul>
+                            <li>System traffic (cf commands)</li>
+                            <li>Application traffic</li>
+                        </ul>
+                        <li>Maintains dynamic routing table
+                            for each load-balanced app
+                            instance
+                        </li>
+                        <ul>
+                            <li>Knows IP addresses and ports.</li>
+                        </ul>
+                        <li>Multiple routers possible</li>
+                        <ul>
+                            <li>Configured by admin in Ops Manager</li>
+                            <li>Rewritten in Go since CF 1.4 – the GoRouter</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul>
+                        <li>Load balancing across application instances</li>
+                        <li>Maintaining an active routing table</li>
+                        <li>Access logs</li>
+                        <li>Supports web-sockets</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>UAA and Login Services</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>UAA = “User Account and Authentication”</li>
+                        <li>Provides identity, security and
+                            authorization services.
+                        </li>
+                        <li>Manages third party OAuth 2.0 access credentials</li>
+                        <li>Can provide application access & identity-as-a-service for CF apps</li>
+                        <li>Composed of</li>
+                        <ul>
+                            <li>UAA Server</li>
+                            <li>Command Line Interface</li>
+                            <li>Library.</li>
+                        </ul>
+                        <li>Multiple UAA/Login Servers possible</li>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Token Server</li>
+                        <li>ID Server (User management)</li>
+                        <li>OAuth Scopes (Groups) and SCIM (System for Cross-domain Identity Management)</li>
+                        <li>Login Server</li>
+                        <ul>
+                            <li>UAA Database</li>
+                            <li>SAML support (for SSO
+                                integration) and Active Directory support with the VMWare SSO Appliance</li>
+                        </ul>
+                        <li>Access auditing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>UAA and Login Services</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>UAA = “User Account and Authentication”</li>
+                        <li>Provides identity, security and
+                            authorization services.
+                        </li>
+                        <li>Manages third party OAuth 2.0 access credentials</li>
+                        <li>Can provide application access & identity-as-a-service for CF apps</li>
+                        <li>Composed of</li>
+                        <ul>
+                            <li>UAA Server</li>
+                            <li>Command Line Interface</li>
+                            <li>Library.</li>
+                        </ul>
+                        <li>Multiple UAA/Login Servers possible</li>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Token Server</li>
+                        <li>ID Server (User management)</li>
+                        <li>OAuth Scopes (Groups) and SCIM (System for Cross-domain Identity Management)</li>
+                        <li>Login Server</li>
+                        <ul>
+                            <li>UAA Database</li>
+                            <li>SAML support (for SSO
+                                integration) and Active Directory support with the VMWare SSO Appliance</li>
+                        </ul>
+                        <li>Access auditing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Cloud Controller (CC)</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Command and Control</li>
+                        <ul>
+                            <li>Responds to clients (CLI, App Manager, IDEs)</li>
+                            <li>Account and provisioning control.</li>
+                        </ul>
+                        <li>Provides RESTful interface to domain objects</li>
+                        <ul>
+                            <li>Apps, services, organizations, spaces, service instances, user roles, and more ...</li>
+                        </ul>
+                        <li>Multiple Cloud Controllers
+                            possible</li>
+                        <ul>
+                            <li>Configurable by Admin</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Expected Application state</li>
+                        <li>State transitions</li>
+                        <li>Permissions/Authorization</li>
+                        <li>Organizations/Spaces/Users</li>
+                        <li>Services management</li>
+                        <li>Auditing/Journaling and billing events</li>
+                        <li>Blob Storage</li>
+                    </ul>
                 </div>
             </div>
         </section>
