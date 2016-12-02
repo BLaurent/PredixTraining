@@ -235,21 +235,23 @@
                 <div style="float: left;width:50%;font-size: xx-large;" align="left">
                     <p align="left" style="color:cornflowerblue;">Description:</p>
                     <ul style="font-size: x-large;">
-                        <li>Command and Control</li>
-                        <ul>
-                            <li>Responds to clients (CLI, App Manager, IDEs)</li>
-                            <li>Account and provisioning control.</li>
-                        </ul>
-                        <li>Provides RESTful interface to domain objects</li>
-                        <ul>
-                            <li>Apps, services, organizations, spaces, service instances, user roles, and more ...</li>
-                        </ul>
-                        <li>Multiple Cloud Controllers
-                            possible
+                        <li>Command and Control
+                            <ul>
+                                <li>Responds to clients (CLI, App Manager, IDEs)</li>
+                                <li>Account and provisioning control.</li>
+                            </ul>
                         </li>
-                        <ul>
-                            <li>Configurable by Admin</li>
-                        </ul>
+                        <li>Provides RESTful interface to domain objects
+                            <ul>
+                                <li>Apps, services, organizations, spaces, service instances, user roles, and more ...
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Multiple Cloud Controllers possible
+                            <ul>
+                                <li>Configurable by Admin</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div style="float: left;width:45%;font-size: xx-large;" align="right">
@@ -272,14 +274,14 @@
             <div>
                 <div style="float: left;width:50%;font-size: xx-large;" align="left">
                     <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
+                    <ul>
                         <li>Storage for application metadata</li>
                         <li>Used exclusively by the Cloud Controller</li>
                     </ul>
                 </div>
                 <div style="float: left;width:45%;font-size: xx-large;" align="right">
                     <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul style="font-size: x-large;">
+                    <ul>
                         <li>Stores information like</li>
                         <ul>
                             <li>Application Name</li>
@@ -299,25 +301,267 @@
             <div>
                 <div style="float: left;width:50%;font-size: xx-large;" align="left">
                     <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
+                    <ul>
                         <li>Storage for binary large objects</li>
                         <li>Eliminates need for upload / re- staging when scaling applications</li>
-                        <li>Currently NFS mounted storage</li>
-                        <ul>
-                            <li>Or Amazon S3 store</li>
-                        </ul>
+                        <li>Currently NFS mounted storage
+                            <ul>
+                                <li>Or Amazon S3 store</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul>
+                        <li>Stores uploaded application packages (cf push)</li>
+                        <li>Stores Droplets
+                            <ul>
+                                <li>As a compressed tar file</li>
+                                <li>Or Docker containers</li>
+                                <li>Or (coming) Windows .NET applications</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6> CC Bridge - Diego</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Translate app-specific requests into the generic language of LRP and Task
+                            <ul>
+                                <li>For example requests to stage,
+                                    start, stop, scale applications
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Allows existing CF components to interact with Diego</li>
                     </ul>
                 </div>
                 <div style="float: left;width:45%;font-size: xx-large;" align="right">
                     <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                     <ul style="font-size: x-large;">
-                        <li>Stores uploaded application packages (cf push)</li>
-                        <li>Stores Droplets</li>
+                        <li>Places requests (actions) onto the Bulletin Board to be actioned by a Cell's “Executor”</li>
+                        <li>Ensures that these actions take place (eventually)</li>
+                        <li>Tracks running processes
+                            <ul>
+                                <li>Provides info on running tasks and LRPs (Long Running Processes) to Cloud Controller
+                                </li>
+                                <li>Accepts desired state of tasks and LRPs from Cloud Controller</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Droplet Execution Agents / Cells</h6>
+            <div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Droplet Execution Agents (DEA's), renamed “Cells” in Diego</li>
+                        <li>Secure and fully isolated containers
+                            <ul>
+                                <li>A Virtual Machine (VM)</li>
+                            </ul>
+                        </li>
+                        <li>Periodically broadcast messages about their state</li>
+                        <li>Typically many DEA's/cells in a Cloud Foundry installation</li>
+                    </ul>
+                </div>
+                <div style="float:center;width:10%;font-size: xx-large;" align="right">
+                </div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul style="font-size: x-large;">
+                        <li>Managing app containers</li>
+                        <li>Monitoring resource pools
+                            <ul>
+                                <li>Process, file system, network, memory</li>
+                            </ul>
+                        </li>
+                        <li>Managing app lifecycle - starting and stopping apps as instructed</li>
+                        <li>App log and file streaming</li>
+                        <li>Sending heartbeats for health monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Cell Internal Components</h6>
+            <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                <ul>
+                    <li><p style="color:dodgerblue;">Rep</p>
                         <ul>
-                            <li>As a compressed tar file</li>
-                            <li>Or Docker containers</li>
-                            <li>Or (coming) Windows .NET applications</li>
+                            <li>Represents Cell</li>
+                            <li>Mediates BBS comms</li>
+                            <li>Bids on tasks</li>
+                            <li>Schedules them on the Executor</li>
                         </ul>
+                    </li>
+                    <li><p style="color:dodgerblue;">Receptor</p>
+                        <ul>
+                            <li>Respond to request for tasks ans desired LRPs</li>
+                            <li>Fetch information about currently running tasks and LRP instances</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="float: right;width:50%;font-size: xx-large;" align="left">
+                <ul>
+                    <li><p style="color:dodgerblue;">Executor</p>
+                        <ul>
+                            <li>Responsible for executing work (actions) given to it</li>
+                            <li>Spins up a Garden container and executes the work encoded in Task/LRP</li>
+                        </ul>
+                    </li>
+                    <li><p style="color:dodgerblue;">Metron Agent</p>
+                        <ul>
+                            <li>Monitors all containers on Cell</li>
+                            <li>Provides logging and metrics to Loggregator for all apps/tasks running on Cell</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h6>Warden / Garden</h6>
+            <div>
+                <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul>
+                        <li>Isolated Process
+                            <ul>
+                                <li>Safe, lightweight alternative to full VM</li>
+                            </ul>
+                        </li>
+                        <li>Allows multiple applications to run
+                            on each VM
+                        </li>
+                        <li>Garden is Warden rewritten in Go</li>
+                    </ul>
+                </div>
+                <div style="float: left;width: 55%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                    <ul>
+                        <li>Isolates applications running on the same VM
+                            <ul>
+                                <li>Individual failures does not affect other applications on the VM</li>
+                                <li>Uses kernel namespaces to isolate network, disk, memory and CPU</li>
+                                <li>Uses Linux cgroups to do resource management</li>
+                            </ul>
+                        </li>
+                        <li>Secures applications from environment</li>
+                        <li>Runs Droplets</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h6>Garden - Implementations</h6>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul>
+                        <li>Default implementation is Linux
+                            <ul>
+                                <li>Pivotal's secure implementation
+                                    of a Linux Container
+                                </li>
+                                <li>Similar to LXC using much
+                                    lighter implementation
+                                </li>
+                            </ul>
+                        </li>
+                        <li>But other implementations are
+                            possible
+                            <ul>
+                                <li>Such as Docker or Windows (coming)</li>
+                            </ul>
+                        </li>
+                        <li>Garden is Warden rewritten in Go</li>
+                    </ul>
+                </div>
+                <div style="float: left;width: 50%;font-size: xx-large;" align="right">
+                    <p align="left" style="color:cornflowerblue;">Implementations:</p>
+                    <ul>
+                        <li><b>Default</b> Implementation
+                            <ul>
+                                <li>Runs on a Linux VM (Cell)</li>
+                                <li>Uses kernel namespaces</li>
+                                <li>Uses Linux cgroups</li>
+                            </ul>
+                        </li>
+                        <li>Docker implementation
+                            <ul>
+                                <li>Runs on a Linux VM (Cell)</li>
+                                <li>Boots and runs a Docker
+                                    application
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Windows implementation
+                            <ul>
+                                <li>Runs on a Windows VM (Cell)</li>
+                                <li>Runs .NET applications</li>
+                                <li>Not yet available</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Description:</p>
+                    <ul>
+                        <li>Tool chain for managing large scale distributed systems
+                            <ul>
+                                <li>Release engineering</li>
+                                <li>Deployment and lifecycle
+                                    management
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Continuous and predictive updates with minimal downtime</li>
+                        <li>Control primitives (CPI) written for
+                            each underlying infrastructure
+                            provider
+                            <ul>
+                                <li>Abstraction layer for the underlying IaaS</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                    <p align="left" style="color:cornflowerblue;">Responsible For:</p>
+                    <ul>
+                        <li>IaaS installer
+                            <ul>
+                                <li>vSphere, vCloud Air, AWS, Openstack, Azure(soon)</li>
+                            </ul>
+                        </li>
+                        <li>VM creation and management</li>
+                        <li>Continuous and predictive updates with minimal downtime</li>
+                        <li>High Availability
+                            <ul>
+                                <li>Restarts failed CF internal processes, DEA's</li>
+                            </ul>
+                        </li>
+                        <li>CPI (Cloud Provider Interface) to control underling infrastructure (IaaS) primitives</li>
                     </ul>
                 </div>
             </div>
