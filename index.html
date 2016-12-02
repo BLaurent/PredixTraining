@@ -43,10 +43,10 @@
         <section>
             <section>
                 <em>"The cloud is not about where computing is done, it’s about how computing is done.”</em>
-                <br>
-                <br>
+                <br/>
+                <br/>
                 <p align="right">
-                    Paul Maritz!<br>
+                    Paul Maritz!<br/>
                     Executive Chairman, Pivotal!
                 </p>
             </section>
@@ -67,8 +67,8 @@
                 <h3 align="left">Cloud Foundry is a bit ironic</h3>
                 <h6 align="left">it is <em> opinionated</em></h6>
                 It allows you to organize, simplify and lock down your IT infrastructure
-                <br>
-                <br>
+                <br/>
+                <br/>
                 <h6 align="left">It is <em>open and flexible</em></h6>
                 <ul>
                     <li> It works on multiple infrastructures (Amazon Web Services,
@@ -80,13 +80,13 @@
             </section>
 
             <section>
-                <h4>CEO Perspective- Focus on the Business Domain</h4> <br>
+                <h4>CEO Perspective- Focus on the Business Domain</h4> <br/>
                 <p align="left">What is Cloud Foundry from a CEO’s perspective? </p>
-                <br>
+                <br/>
                 <p align="left">Google, Facebook, Twitter, Netflix, etc. have thousands of engineers working on
                     their
                     unique, consumer-grade platforms</p>
-                <br>
+                <br/>
                 <p align="left">Cloud Foundry encapsulates industry best practices in a platform, allowing
                     enterprises
                     to
@@ -94,12 +94,12 @@
             </section>
 
             <section>
-                <h4>CEO Perspective- Transformational </h4> <br>
-                <p align="left">Cloud Foundry is transformational in two ways:</p> <br>
+                <h4>CEO Perspective- Transformational </h4> <br/>
+                <p align="left">Cloud Foundry is transformational in two ways:</p> <br/>
                 <ol>
                     <li>Business- it facilitates the change to agile, cloud-native software development processes
                     </li>
-                    <br>
+                    <br/>
                     <li>Technology- enables a simplified, efficient, scalable infrastructure</li>
                 </ol>
             </section>
@@ -107,9 +107,9 @@
             <section>
                 <h6>Predix Cloud Foundry Commercialization Model</h6>
                 <div>
-                    <div style="float: left;width:25%;font-size: xx-large;" align="left"><br>Open source software
+                    <div style="float: left;width:25%;font-size: xx-large;" align="left"><br/>Open source software
                         provides
-                        the basis for the platform <br><br><br>
+                        the basis for the platform <br/><br/><br/>
                         Commercial distribution provides value add features, enterprise services, support, docs,
                         certs,
                         etc.
@@ -153,7 +153,7 @@
                         <ul>
                             <li>Load-balancing across multiple routers (if used)</li>
                             <li>SSL Termination</li>
-                            <br>
+                            <br/>
                             <li><b>Note:</b> Typically need to configure your own HAProxy (in an HA configuration)
                                 or
                                 other
@@ -587,9 +587,156 @@
             </section>
         </section>
 
-
         <section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Virtual Box Install</span></h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: x-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Windows Machine:</p>
+                        <ul>
+                            <li>If you have a GE laptop the antivirus will block you, you need to install an old version
+                                of
+                                virtual box:
+                                <a href="http://download.virtualbox.org/virtualbox/4.3.12/VirtualBox-4.3.12-93733-Win.exe">Virtual
+                                    Box</a></li>
+                            <br/>
+                            <li>Otherwise you could use the latest and greatest <a
+                                    href="http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-Win.exe">Virtual
+                                Box</a></li>
+                        </ul>
+                    </div>
+                    <div style="float: right;width:48%;font-size: x-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">OSX</p>
+                        For OSX the easiest way to install virtual box is to use <a href="http://brew.sh/index_fr.html">brew</a><br>
+                        <code>
+                            brew cask install virtualbox \ virtualbox-extension-pack
+                        </code>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Install</span></h6>
 
+                    <div style="float: left;width:50%;font-size: x-large;" align="left">
+                        <ul style="float:left;font-size: x-large;">
+                            <li>
+                                For GE Employee go to <a
+                                    href="https://devcloud.swcoe.ge.com/devspace/display/SOLSVC/Predix+DevBox+Program">Predix
+                                DevBox Program</a>
+                                <ul>
+                                    <li><a href="https://goo.gl/PaHpfc">DevBox3.5.2-i.ova</a></li>
+                                    <li><a href="https://goo.gl/lVyIME">sha</a></li>
+                                    <li><a href="https://goo.gl/HFFxSV">md5</a></li>
+                                </ul>
+                            </li>
+                            <br>
+                            <li>For non Ge Employee go to
+                                <ul>
+                                    <li><a href="https://goo.gl/IxulwE">DevBox3.5.2-i.ova</a></li>
+                                    <li><a href="https://goo.gl/DUu1IJ">sha</a></li>
+                                    <li><a href="https://goo.gl/0LG2r6">md5</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="float: right;width:48%;font-size: x-large;" align="left">
+                        <ul>
+                            <li>Import the Ova into Virtual Box</li>
+                        </ul>
+                        The output should look like this :
+                        <img src="./images/virtualbox.png"/>
+                        The login/password is predix/predix
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Network Setup</span> - <span
+                            style="color:crimson;font-size: large;">GE Employee only</span></h6>
+                    <div style="float: left;width:50%;font-size: x-large;" align="left">
+                        <ol>
+                            <li>Login to the virtual machine</li>
+                            <li>Open chrome browser go to settings and in proxy the automatic mode with : <em>http://myapps.setpac.ge.com/pac.pac</em>
+                            </li>
+                            <li>Check that you can have acces to https://predix.io</li>
+                        </ol>
+                    </div>
+                    <div style="float: right;width:48%;font-size: x-large;" align="left">
+
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Network Setup</span> - <span
+                        style="color:crimson;font-size: large;">Non GE Employee</span></h6>
+                <div style="float: left;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>If you are on a non proxied network you need to remove the proxy from the terminal
+                            <ul>
+                                <li> Open a terminal and type :
+                                    <code>
+                                        sudo gedit /etc/bashrc
+                                    </code>
+                                </li>
+                                <li> Go to the botton of the file and comments <br/>
+                                    <code>
+                                        export http_proxy=http://sjc1intproxy01.crd.ge.com:8080/<br/>
+                                        export https_proxy=$http_proxy <br/>
+                                        export HTTP_PROXY=$http_proxy <br/>
+                                        export HTTPS_PROXY=$http_proxy <br/>
+                                        export no_proxy="127.0.0.1,localhost,localhost.localdomain,*.ge.com"
+                                    </code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Logout of the VM and Login again</li>
+                        <li>Open a terminal and check that the following command result is empty</li>
+                        <code> env | grep http_proxy</code>
+                        <li>Try to download google index</li>
+                        <code>wget https://www.google.com</code>
+                        <li>Check that you have something</li>
+                        <code>cat index.html</code>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Maven Setup</span> - <span
+                        style="color:crimson;font-size: large;">GE & Non Employee</span></h6>
+                <div style="float: left;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>On the devbox open <em>~/.m2/settings.xml</em></li>
+                        <li>Search for this : <br/>
+                            <code>
+                                &lt;server&gt;<br />    &lt;id&gt;artifactory.external&lt;/id&gt;<br />    &lt;username&gt;your.predix.io.username&lt;/username&gt;<br />    &lt;password&gt;your.encrypted.password&lt;/password&gt;<br />    &lt;!-- Obtained from https://artifactory.predix.io --&gt;<br />&lt;/server&gt;
+                            </code>
+                        </li>
+                        <li>Replace username by your predix.io login (email address)</li>
+                        <li>For the password get it from artifactory
+                            <ul>
+                                <li>Go to : <a href="https://artifactory.predix.io">https://artifactory.predix.io</a></li>
+                                <li>Login using you predix.io login and password</li>
+                                <li>Click on your name (up right)</li>
+                                <li>enter your predix.io password</li>
+                                <li>Click on the eye icon om <em>presonnal settings</em> to get your key</li>
+                                <li>Copy this key in place of the password in your <em>~/.m2/settings.xml</em></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Maven Setup</span> - <span
+                        style="color:crimson;font-size: large;">Non Employee</span></h6>
+                <div style="float: left;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>On the devbox open <em>~/.m2/settings.xml</em></li>
+                        <li>Search for proxies</li>
+                        <p>&lt;proxies&gt;<br /> &lt;proxy&gt;<br /> &lt;id&gt;corporate&lt;/id&gt;<br /> &lt;active&gt;true&lt;/active&gt;<br /> &lt;protocol&gt;http&lt;/protocol&gt;<br /> &lt;host&gt;sjc1intproxy01.crd.ge.com&lt;/host&gt;<br /> &lt;port&gt;8080&lt;/port&gt;<br /> &lt;username&gt;proxyuser&lt;/username&gt;<br /> &lt;password&gt;proxypass&lt;/password&gt;<br /> &lt;nonProxyHosts&gt;127.0.0.1,localhost,localhost.localdomain,*.ge.com&lt;/nonProxyHosts&gt;<br /> &lt;/proxy&gt;<br /> &lt;/proxies&gt;</p>
+                        <li>Comment the whole block</li>
+                    </ul>
+                </div>
+            </section>
         </section>
     </div>
 </div>
