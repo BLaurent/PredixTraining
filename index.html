@@ -48,525 +48,539 @@
                 Executive Chairman, Pivotal!
             </p>
         </section>
-
         <section>
-            <h4>Predix Architecture Overview</h4>
-            <img src="./images/home_diagrame_2x.png"
-                 style="background-color:white;width:1175px;height:404px;">
-        </section>
 
-        <section>
-            <h4>Why such choice !</h4>
-            <img src="./images/slide-1.png"
-                 style="background-color:white;width:1600px;height:100%;">
-        </section>
+            <section>
+                <h4>Predix Architecture Overview</h4>
+                <img src="./images/home_diagrame_2x.png"
+                     style="background-color:white;width:1175px;height:404px;">
+            </section>
 
-        <section>
-            <h3 align="left">Cloud Foundry is a bit ironic</h3>
-            <h6 align="left">it is <em> opinionated</em></h6>
-            It allows you to organize, simplify and lock down your IT infrastructure
-            <br>
-            <br>
-            <h6 align="left">It is <em>open and flexible</em></h6>
-            <ul>
-                <li> It works on multiple infrastructures (Amazon Web Services,
-                    vSphere, OpenStack...)
-                </li>
-                <li> It works in conjunction with your existing applications, tools and services</li>
-                <li> It works with many languages and frameworks</li>
-            </ul>
-        </section>
+            <section>
+                <h4>Why such choice !</h4>
+                <img src="./images/slide-1.png"
+                     style="background-color:white;width:1600px;height:100%;">
+            </section>
 
-        <section>
-            <h4>CEO Perspective- Focus on the Business Domain</h4> <br>
-            <p align="left">What is Cloud Foundry from a CEO’s perspective? </p>
-            <br>
-            <p align="left">Google, Facebook, Twitter, Netflix, etc. have thousands of engineers working on their
-                unique, consumer-grade platforms</p>
-            <br>
-            <p align="left">Cloud Foundry encapsulates industry best practices in a platform, allowing enterprises to
-                <b>focus on their business domain</b></p>
-        </section>
-
-        <section>
-            <h4>CEO Perspective- Transformational </h4> <br>
-            <p align="left">Cloud Foundry is transformational in two ways:</p> <br>
-            <ol>
-                <li>Business- it facilitates the change to agile, cloud-native software development processes</li>
+            <section>
+                <h3 align="left">Cloud Foundry is a bit ironic</h3>
+                <h6 align="left">it is <em> opinionated</em></h6>
+                It allows you to organize, simplify and lock down your IT infrastructure
                 <br>
-                <li>Technology- enables a simplified, efficient, scalable infrastructure</li>
-            </ol>
-        </section>
+                <br>
+                <h6 align="left">It is <em>open and flexible</em></h6>
+                <ul>
+                    <li> It works on multiple infrastructures (Amazon Web Services,
+                        vSphere, OpenStack...)
+                    </li>
+                    <li> It works in conjunction with your existing applications, tools and services</li>
+                    <li> It works with many languages and frameworks</li>
+                </ul>
+            </section>
 
-        <section>
-            <h6>Predix Cloud Foundry Commercialization Model</h6>
-            <div>
-                <div style="float: left;width:25%;font-size: xx-large;" align="left"><br>Open source software provides
-                    the basis for the platform <br><br><br>
-                    Commercial distribution provides value add features, enterprise services, support, docs, certs, etc.
-                </div>
-                <div style="float: right;width:70%;">
-                    <img src="./images/predix-cf.png" style="background-color:white;width:120%;height:120%;">
-                </div>
-            </div>
-        </section>
+            <section>
+                <h4>CEO Perspective- Focus on the Business Domain</h4> <br>
+                <p align="left">What is Cloud Foundry from a CEO’s perspective? </p>
+                <br>
+                <p align="left">Google, Facebook, Twitter, Netflix, etc. have thousands of engineers working on their
+                    unique, consumer-grade platforms</p>
+                <br>
+                <p align="left">Cloud Foundry encapsulates industry best practices in a platform, allowing enterprises
+                    to
+                    <b>focus on their business domain</b></p>
+            </section>
 
-        <section>
-            <h6>Predix CF Components - 1.4</h6>
-            <img src="./images/cf-nodiego.png">
-        </section>
+            <section>
+                <h4>CEO Perspective- Transformational </h4> <br>
+                <p align="left">Cloud Foundry is transformational in two ways:</p> <br>
+                <ol>
+                    <li>Business- it facilitates the change to agile, cloud-native software development processes</li>
+                    <br>
+                    <li>Technology- enables a simplified, efficient, scalable infrastructure</li>
+                </ol>
+            </section>
 
-        <section>
-            <h6>Predix CF Components - Diego</h6>
-            <img src="./images/cf-diego.png">
-        </section>
+            <section>
+                <h6>Predix Cloud Foundry Commercialization Model</h6>
+                <div>
+                    <div style="float: left;width:25%;font-size: xx-large;" align="left"><br>Open source software
+                        provides
+                        the basis for the platform <br><br><br>
+                        Commercial distribution provides value add features, enterprise services, support, docs, certs,
+                        etc.
+                    </div>
+                    <div style="float: right;width:70%;">
+                        <img src="./images/predix-cf.png" style="background-color:white;width:120%;height:120%;">
+                    </div>
+                </div>
+            </section>
 
-        <section>
-            <h6>Load Balancer (HA Proxy)</h6>
-            <div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>HAProxy is separate component from the Router</li>
-                        <ul>
-                            <li>Sits in front of the router</li>
-                            <li>By default only one instance defined</li>
-                        </ul>
-                        <li>Cloud Foundry can only have one IP address visible to outside world</li>
-                        <ul>
-                            <li>This is the Load Balancer</li>
-                            <li>It passes requests to the Router(s) to send to the right CF component</li>
-                        </ul>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul>
-                        <li>Load-balancing across multiple routers (if used)</li>
-                        <li>SSL Termination</li>
-                        <br>
-                        <li><b>Note:</b> Typically need to configure your own HAProxy (in an HA configuration) or other
-                            load- balancer (such as F5 or NSX) for improved performance/SSL handling
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h6>(Go) Router</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>Routes all incoming HTTP traffic</li>
-                        <ul>
-                            <li>System traffic (cf commands)</li>
-                            <li>Application traffic</li>
-                        </ul>
-                        <li>Maintains dynamic routing table
-                            for each load-balanced app
-                            instance
-                        </li>
-                        <ul>
-                            <li>Knows IP addresses and ports.</li>
-                        </ul>
-                        <li>Multiple routers possible</li>
-                        <ul>
-                            <li>Configured by admin in Ops Manager</li>
-                            <li>Rewritten in Go since CF 1.4 – the GoRouter</li>
-                        </ul>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul>
-                        <li>Load balancing across application instances</li>
-                        <li>Maintaining an active routing table</li>
-                        <li>Access logs</li>
-                        <li>Supports web-sockets</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <section>
+                <h6>Predix CF Components - 1.4</h6>
+                <img src="./images/cf-nodiego.png">
+            </section>
 
-        <section>
-            <h6>UAA and Login Services</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
-                        <li>UAA = “User Account and Authentication”</li>
-                        <li>Provides identity, security and
-                            authorization services.
-                        </li>
-                        <li>Manages third party OAuth 2.0 access credentials</li>
-                        <li>Can provide application access & identity-as-a-service for CF apps</li>
-                        <li>Composed of</li>
+            <section>
+                <h6>Predix CF Components - Diego</h6>
+                <img src="./images/cf-diego.png">
+            </section>
+
+            <section>
+                <h6>Load Balancer (HA Proxy)</h6>
+                <div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>UAA Server</li>
-                            <li>Command Line Interface</li>
-                            <li>Library.</li>
+                            <li>HAProxy is separate component from the Router</li>
+                            <ul>
+                                <li>Sits in front of the router</li>
+                                <li>By default only one instance defined</li>
+                            </ul>
+                            <li>Cloud Foundry can only have one IP address visible to outside world</li>
+                            <ul>
+                                <li>This is the Load Balancer</li>
+                                <li>It passes requests to the Router(s) to send to the right CF component</li>
+                            </ul>
                         </ul>
-                        <li>Multiple UAA/Login Servers possible</li>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Token Server</li>
-                        <li>ID Server (User management)</li>
-                        <li>OAuth Scopes (Groups) and SCIM (System for Cross-domain Identity Management)</li>
-                        <li>Login Server</li>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                         <ul>
-                            <li>UAA Database</li>
-                            <li>SAML support (for SSO
-                                integration) and Active Directory support with the VMWare SSO Appliance
+                            <li>Load-balancing across multiple routers (if used)</li>
+                            <li>SSL Termination</li>
+                            <br>
+                            <li><b>Note:</b> Typically need to configure your own HAProxy (in an HA configuration) or
+                                other
+                                load- balancer (such as F5 or NSX) for improved performance/SSL handling
                             </li>
                         </ul>
-                        <li>Access auditing</li>
-                    </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section>
-            <h6>Cloud Controller (CC)</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Command and Control
-                            <ul>
-                                <li>Responds to clients (CLI, App Manager, IDEs)</li>
-                                <li>Account and provisioning control.</li>
-                            </ul>
-                        </li>
-                        <li>Provides RESTful interface to domain objects
-                            <ul>
-                                <li>Apps, services, organizations, spaces, service instances, user roles, and more ...
-                                </li>
-                            </ul>
-                        </li>
-                        <li>Multiple Cloud Controllers possible
-                            <ul>
-                                <li>Configurable by Admin</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Expected Application state</li>
-                        <li>State transitions</li>
-                        <li>Permissions/Authorization</li>
-                        <li>Organizations/Spaces/Users</li>
-                        <li>Services management</li>
-                        <li>Auditing/Journaling and billing events</li>
-                        <li>Blob Storage</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h6>Cloud Controller Database (CCDB)</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>Storage for application metadata</li>
-                        <li>Used exclusively by the Cloud Controller</li>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul>
-                        <li>Stores information like</li>
+            </section>
+            <section>
+                <h6>(Go) Router</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>Application Name</li>
-                            <li># of instances requested</li>
-                            <li>Memory Limits</li>
-                            <li>Routes</li>
-                            <li>Bound Services</li>
+                            <li>Routes all incoming HTTP traffic</li>
+                            <ul>
+                                <li>System traffic (cf commands)</li>
+                                <li>Application traffic</li>
+                            </ul>
+                            <li>Maintains dynamic routing table
+                                for each load-balanced app
+                                instance
+                            </li>
+                            <ul>
+                                <li>Knows IP addresses and ports.</li>
+                            </ul>
+                            <li>Multiple routers possible</li>
+                            <ul>
+                                <li>Configured by admin in Ops Manager</li>
+                                <li>Rewritten in Go since CF 1.4 – the GoRouter</li>
+                            </ul>
                         </ul>
-                        <li>A Postgres DB instance</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h6>BlobStore</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>Storage for binary large objects</li>
-                        <li>Eliminates need for upload / re- staging when scaling applications</li>
-                        <li>Currently NFS mounted storage
-                            <ul>
-                                <li>Or Amazon S3 store</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul>
-                        <li>Stores uploaded application packages (cf push)</li>
-                        <li>Stores Droplets
-                            <ul>
-                                <li>As a compressed tar file</li>
-                                <li>Or Docker containers</li>
-                                <li>Or (coming) Windows .NET applications</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h6> CC Bridge - Diego</h6>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Translate app-specific requests into the generic language of LRP and Task
-                            <ul>
-                                <li>For example requests to stage,
-                                    start, stop, scale applications
-                                </li>
-                            </ul>
-                        </li>
-                        <li>Allows existing CF components to interact with Diego</li>
-                    </ul>
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Places requests (actions) onto the Bulletin Board to be actioned by a Cell's “Executor”</li>
-                        <li>Ensures that these actions take place (eventually)</li>
-                        <li>Tracks running processes
-                            <ul>
-                                <li>Provides info on running tasks and LRPs (Long Running Processes) to Cloud Controller
-                                </li>
-                                <li>Accepts desired state of tasks and LRPs from Cloud Controller</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h6>Droplet Execution Agents / Cells</h6>
-            <div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Droplet Execution Agents (DEA's), renamed “Cells” in Diego</li>
-                        <li>Secure and fully isolated containers
-                            <ul>
-                                <li>A Virtual Machine (VM)</li>
-                            </ul>
-                        </li>
-                        <li>Periodically broadcast messages about their state</li>
-                        <li>Typically many DEA's/cells in a Cloud Foundry installation</li>
-                    </ul>
-                </div>
-                <div style="float:center;width:10%;font-size: xx-large;" align="right">
-                </div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul style="font-size: x-large;">
-                        <li>Managing app containers</li>
-                        <li>Monitoring resource pools
-                            <ul>
-                                <li>Process, file system, network, memory</li>
-                            </ul>
-                        </li>
-                        <li>Managing app lifecycle - starting and stopping apps as instructed</li>
-                        <li>App log and file streaming</li>
-                        <li>Sending heartbeats for health monitoring</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h6>Cell Internal Components</h6>
-            <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                <ul>
-                    <li><p style="color:dodgerblue;">Rep</p>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                         <ul>
-                            <li>Represents Cell</li>
-                            <li>Mediates BBS comms</li>
-                            <li>Bids on tasks</li>
-                            <li>Schedules them on the Executor</li>
+                            <li>Load balancing across application instances</li>
+                            <li>Maintaining an active routing table</li>
+                            <li>Access logs</li>
+                            <li>Supports web-sockets</li>
                         </ul>
-                    </li>
-                    <li><p style="color:dodgerblue;">Receptor</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>UAA and Login Services</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul style="font-size: x-large;">
+                            <li>UAA = “User Account and Authentication”</li>
+                            <li>Provides identity, security and
+                                authorization services.
+                            </li>
+                            <li>Manages third party OAuth 2.0 access credentials</li>
+                            <li>Can provide application access & identity-as-a-service for CF apps</li>
+                            <li>Composed of</li>
+                            <ul>
+                                <li>UAA Server</li>
+                                <li>Command Line Interface</li>
+                                <li>Library.</li>
+                            </ul>
+                            <li>Multiple UAA/Login Servers possible</li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Token Server</li>
+                            <li>ID Server (User management)</li>
+                            <li>OAuth Scopes (Groups) and SCIM (System for Cross-domain Identity Management)</li>
+                            <li>Login Server</li>
+                            <ul>
+                                <li>UAA Database</li>
+                                <li>SAML support (for SSO
+                                    integration) and Active Directory support with the VMWare SSO Appliance
+                                </li>
+                            </ul>
+                            <li>Access auditing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Controller (CC)</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Command and Control
+                                <ul>
+                                    <li>Responds to clients (CLI, App Manager, IDEs)</li>
+                                    <li>Account and provisioning control.</li>
+                                </ul>
+                            </li>
+                            <li>Provides RESTful interface to domain objects
+                                <ul>
+                                    <li>Apps, services, organizations, spaces, service instances, user roles, and more
+                                        ...
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Multiple Cloud Controllers possible
+                                <ul>
+                                    <li>Configurable by Admin</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Expected Application state</li>
+                            <li>State transitions</li>
+                            <li>Permissions/Authorization</li>
+                            <li>Organizations/Spaces/Users</li>
+                            <li>Services management</li>
+                            <li>Auditing/Journaling and billing events</li>
+                            <li>Blob Storage</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Controller Database (CCDB)</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>Respond to request for tasks ans desired LRPs</li>
-                            <li>Fetch information about currently running tasks and LRP instances</li>
+                            <li>Storage for application metadata</li>
+                            <li>Used exclusively by the Cloud Controller</li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div style="float: right;width:50%;font-size: xx-large;" align="left">
-                <ul>
-                    <li><p style="color:dodgerblue;">Executor</p>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                         <ul>
-                            <li>Responsible for executing work (actions) given to it</li>
-                            <li>Spins up a Garden container and executes the work encoded in Task/LRP</li>
+                            <li>Stores information like</li>
+                            <ul>
+                                <li>Application Name</li>
+                                <li># of instances requested</li>
+                                <li>Memory Limits</li>
+                                <li>Routes</li>
+                                <li>Bound Services</li>
+                            </ul>
+                            <li>A Postgres DB instance</li>
                         </ul>
-                    </li>
-                    <li><p style="color:dodgerblue;">Metron Agent</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>BlobStore</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>Monitors all containers on Cell</li>
-                            <li>Provides logging and metrics to Loggregator for all apps/tasks running on Cell</li>
+                            <li>Storage for binary large objects</li>
+                            <li>Eliminates need for upload / re- staging when scaling applications</li>
+                            <li>Currently NFS mounted storage
+                                <ul>
+                                    <li>Or Amazon S3 store</li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h6>Warden / Garden</h6>
-            <div>
-                <div style="float: left;width:45%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>Isolated Process
-                            <ul>
-                                <li>Safe, lightweight alternative to full VM</li>
-                            </ul>
-                        </li>
-                        <li>Allows multiple applications to run
-                            on each VM
-                        </li>
-                        <li>Garden is Warden rewritten in Go</li>
-                    </ul>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul>
+                            <li>Stores uploaded application packages (cf push)</li>
+                            <li>Stores Droplets
+                                <ul>
+                                    <li>As a compressed tar file</li>
+                                    <li>Or Docker containers</li>
+                                    <li>Or (coming) Windows .NET applications</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div style="float: left;width: 55%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                    <ul>
-                        <li>Isolates applications running on the same VM
-                            <ul>
-                                <li>Individual failures does not affect other applications on the VM</li>
-                                <li>Uses kernel namespaces to isolate network, disk, memory and CPU</li>
-                                <li>Uses Linux cgroups to do resource management</li>
-                            </ul>
-                        </li>
-                        <li>Secures applications from environment</li>
-                        <li>Runs Droplets</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h6>Garden - Implementations</h6>
-            <div>
+            <section>
+                <h6> CC Bridge - Diego</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Translate app-specific requests into the generic language of LRP and Task
+                                <ul>
+                                    <li>For example requests to stage,
+                                        start, stop, scale applications
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Allows existing CF components to interact with Diego</li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Places requests (actions) onto the Bulletin Board to be actioned by a Cell's
+                                “Executor”
+                            </li>
+                            <li>Ensures that these actions take place (eventually)</li>
+                            <li>Tracks running processes
+                                <ul>
+                                    <li>Provides info on running tasks and LRPs (Long Running Processes) to Cloud
+                                        Controller
+                                    </li>
+                                    <li>Accepts desired state of tasks and LRPs from Cloud Controller</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Droplet Execution Agents / Cells</h6>
+                <div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Droplet Execution Agents (DEA's), renamed “Cells” in Diego</li>
+                            <li>Secure and fully isolated containers
+                                <ul>
+                                    <li>A Virtual Machine (VM)</li>
+                                </ul>
+                            </li>
+                            <li>Periodically broadcast messages about their state</li>
+                            <li>Typically many DEA's/cells in a Cloud Foundry installation</li>
+                        </ul>
+                    </div>
+                    <div style="float:center;width:10%;font-size: xx-large;" align="right">
+                    </div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul style="font-size: x-large;">
+                            <li>Managing app containers</li>
+                            <li>Monitoring resource pools
+                                <ul>
+                                    <li>Process, file system, network, memory</li>
+                                </ul>
+                            </li>
+                            <li>Managing app lifecycle - starting and stopping apps as instructed</li>
+                            <li>App log and file streaming</li>
+                            <li>Sending heartbeats for health monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cell Internal Components</h6>
                 <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
                     <ul>
-                        <li>Default implementation is Linux
+                        <li><p style="color:dodgerblue;">Rep</p>
                             <ul>
-                                <li>Pivotal's secure implementation
-                                    of a Linux Container
-                                </li>
-                                <li>Similar to LXC using much
-                                    lighter implementation
-                                </li>
+                                <li>Represents Cell</li>
+                                <li>Mediates BBS comms</li>
+                                <li>Bids on tasks</li>
+                                <li>Schedules them on the Executor</li>
                             </ul>
                         </li>
-                        <li>But other implementations are
-                            possible
+                        <li><p style="color:dodgerblue;">Receptor</p>
                             <ul>
-                                <li>Such as Docker or Windows (coming)</li>
-                            </ul>
-                        </li>
-                        <li>Garden is Warden rewritten in Go</li>
-                    </ul>
-                </div>
-                <div style="float: left;width: 50%;font-size: xx-large;" align="right">
-                    <p align="left" style="color:cornflowerblue;">Implementations:</p>
-                    <ul>
-                        <li><b>Default</b> Implementation
-                            <ul>
-                                <li>Runs on a Linux VM (Cell)</li>
-                                <li>Uses kernel namespaces</li>
-                                <li>Uses Linux cgroups</li>
-                            </ul>
-                        </li>
-                        <li>Docker implementation
-                            <ul>
-                                <li>Runs on a Linux VM (Cell)</li>
-                                <li>Boots and runs a Docker
-                                    application
-                                </li>
-                            </ul>
-                        </li>
-                        <li>Windows implementation
-                            <ul>
-                                <li>Runs on a Windows VM (Cell)</li>
-                                <li>Runs .NET applications</li>
-                                <li>Not yet available</li>
+                                <li>Respond to request for tasks ans desired LRPs</li>
+                                <li>Fetch information about currently running tasks and LRP instances</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </section>
 
+                <div style="float: right;width:50%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li><p style="color:dodgerblue;">Executor</p>
+                            <ul>
+                                <li>Responsible for executing work (actions) given to it</li>
+                                <li>Spins up a Garden container and executes the work encoded in Task/LRP</li>
+                            </ul>
+                        </li>
+                        <li><p style="color:dodgerblue;">Metron Agent</p>
+                            <ul>
+                                <li>Monitors all containers on Cell</li>
+                                <li>Provides logging and metrics to Loggregator for all apps/tasks running on Cell</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Warden / Garden</h6>
+                <div>
+                    <div style="float: left;width:45%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul>
+                            <li>Isolated Process
+                                <ul>
+                                    <li>Safe, lightweight alternative to full VM</li>
+                                </ul>
+                            </li>
+                            <li>Allows multiple applications to run
+                                on each VM
+                            </li>
+                            <li>Garden is Warden rewritten in Go</li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width: 55%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
+                        <ul>
+                            <li>Isolates applications running on the same VM
+                                <ul>
+                                    <li>Individual failures does not affect other applications on the VM</li>
+                                    <li>Uses kernel namespaces to isolate network, disk, memory and CPU</li>
+                                    <li>Uses Linux cgroups to do resource management</li>
+                                </ul>
+                            </li>
+                            <li>Secures applications from environment</li>
+                            <li>Runs Droplets</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Garden - Implementations</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul>
+                            <li>Default implementation is Linux
+                                <ul>
+                                    <li>Pivotal's secure implementation
+                                        of a Linux Container
+                                    </li>
+                                    <li>Similar to LXC using much
+                                        lighter implementation
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>But other implementations are
+                                possible
+                                <ul>
+                                    <li>Such as Docker or Windows (coming)</li>
+                                </ul>
+                            </li>
+                            <li>Garden is Warden rewritten in Go</li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width: 50%;font-size: xx-large;" align="right">
+                        <p align="left" style="color:cornflowerblue;">Implementations:</p>
+                        <ul>
+                            <li><b>Default</b> Implementation
+                                <ul>
+                                    <li>Runs on a Linux VM (Cell)</li>
+                                    <li>Uses kernel namespaces</li>
+                                    <li>Uses Linux cgroups</li>
+                                </ul>
+                            </li>
+                            <li>Docker implementation
+                                <ul>
+                                    <li>Runs on a Linux VM (Cell)</li>
+                                    <li>Boots and runs a Docker
+                                        application
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Windows implementation
+                                <ul>
+                                    <li>Runs on a Windows VM (Cell)</li>
+                                    <li>Runs .NET applications</li>
+                                    <li>Not yet available</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry BOSH</h6>
+                <div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Description:</p>
+                        <ul>
+                            <li>Tool chain for managing large scale distributed systems
+                                <ul>
+                                    <li>Release engineering</li>
+                                    <li>Deployment and lifecycle
+                                        management
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Continuous and predictive updates with minimal downtime</li>
+                            <li>Control primitives (CPI) written for
+                                each underlying infrastructure
+                                provider
+                                <ul>
+                                    <li>Abstraction layer for the underlying IaaS</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
+                        <p align="left" style="color:cornflowerblue;">Responsible For:</p>
+                        <ul>
+                            <li>IaaS installer
+                                <ul>
+                                    <li>vSphere, vCloud Air, AWS, Openstack, Azure(soon)</li>
+                                </ul>
+                            </li>
+                            <li>VM creation and management</li>
+                            <li>Continuous and predictive updates with minimal downtime</li>
+                            <li>High Availability
+                                <ul>
+                                    <li>Restarts failed CF internal processes, DEA's</li>
+                                </ul>
+                            </li>
+                            <li>CPI (Cloud Provider Interface) to control underling infrastructure (IaaS) primitives
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
         <section>
-            <div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Description:</p>
-                    <ul>
-                        <li>Tool chain for managing large scale distributed systems
-                            <ul>
-                                <li>Release engineering</li>
-                                <li>Deployment and lifecycle
-                                    management
-                                </li>
-                            </ul>
-                        </li>
-                        <li>Continuous and predictive updates with minimal downtime</li>
-                        <li>Control primitives (CPI) written for
-                            each underlying infrastructure
-                            provider
-                            <ul>
-                                <li>Abstraction layer for the underlying IaaS</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <p align="left" style="color:cornflowerblue;">Responsible For:</p>
-                    <ul>
-                        <li>IaaS installer
-                            <ul>
-                                <li>vSphere, vCloud Air, AWS, Openstack, Azure(soon)</li>
-                            </ul>
-                        </li>
-                        <li>VM creation and management</li>
-                        <li>Continuous and predictive updates with minimal downtime</li>
-                        <li>High Availability
-                            <ul>
-                                <li>Restarts failed CF internal processes, DEA's</li>
-                            </ul>
-                        </li>
-                        <li>CPI (Cloud Provider Interface) to control underling infrastructure (IaaS) primitives</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
+        </section>
     </div>
 </div>
 
