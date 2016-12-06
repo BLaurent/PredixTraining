@@ -31,7 +31,7 @@
             <ul>
                 <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Architectural Overview & Predix Tooling</li>
                 <li><b style="color:grey">10:45 – 11:00</b> Break</li>
-                <li><b style="color:grey">11:00 – 12:45</b> Machine Setup (Devp environment)</li>
+                <li><b style="color:grey">11:00 – 12:45</b> Machine Setup (Dev environment)</li>
                 <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
                 <li><b style="color:grey">13:45 – 14:45</b> Security Model & UAA</li>
                 <li><b style="color:grey">14:45 – 15:00</b> Break</li>
@@ -215,7 +215,7 @@
                             <li>Composed of</li>
                             <ul>
                                 <li>UAA Server</li>
-                                <li>Command Line Interface</li>
+                                <li>Command Line Interface (UAAC)</li>
                                 <li>Library.</li>
                             </ul>
                             <li>Multiple UAA/Login Servers possible</li>
@@ -392,8 +392,7 @@
                             <li>Typically many DEA's/cells in a Cloud Foundry installation</li>
                         </ul>
                     </div>
-                    <div style="float:center;width:10%;font-size: xx-large;" align="right">
-                    </div>
+                    <br/>
                     <div style="float: left;width:45%;font-size: xx-large;" align="right">
                         <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                         <ul style="font-size: x-large;">
@@ -585,6 +584,45 @@
                     </div>
                 </div>
             </section>
+
+            <section>
+                <h6>Where do I work - <span style="color:cadetblue;">Organizations & Spaces</span></h6>
+                <div style="float:top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Top-most administrative unit</li>
+                        <li>Any Cloud Foundry installation can have multiple organizations defined in any way
+                            <ul>
+                                <li>
+                                    Typically a company, department, application suite or large project
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Designed to support many users working collaboratively</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float:bottom;width:100%;font-size: x-large;" align="left">
+                    <ul style="font-style:oblique;">
+                        <li>Organizations contains multiple spaces</li>
+                        <li>Spaces also can be defined in any way</li>
+                        <li>For example, staging and production</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float:bottom;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Applications and services are scoped to a space</li>
+                        <li>Provides a set of users access for:
+                            <ul>
+                                <li>Application development</li>
+                                <li>Functionality and/or performance testing – Quality assurance</li>
+                                <li>Deployment to production</li>
+                                <li>Maintenance</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </section>
 
         <section>
@@ -700,6 +738,7 @@
                     </ul>
                 </div>
             </section>
+
             <section>
                 <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Maven Setup</span> - <span
                         style="color:crimson;font-size: large;">GE & Non Employee</span></h6>
@@ -730,7 +769,7 @@
             </section>
             <section>
                 <h6>Predix Dev Tools - <span style="color:cadetblue;">DevBox Maven Setup</span> - <span
-                        style="color:crimson;font-size: large;">Non Employee</span></h6>
+                        style="color:crimson;font-size: large;">Non GE Employee</span></h6>
                 <div style="float: left;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>On the devbox open <em>~/.m2/settings.xml</em></li>
@@ -799,9 +838,40 @@
             </section>
 
             <section>
-                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli primer</span></h6>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
+                        <li>A simple, text-based Cloud Foundry client</li>
+                        <li>Used by <b>operators</b> and <b>developers</b> to access and work with any Cloud Foundry
+                            installation
+                        </li>
+                        <li>Anything you do with the CLI can be scripted/automated</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Already install on the devbox</li>
+                        <li>OSX install: <code style="font-size: x-large;color:darkgrey;">brew tap cloudfoundry/tap &&
+                            brew install cf-cli</code></li>
+                        <li>Test after install <code style="font-size: x-large;color:darkgrey;"> cf --version
+                            </br> cf version 6.22.2+a95e24c-2016-10-27</code>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli primer</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Getting some help
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;"> cf --help</code></li>
+                            </ul>
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;"> cf help {command}</code></li>
+                            </ul>
+                        </li>
                         <li>Login to Cf
                             <ul>
                                 <li><code style="font-size: x-large;color:darkgrey;">cf login -a
@@ -834,7 +904,7 @@
                         <li>Deploy an application
                             <ul>
                                 <li><code style="font-size: x-large;color:darkgrey;">cf push -f manifest.yml</code></li>
-                                <li>The manifest file describe what kind application you have and all its service
+                                <li>The manifest file describes what kind application you have and all its service
                                     dependencies
                                 </li>
                             </ul>
@@ -849,8 +919,9 @@
                     <ul>
                         <li>Get log of your app
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf logs {AppName} </code>
-                                </li>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf logs {AppName}</code></li>
+                                <li>Only latest ones <code style="font-size: x-large;color:darkgrey;">cf logs --recent
+                                    {AppName}</code></li>
                             </ul>
                         </li>
                         <li>Delete an app
@@ -858,7 +929,7 @@
                                 <li><code style="font-size: x-large;color:darkgrey;">cf delete {AppName}</code></li>
                             </ul>
                         </li>
-                        <li>Get Environment of an application
+                        <li>Get Environment of an applications
                             <ul>
                                 <li><code style="font-size: x-large;color:darkgrey;">cf env {AppName}</code></li>
                             </ul>
@@ -875,8 +946,264 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+            </section>
 
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">The .cf Directory </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>cf creates a .cf directory in your home directory</li>
+                        <li>Stores context, logs, crash reports ...</li>
+                        <li>Remembers your CF API endpoint
+                            <ul>
+                                <li>Don't need to specify -a option at next login</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Few cf cli usage </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Set your org</li>
+                        <li>Create a space named <em>lab</em></li>
+                        <li>Set target to lab1</li>
+                        <li>Create a space named <em>lab2</em></li>
+                        <li>Set target to lab2</li>
+                        <li>Set target to lab</li>
+                        <li>Delete space named <em>lab2</em></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Few cf cli usage </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf target -o "Email"</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf create-space lab</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab1"</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf create-space lab2</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab2"</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf delete-space "lab2"</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab"</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">The first app </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li><code style="font-size: x-large;color:darkgrey;">mkdir nullApp && cd nullApp</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">touch Procfile</code></li>
+                        <li><code style="font-size: x-large;color:darkgrey;">cf push nullApp -b
+                            http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 64M -k 64M</code>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Using cf cli try to :
+                            <ul>
+                                <li>Check the logs</li>
+                                <li>Try to scale it to two instances</li>
+                                <li>Try to restart the application</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+
+            <section>
+                <h6>Predix Security Model - <span style="color:cadetblue;"> Architecture intro </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>All inbound Communications are using ssl :
+                            <ul>
+                                <li><em>https://</em> is the default and must be used as default prefix in the browser
+                                </li>
+                                <li>For web socket wss is used</li>
+                            </ul>
+                        </li>
+                        <li> No direct tcp inbound : mqtt is not possible</li>
+                        <li>Only TLS 1.2 is possible some iot devices not supported</li>
+                        <li>Authentification is done using OAuth2.0</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>In CF this role is taken by the UAA service (java service)
+                            <ul>
+                                <li>Stores user account</li>
+                                <li>Stores client</li>
+                                <li>Validate token</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Security Model - <span style="color:cadetblue;"> UAA intro </span></h6>
+                <div style="float: left;width:50%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>We must differenctiate two kind of usages :
+                            <ul>
+                                <li>Ressource access:</li>
+                            </ul>
+                            <div style="float: left;width:100%;font-size: x-large;" align="left">
+                                <img src="./images/auth-code-flow.png"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: left;width:50%;font-size: x-large;" align="left">
+                    <ul>
+                        <ul>
+                            <li>User login :</li>
+                        </ul>
+                        <div style="float: left;width:100%;font-size: x-large;" align="left">
+                            <!--<img src="./images/auth-code-flow.png"/>-->
+                            <code style="font-size: x-large;color:red;">TODO
+                            </code>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">uaac cli</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>A simple, text-based Cloud foundry uaa client</li>
+                        <li>Used by <b>operators</b> and <b>developers</b> to access and work with uaa service instances
+                        </li>
+                        <li>Anything you do with the uua cli can be scripted/automated</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>uaac cli - <span style="color:cadetblue;"> primer </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Install OSX
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">gem install cf-uaac
+                                </code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Install Linux
+                            <ul>
+                                <li><code style="font-size: x-large;color:red;">TODO
+                                </code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Login as admin
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">brew install cf-uaac
+                                </code>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>uaac cli - <span style="color:cadetblue;"> primer</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Set target uaa
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">uaa target {uaaUri}</code></li>
+                            </ul>
+                        </li>
+                        <li>Get client token
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">uaac token client get -s
+                                    {uaa_admin_secret} </code></li>
+                            </ul>
+                        </li>
+                        <li>Create uaa client
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">uaac client add {client_id} -s
+                                    {client_secret} </code></li>
+                            </ul>
+                        </li>
+                        <li>Update uaa client
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">uaac client update {client_id}
+                                    {Additional properties} </code></li>
+                            </ul>
+                        </li>
+                        <li>Create a group
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">uaac group add {groupname}</code>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">UAA </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Using the predix.io console create an UAA service in the space lab
+                            <ul>
+                                <li>Space: lab</li>
+                                <li>Instance name: <em>uaa-lab</em></li>
+                                <li>Use the <em>Free Plan</em></li>
+                                <li>Please keep the password</li>
+                                <li>Use lab as subdomains</li>
+                            </ul>
+                        </li>
+                        <li>Select space lab and click on uaa-lab service, login using the password previously saved
+                        </li>
+                        <li>Add a new client <em>lab-client</em>using the Service instance ui with the following
+                            parameters
+                            <ul>
+                                <li>Scope: <em>uaa.none</em> <em>openid</em></li>
+                                <li>Authorities: <em>uaa.none</em> <em>uaa.resource</em></li>
+                                <li>Grant types: <em>client_credentials</em></li>
+                                <li>Autoapproved: <em>openid</em></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">UAA Automation</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    We said that anything with cf and uaac cli can be automated...<br/>
+                    <code style="font-size: large;color:darkgrey;">
+                        cf cs predix-uaa Free "uua-lab" -c
+                        '{"adminClientSecret":"gefoundry_admin","subdomain":"lab"}'
+                    </code>
+                </div>
+                </br>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <div style="font-size: large;color:darkgrey;">
+                        <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
+                        <code>uaac token client get admin -s gefoundry_admin</code> </br>
+                        <code style="font-size: large;color:darkgrey;">
+                            uaac client add uaa_client -s "gefoundry_nonexpire" --scope "openid uaa.none" --authorized_grant_types "client_credentials" --authorities "uaa.admin" --autoapprove "openid"
+                        </code>
+                    </div>
                 </div>
             </section>
         </section>
