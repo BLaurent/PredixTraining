@@ -708,13 +708,16 @@
                         <li>On the devbox open <em>~/.m2/settings.xml</em></li>
                         <li>Search for this : <br/>
                             <code>
-                                &lt;server&gt;<br />    &lt;id&gt;artifactory.external&lt;/id&gt;<br />    &lt;username&gt;your.predix.io.username&lt;/username&gt;<br />    &lt;password&gt;your.encrypted.password&lt;/password&gt;<br />    &lt;!-- Obtained from https://artifactory.predix.io --&gt;<br />&lt;/server&gt;
+                                &lt;server&gt;<br/> &lt;id&gt;artifactory.external&lt;/id&gt;<br/> &lt;username&gt;your.predix.io.username&lt;/username&gt;<br/>
+                                &lt;password&gt;your.encrypted.password&lt;/password&gt;<br/> &lt;!-- Obtained from
+                                https://artifactory.predix.io --&gt;<br/>&lt;/server&gt;
                             </code>
                         </li>
                         <li>Replace username by your predix.io login (email address)</li>
                         <li>For the password get it from artifactory
                             <ul>
-                                <li>Go to : <a href="https://artifactory.predix.io">https://artifactory.predix.io</a></li>
+                                <li>Go to : <a href="https://artifactory.predix.io">https://artifactory.predix.io</a>
+                                </li>
                                 <li>Login using you predix.io login and password</li>
                                 <li>Click on your name (up right)</li>
                                 <li>enter your predix.io password</li>
@@ -732,7 +735,11 @@
                     <ul>
                         <li>On the devbox open <em>~/.m2/settings.xml</em></li>
                         <li>Search for proxies</li>
-                        <p>&lt;proxies&gt;<br /> &lt;proxy&gt;<br /> &lt;id&gt;corporate&lt;/id&gt;<br /> &lt;active&gt;true&lt;/active&gt;<br /> &lt;protocol&gt;http&lt;/protocol&gt;<br /> &lt;host&gt;sjc1intproxy01.crd.ge.com&lt;/host&gt;<br /> &lt;port&gt;8080&lt;/port&gt;<br /> &lt;username&gt;proxyuser&lt;/username&gt;<br /> &lt;password&gt;proxypass&lt;/password&gt;<br /> &lt;nonProxyHosts&gt;127.0.0.1,localhost,localhost.localdomain,*.ge.com&lt;/nonProxyHosts&gt;<br /> &lt;/proxy&gt;<br /> &lt;/proxies&gt;</p>
+                        <p>&lt;proxies&gt;<br/> &lt;proxy&gt;<br/> &lt;id&gt;corporate&lt;/id&gt;<br/> &lt;active&gt;true&lt;/active&gt;<br/>
+                            &lt;protocol&gt;http&lt;/protocol&gt;<br/> &lt;host&gt;sjc1intproxy01.crd.ge.com&lt;/host&gt;<br/>
+                            &lt;port&gt;8080&lt;/port&gt;<br/> &lt;username&gt;proxyuser&lt;/username&gt;<br/> &lt;password&gt;proxypass&lt;/password&gt;<br/>
+                            &lt;nonProxyHosts&gt;127.0.0.1,localhost,localhost.localdomain,*.ge.com&lt;/nonProxyHosts&gt;<br/>
+                            &lt;/proxy&gt;<br/> &lt;/proxies&gt;</p>
                         <li>Comment the whole block</li>
                     </ul>
                 </div>
@@ -742,14 +749,134 @@
                 <h6>Predix Dev Tools - <span style="color:cadetblue;">Maven Setup</span></h6>
                 <div style="float: left;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>If you are on a mac or on linux copy this file <a href="./settings.xml">settings.xml</a> to <em>~/.m2/settings.xml</em></li>
+                        <li>If you are on a mac or on linux copy this file <a href="./settings.xml">settings.xml</a> to
+                            <em>~/.m2/settings.xml</em></li>
                         <li>Redo the same as previously
                             <ul>
                                 <li>With or without the proxy depending of your network</li>
                             </ul>
                         </li>
-
                     </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Java Language</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>The Devbox comes with STS Tool suite (eclipse based IDE)</li>
+                        <li>JDK version is 1.8.0_111</li>
+                        <li>Maven version 3.3.9</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul style="font-style:oblique;">
+                        <li>During this training we will use only the devbox for simplicity sake</li>
+                        <li>Using OSX or Linux is more efficient for heavy duty development</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Non Java Languages</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>For non Java Languages development the devbox include Atom Editor which more than sufficient
+                            for the scope of this training
+                        </li>
+                        <li>For serious development investing into a Intellij Ultimate License might be a good idea</li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Node version: 6.3.0</li>
+                        <li>Npm version: 3.10.3</li>
+                        <li>Python version: 2.7.5</li>
+                        <li>Python version: 3.4.3</li>
+                        <li>gcc version: 4.8.5</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli primer</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Login to Cf
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf login -a
+                                    https://api.system.aws-usw02-pr.ice.predix.io</code></li>
+                                <li>Enter your login and password</li>
+                            </ul>
+                        </li>
+                        <li>Set your Org and Space
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf target -o {Orgname} -s
+                                    {SpaceName} </code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>List services available
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf marketplace</code></li>
+                            </ul>
+                        </li>
+                        <li>List running application
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf apps</code></li>
+                            </ul>
+                        </li>
+                        <li>List running services
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf services</code></li>
+                            </ul>
+                        </li>
+                        <li>Deploy an application
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf push -f manifest.yml</code></li>
+                                <li>The manifest file describe what kind application you have and all its service
+                                    dependencies
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli primer suite</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Get log of your app
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf logs {AppName} </code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Delete an app
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf delete {AppName}</code></li>
+                            </ul>
+                        </li>
+                        <li>Get Environment of an application
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf env {AppName}</code></li>
+                            </ul>
+                        </li>
+                        <li>List running services
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf services </code></li>
+                            </ul>
+                        </li>
+                        <li>Get info of a given app
+                            <ul>
+                                <li><code style="font-size: x-large;color:darkgrey;">cf app {AppName}</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+
                 </div>
             </section>
         </section>
