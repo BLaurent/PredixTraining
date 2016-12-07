@@ -21,9 +21,23 @@
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
 </head>
+
+<style>
+    em {
+        color: darkgrey;
+    }
+
+    code {
+        color: darkgrey;
+    }
+</style>
+
 <body>
+
 <div class="reveal">
+
     <div class="slides">
+
         <section data-markdown="slides/index.md"></section>
 
         <section>
@@ -852,9 +866,9 @@
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Already install on the devbox</li>
-                        <li>OSX install: <code style="font-size: x-large;color:darkgrey;">brew tap cloudfoundry/tap &&
+                        <li>OSX install: <code style="font-size: x-large;">brew tap cloudfoundry/tap &&
                             brew install cf-cli</code></li>
-                        <li>Test after install <code style="font-size: x-large;color:darkgrey;"> cf --version
+                        <li>Test after install <code style="font-size: x-large;"> cf --version
                             </br> cf version 6.22.2+a95e24c-2016-10-27</code>
                     </ul>
                 </div>
@@ -866,44 +880,44 @@
                     <ul>
                         <li>Getting some help
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;"> cf --help</code></li>
+                                <li><code style="font-size: x-large;"> cf --help</code></li>
                             </ul>
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;"> cf help {command}</code></li>
+                                <li><code style="font-size: x-large;"> cf help {command}</code></li>
                             </ul>
                         </li>
                         <li>Login to Cf
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf login -a
+                                <li><code style="font-size: x-large;">cf login -a
                                     https://api.system.aws-usw02-pr.ice.predix.io</code></li>
                                 <li>Enter your login and password</li>
                             </ul>
                         </li>
                         <li>Set your Org and Space
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf target -o {Orgname} -s
+                                <li><code style="font-size: x-large;">cf target -o {Orgname} -s
                                     {SpaceName} </code>
                                 </li>
                             </ul>
                         </li>
                         <li>List services available
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf marketplace</code></li>
+                                <li><code style="font-size: x-large;">cf marketplace</code></li>
                             </ul>
                         </li>
                         <li>List running application
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf apps</code></li>
+                                <li><code style="font-size: x-large;">cf apps</code></li>
                             </ul>
                         </li>
                         <li>List running services
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf services</code></li>
+                                <li><code style="font-size: x-large;">cf services</code></li>
                             </ul>
                         </li>
                         <li>Deploy an application
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf push -f manifest.yml</code></li>
+                                <li><code style="font-size: x-large;">cf push -f manifest.yml</code></li>
                                 <li>The manifest file describes what kind application you have and all its service
                                     dependencies
                                 </li>
@@ -919,29 +933,29 @@
                     <ul>
                         <li>Get log of your app
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf logs {AppName}</code></li>
+                                <li><code style="font-size: x-large;">cf logs {AppName}</code></li>
                                 <li>Only latest ones <code style="font-size: x-large;color:darkgrey;">cf logs --recent
                                     {AppName}</code></li>
                             </ul>
                         </li>
                         <li>Delete an app
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf delete {AppName}</code></li>
+                                <li><code style="font-size: x-large;">cf delete {AppName}</code></li>
                             </ul>
                         </li>
                         <li>Get Environment of an applications
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf env {AppName}</code></li>
+                                <li><code style="font-size: x-large;">cf env {AppName}</code></li>
                             </ul>
                         </li>
                         <li>List running services
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf services </code></li>
+                                <li><code style="font-size: x-large;">cf services </code></li>
                             </ul>
                         </li>
                         <li>Get info of a given app
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">cf app {AppName}</code></li>
+                                <li><code style="font-size: x-large;">cf app {AppName}</code></li>
                             </ul>
                         </li>
                     </ul>
@@ -982,14 +996,14 @@
                 <h6>Lab - <span style="color:deeppink;">Few cf cli usage </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf target -o "Email"</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf create-space lab</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab1"</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf create-space lab2</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab2"</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab"</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf delete-space "lab2"</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;">cf target -o "Email"</code></li>
+                        <li><code style="font-size: x-large;">cf create-space lab</code></li>
+                        <li><code style="font-size: x-large;">cf target -s "lab1"</code></li>
+                        <li><code style="font-size: x-large;">cf create-space lab2</code></li>
+                        <li><code style="font-size: x-large;">cf target -s "lab2"</code></li>
+                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;">cf delete-space "lab2"</code></li>
+                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
                     </ul>
                 </div>
             </section>
@@ -1035,7 +1049,7 @@
                         </li>
                         <li> No direct tcp inbound : mqtt is not possible</li>
                         <li>Only TLS 1.2 is possible some iot devices not supported</li>
-                        <li>Authentification is done using OAuth2.0</li>
+                        <li>Authentication is done using OAuth2.0</li>
                     </ul>
                 </div>
                 <br/>
@@ -1054,34 +1068,69 @@
 
             <section>
                 <h6>Predix Security Model - <span style="color:cadetblue;"> UAA intro </span></h6>
-                <div style="float: left;width:50%;font-size: x-large;" align="left">
+                <div style="float:left;width:120%;font-size: x-large;" align="left">
                     <ul>
-                        <li>We must differenctiate two kind of usages :
+                        <li>We must differentiate two kind of usages :
                             <ul>
-                                <li>Ressource access:</li>
+                                <li style="float:left ;width:50%;" align="left">
+                                    Resource access:
+                                    <img src="./images/oauth2-get-client.png"/>
+                                </li>
+                                <li style="float:right ;width:50%;" align="left">
+                                    User login:
+                                    <img src="./images/oauth2-get-client-auth-code.png"/>
+                                </li>
                             </ul>
-                            <div style="float: left;width:100%;font-size: x-large;" align="left">
-                                <img src="./images/auth-code-flow.png"/>
-                            </div>
                         </li>
-                    </ul>
-                </div>
-                <div style="float: left;width:50%;font-size: x-large;" align="left">
-                    <ul>
-                        <ul>
-                            <li>User login :</li>
-                        </ul>
-                        <div style="float: left;width:100%;font-size: x-large;" align="left">
-                            <!--<img src="./images/auth-code-flow.png"/>-->
-                            <code style="font-size: x-large;color:red;">TODO
-                            </code>
-                        </div>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h6>Predix Dev Tools - <span style="color:cadetblue;">uaac cli</span></h6>
+                <h6>Predix Security Model - <span style="color:cadetblue;">OAuth2</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Resource Access is very suited for stateless services (without any session)
+                            <ul>
+                                <li>
+                                    Only <em>Client(client_id/client_secret)</em> is needed
+                                </li>
+                            </ul>
+                        </li>
+                        <li>User login required a session storage (using redis most of the time)
+                            <ul>
+                                <li>
+                                    Require a <em>User Account (login/password)</em> in UAA, a <em> CLient
+                                    (client_id/client_secret</em> and a <em>Callback</em> setup
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Each time a token is generated must pay attention to:
+                            <ul>
+                                <li>it's expiration date</li>
+                                <li>it's validation</li>
+                            </ul>
+                        </li>
+                        <li>If the token expire it's needs to be refreshed</li>
+                        <li>To validate the token a call to UAA service is needed (extra latency): Fast token to the
+                            rescue
+                            <ul>
+                                <li> it's library to fetch the UAA token signing key at startup and perform the
+                                    validation locally.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Security Tools - <span style="color:cadetblue;">uaac cli</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>A simple, text-based Cloud foundry uaa client</li>
@@ -1098,7 +1147,7 @@
                     <ul>
                         <li>Install OSX
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">gem install cf-uaac
+                                <li><code style="font-size: x-large;">gem install cf-uaac
                                 </code>
                                 </li>
                             </ul>
@@ -1112,7 +1161,7 @@
                         </li>
                         <li>Login as admin
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">brew install cf-uaac
+                                <li><code style="font-size: x-large;">brew install cf-uaac
                                 </code>
                                 </li>
                             </ul>
@@ -1127,30 +1176,30 @@
                     <ul>
                         <li>Set target uaa
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">uaa target {uaaUri}</code></li>
+                                <li><code style="font-size: x-large;">uaa target {uaaUri}</code></li>
                             </ul>
                         </li>
                         <li>Get client token
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">uaac token client get -s
+                                <li><code style="font-size: x-large;">uaac token client get -s
                                     {uaa_admin_secret} </code></li>
                             </ul>
                         </li>
                         <li>Create uaa client
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">uaac client add {client_id} -s
+                                <li><code style="font-size: x-large;">uaac client add {client_id} -s
                                     {client_secret} </code></li>
                             </ul>
                         </li>
                         <li>Update uaa client
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">uaac client update {client_id}
+                                <li><code style="font-size: x-large;">uaac client update {client_id}
                                     {Additional properties} </code></li>
                             </ul>
                         </li>
                         <li>Create a group
                             <ul>
-                                <li><code style="font-size: x-large;color:darkgrey;">uaac group add {groupname}</code>
+                                <li><code style="font-size: x-large;">uaac group add {groupname}</code>
                                 </li>
                             </ul>
                         </li>
@@ -1160,26 +1209,30 @@
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">UAA </span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>Using the predix.io console create an UAA service in the space lab
+                        <li>Using the predix.io console create an UAA service in the space <em>lab</em>
                             <ul>
-                                <li>Space: lab</li>
+                                <li>Space: <em>lab</em></li>
                                 <li>Instance name: <em>uaa-lab</em></li>
                                 <li>Use the <em>Free Plan</em></li>
                                 <li>Please keep the password</li>
-                                <li>Use lab as subdomains</li>
+                                <li>Use <em>lab</em> as subdomains</li>
                             </ul>
                         </li>
                         <li>Select space lab and click on uaa-lab service, login using the password previously saved
                         </li>
-                        <li>Add a new client <em>lab-client</em>using the Service instance ui with the following
+                        <li>Add a new client <em>lab-client</em>using the Service instance ui
+                            with the following
                             parameters
                             <ul>
-                                <li>Scope: <em>uaa.none</em> <em>openid</em></li>
-                                <li>Authorities: <em>uaa.none</em> <em>uaa.resource</em></li>
+                                <li>Client Id:<em>rest_client</em></li>
+                                <li>Grant type: <em>client_credentials</em></li>
+                                <li>Client Secret: <em>{PICK ONE}</em></li>
+                                <li>Scope: <em>uaa.none</em></li>
+                                <li>Authorities: <em>uaa.none</em></li>
                                 <li>Grant types: <em>client_credentials</em></li>
-                                <li>Autoapproved: <em>openid</em></li>
+                                <li>Allowed Providers: <em>uaa</em></li>
                             </ul>
                         </li>
                     </ul>
@@ -1192,18 +1245,91 @@
                     We said that anything with cf and uaac cli can be automated...<br/>
                     <code style="font-size: large;color:darkgrey;">
                         cf cs predix-uaa Free "uua-lab" -c
-                        '{"adminClientSecret":"gefoundry_admin","subdomain":"lab"}'
+                        '{"adminClientSecret":"{UAA_SECRET}","subdomain":"lab"}'
                     </code>
                 </div>
                 </br>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <div style="font-size: large;color:darkgrey;">
                         <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
-                        <code>uaac token client get admin -s gefoundry_admin</code> </br>
+                        <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
                         <code style="font-size: large;color:darkgrey;">
-                            uaac client add uaa_client -s "gefoundry_nonexpire" --scope "openid uaa.none" --authorized_grant_types "client_credentials" --authorities "uaa.admin" --autoapprove "openid"
+                            uaac client add uaa_client -s "{CLIENT_SECRET}" --authorized_grant_types
+                            "client_credentials" --scope "uaa.none" --authorities "uaa.none"
                         </code>
                     </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Explanation</span></h6>
+                <div style="float: top;width:100%;font-size: large;" align="left">
+                    <ul>
+                        <li>Grant type:
+                            <ul>
+                                <li>An access token can be requested in four different ways, in the Oauth specification
+                                    they are referred to as grant types:
+                                    <ul>
+                                        <li><em>client_credentials</em> - no user involved. requesting a token to
+                                            represent a client only
+                                        </li>
+                                        <li><em>password</em> - the client uses the user's credentials and passes them
+                                            to the UAA to generate a token This is the method we used in our example.
+                                        </li>
+                                        <li><em>implicit</em> - this is similar to the password grant, but a client
+                                            password(secret) is not needed
+                                        </li>
+                                        <li><em>authorization_code</em> - in this scenario, the client never sees the
+                                            user's credentials. It is the most secure grant type but relies on 302
+                                            redirects from the HTTP protocol.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Scope:
+                            <ul>
+                                <li> Scopes are essentially permissions, and are added as a named parameter in the
+                                    access token.
+                                    <ul>
+                                        <li><em>scope</em> - when the token represents a client acting on behalf of a
+                                            user
+                                        </li>
+                                        <li><em>authorities</em> - when the token represents the client (application)
+                                            itself
+                                        </li>
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    This is how the permissions are labeled in the token by the UAA. When a resource
+                    server receives a request containing a token, the server can make a decision
+                    based on the scopes in the token. The resource MUST validate the token first,
+                    there are several ways of doing this discussed in the Oauth 2 specification.
+                    The resource server must differentiate between a client only token, and read
+                    'authorities', or a client on behalf of user token to read the 'scope' field.
+                    The name of the scope, such as <em>password.write</em> are arbitrary strings.
+                    They don't mean anything to any component except the resource server that uses
+                    them for authorization. For example, <em>password.write</em> is a scope that the
+                    must be present in the token when a request to the UAA is made for a password
+                    change.
+                    Scopes, are arbitrary strings, defined by the client itself. The UAA does use
+                    the base name of a scope and adds it to the audience field. The 'base name' is
+                    defined as anything before the last dot.
+                </aside>
+            </section>
+
+            <section>
+                <h6>Uaa - <span style="color:cadetblue;"> primer</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+
+                </div>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+
                 </div>
             </section>
         </section>
