@@ -1,0 +1,110 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Predix-training",
+		"_postman_id": "89bb4bb8-a277-ec90-1540-c0f0b7746942",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/oauth/token client_credentials",
+			"request": {
+				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io//oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic cmVzdF9jbGllbnQ6cmVzdF9jbGllbnQ=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/token_key",
+			"request": {
+				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/token_key",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/check_token",
+			"request": {
+				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic cmVzdF9jbGllbnQ6cmVzdF9jbGllbnQ=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token_type",
+							"value": "bearer",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJkOGZkOGExY2MwNzE0YmZkOTc4NzBmZjUwZjY3NzAzNCIsInN1YiI6InJlc3RfY2xpZW50Iiwic2NvcGUiOlsidWFhLm5vbmUiXSwiY2xpZW50X2lkIjoicmVzdF9jbGllbnQiLCJjaWQiOiJyZXN0X2NsaWVudCIsImF6cCI6InJlc3RfY2xpZW50IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIzMDBkYmJkOCIsImlhdCI6MTQ4MTEyOTYyOCwiZXhwIjoxNDgxMTcyODI4LCJpc3MiOiJodHRwczovL2xhYi5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6IjIyMTQ0NmQyLTNiNWUtNDAyYy1hNmQ1LTZhYWVjZTIyZDQzYiIsImF1ZCI6WyJyZXN0X2NsaWVudCJdfQ.S15G0DGHtevQVvzjhWyU4FGIkp6PwuY_puLlDaJGAUkEcNLU4TmLoGkn36ZWJKU4CI7UcpmMjUizt_q4-sISLCJQakYPLZjn1S0usZCBopeI1SunwUUA0Ku2h1EAoRvH90ZUpZyfdgugWxlSHHVRis7S2-39NmaTSx5i99QnOhuILsvHS0bt7ox-UKMbzuJtpThhKp0QrKI-v6BGhyhJiCI6qb6h6TVONumiEKkU7gisHS5pgImOttQjK3XtWw4MbxQSElZ7kdnlFAr-M05bAHcnnzgNPPLA_QH9k9ZrAbRbd0f-CIEcQTpZEtpmtNZVdGf8LLUTeypcPprwrt5AqA",
+							"type": "text",
+							"enabled": true,
+							"warning": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "login with authorization_code",
+			"request": {
+				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
