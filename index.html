@@ -983,7 +983,7 @@
                     <ul>
                         <li>Set your org</li>
                         <li>Create a space named <em>lab</em></li>
-                        <li>Set target to lab1</li>
+                        <li>Set target to lab</li>
                         <li>Create a space named <em>lab2</em></li>
                         <li>Set target to lab2</li>
                         <li>Set target to lab</li>
@@ -998,7 +998,7 @@
                     <ul>
                         <li><code style="font-size: x-large;">cf target -o "Email"</code></li>
                         <li><code style="font-size: x-large;">cf create-space lab</code></li>
-                        <li><code style="font-size: x-large;">cf target -s "lab1"</code></li>
+                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
                         <li><code style="font-size: x-large;">cf create-space lab2</code></li>
                         <li><code style="font-size: x-large;">cf target -s "lab2"</code></li>
                         <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
@@ -1094,6 +1094,7 @@
                         <li>Inspect access token at <em>/check_token</em></li>
                         <li>Obtain token key (for decoding JWT tokens locally) at <em>/token_key</em></li>
                         <li>Login ui to access application <em>/login</em></li>
+                        <li>Authorization Requests Code <em>/oauth/authorize</em></li>
                     </ul>
                 </div>
             </section>
@@ -1236,7 +1237,6 @@
                                 <li>Client Secret: <em>{PICK ONE}</em></li>
                                 <li>Scope: <em>uaa.none</em></li>
                                 <li>Authorities: <em>uaa.none</em></li>
-                                <li>Grant types: <em>client_credentials</em></li>
                                 <li>Allowed Providers: <em>uaa</em></li>
                             </ul>
                         </li>
@@ -1329,7 +1329,9 @@
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;">More UAA</span> <span style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
+                        style="color:crimson;font-size: large;"> Devbox </span>
+                </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>In the devbox open chrome and install <em>postman</em> its a chrome extension that allow you
@@ -1354,8 +1356,10 @@
                     <ul>
                         <div style="float: top;width:100%;font-size: x-large;">Hints:
                             <ul>
-                                <li>You need a Basic Auth Header (Postman can generate it for you) containing {client_id}:{client_secret}</li>
-                                <li>The body of the request need to include the <em>grant_type</em> </li>
+                                <li>You need a Basic Auth Header (Postman can generate it for you) containing
+                                    {client_id}:{client_secret}
+                                </li>
+                                <li>The body of the request need to include the <em>grant_type</em></li>
                                 <li> Use <em>x-www-form-urlencoded</em></li>
                             </ul>
                         </div>
@@ -1363,7 +1367,9 @@
                 </div>
             </section>
             <section>
-                <h6>Lab - <span style="color:deeppink;">More UAA</span> <span style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
+                        style="color:crimson;font-size: large;"> Devbox </span>
+                </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Enter the url of the uaa service <br/> <code>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code>
@@ -1379,8 +1385,12 @@
                     <ul>
                         <div style="float: top;width:100%;font-size: x-large;">Hints:
                             <ul>
-                                <li>You need a Basic Auth Header (Postman can generate it for you) containing {client_id}:{client_secret}</li>
-                                <li>The body of the request need to include the <em>token_type</em> with <em>bearer</em>and <em>bearer</em> to the token you got from the previous call.</li>
+                                <li>You need a Basic Auth Header (Postman can generate it for you) containing
+                                    {client_id}:{client_secret}
+                                </li>
+                                <li>The body of the request need to include the <em>token_type</em> with <em>bearer</em> and
+                                    <em>bearer</em> to the token you got from the previous call.
+                                </li>
                                 <li>Use <em>x-www-form-urlencoded</em></li>
                             </ul>
                         </div>
@@ -1388,11 +1398,14 @@
                 </div>
             </section>
             <section>
-                <h6>Lab - <span style="color:deeppink;">More UAA</span> <span style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
+                        style="color:crimson;font-size: large;"> Devbox </span>
+                </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>To check the token the client needs to have <em>uaa.resource</em> in its <em>Authorities</em> </li>
-                        <li>Using the uaa dashboard edit the client to update the client</li>
+                        <li>To check the token the client needs to have <em>uaa.resource</em> in its
+                            <em>Authorities</em></li>
+                        <li>Using the UAA dashboard edit the client to update the client</li>
                         <li>ReSend the previous request request</li>
                         <li>You should have something like:</li>
                     </ul>
@@ -1421,10 +1434,13 @@
                 </div>
             </section>
             <section>
-                <h6>Lab - <span style="color:deeppink;">More UAA</span> <span style="color:crimson;font-size: large;"> Non-Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Resource access </span> <span
+                        style="color:crimson;font-size: large;"> Non-Devbox </span>
+                </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>To check the token the client needs to have <em>uaa.resource</em> in its <em>Authorities</em> </li>
+                        <li>To check the token the client needs to have <em>uaa.resource</em> in its
+                            <em>Authorities</em></li>
                         <li>Using the uaac cli to update the client</li>
                         <li>ReSend the previous request request</li>
                         <li>You should have something like:</li>
@@ -1455,15 +1471,97 @@
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;">More UAA</span> <span style="color:crimson;font-size: large;"> Non-Devbox Solution</span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                    <div style="font-size: large;color:darkgrey;">
-                        <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
-                        <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
-                        <code style="font-size: large;color:darkgrey;">
-                            uaac client update rest_client --authorities "uaa.none uaa.resource"
-                        </code>
-                    </div>
+                <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
+                        style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
+                </h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> <br/>
+                    <code>uaac token client get admin -s {UAA_SECRET}</code> <br/>
+                    <code>
+                        uaac client update rest_client --authorities "uaa.none uaa.resource"
+                    </code>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">UAA Login</span> <span style="color:crimson;font-size: large;"> Devbox </span>
+                </h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Using the UAA dashboard create a new client name <em>login_client</em> with the following
+                            properties:
+                            <ul>
+                                <li>Client Id:<em>login_client</em></li>
+                                <li>Grant type: <em>authorization_code</em></li>
+                                <li>Client Secret: <em>{client_secret}</em></li>
+                                <li>Scope: <em>uaa.none</em></li>
+                                <li>Authorities: <em>uaa.none</em> and <em>uaa.user</em></li>
+                                <li>Allowed Providers: <em>uaa</em></li>
+                                <li>Redirect URL: <em>https://www.getpostman.com/oauth2/callback</em></li>
+                            </ul>
+                        </li>
+                        <li>Create a User with the following properties:
+                            <ul>
+                                <li>User Name: <em>{Pick one email}</em></li>
+                                <li>Email: <em>{Pick one email}</em></li>
+                                <li>Password: <em>{Pick one}</em></li>
+                                <li>Given Name: <em>{Pick One}</em></li>
+                                <li>Active: check it</li>
+                                <li>Verified: check it</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
+                        style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
+                </h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> <br/>
+                    <code>uaac token client get admin -s {UAA_SECRET}</code> <br/>
+                    <code>
+                        uaac client add login_client --authorized_grant_types
+                        "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --authorities
+                        "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
+                    </code><br/>
+                    <code>
+                        uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"
+                    </code>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">UAA Login </span> <span style="color:crimson;font-size: large;"> Devbox </span>
+                </h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>In postman open Authentication Helper and select OAuth2.0 and enter :
+                            <ul>
+                                <li>Token Name: <em>Bearer</em></li>
+                                <li>Auth URL:
+                                    <em>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/authorize</em></li>
+                                <li>Access Token URL: <em>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token</em>
+                                </li>
+                                <li>Client ID: login_client</li>
+                                <li>Client Secret: {client_secret}</li>
+                                <li>Grant Type: <em>Authorization Code</em></li>
+                            </ul>
+                        </li>
+                        <li>Press Request Token</li>
+                        <li>At the end you will have a Bearer token registered that could be added to to any request</li>
+                    </ul>
+                </div>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li class="fragment fade-up">What can be added to remove the approval step ?</li>
+                        <li class="fragment fade-up">
+                            <code>
+                                uaac client update login_client --autoapprove "uaa.user"
+                            </code>
+                        </li>
+                    </ul>
                 </div>
             </section>
         </section>
