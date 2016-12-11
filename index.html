@@ -41,6 +41,26 @@
         <section data-markdown="slides/index.md"></section>
 
         <section>
+            <h6>Plot - <span style="color:deeppink;">The Apps </span></h6>
+            <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                During this training we will try to create an application that collect information coming from different
+                sources
+            </div>
+            <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                <ul>
+                    <li>Place de la nation in Paris
+                        <ul>
+                            <li>Monitoring of pedestrians stream</li>
+                            <li>Monitoring of bicycle stream</li>
+                            <li>Monitoring of vehicle stream</li>
+                            <li>Sensors positions</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
             <h3>Startup and Ingestion Lvl 1</h3>
             <ul>
                 <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Architectural Overview & Predix Tooling</li>
@@ -150,16 +170,19 @@
                     <div style="float: left;width:45%;font-size: xx-large;" align="left">
                         <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>HAProxy is separate component from the Router</li>
-                            <ul>
-                                <li>Sits in front of the router</li>
-                                <li>By default only one instance defined</li>
-                            </ul>
-                            <li>Cloud Foundry can only have one IP address visible to outside world</li>
-                            <ul>
-                                <li>This is the Load Balancer</li>
-                                <li>It passes requests to the Router(s) to send to the right CF component</li>
-                            </ul>
+                            <li>HAProxy is separate component from the Router
+                                <ul>
+                                    <li>Sits in front of the router</li>
+                                    <li>By default only one instance defined</li>
+                                </ul>
+                            </li>
+                            <li>Cloud Foundry can only have one IP address visible to outside world
+                                <ul>
+                                    <li>This is the Load Balancer</li>
+                                    <li>It passes requests to the Router(s) to send to the right CF component</li>
+                                </ul>
+
+                            </li>
                         </ul>
                     </div>
                     <div style="float: left;width:45%;font-size: xx-large;" align="right">
@@ -183,23 +206,23 @@
                     <div style="float: left;width:50%;font-size: xx-large;" align="left">
                         <p align="left" style="color:cornflowerblue;">Description:</p>
                         <ul>
-                            <li>Routes all incoming HTTP traffic</li>
-                            <ul>
-                                <li>System traffic (cf commands)</li>
-                                <li>Application traffic</li>
-                            </ul>
-                            <li>Maintains dynamic routing table
-                                for each load-balanced app
-                                instance
+                            <li>Routes all incoming HTTP traffic
+                                <ul>
+                                    <li>System traffic (cf commands)</li>
+                                    <li>Application traffic</li>
+                                </ul>
                             </li>
-                            <ul>
-                                <li>Knows IP addresses and ports.</li>
-                            </ul>
-                            <li>Multiple routers possible</li>
-                            <ul>
-                                <li>Configured by admin in Ops Manager</li>
-                                <li>Rewritten in Go since CF 1.4 – the GoRouter</li>
-                            </ul>
+                            <li>Maintains dynamic routing table for each load-balanced app instance
+                                <ul>
+                                    <li>Knows IP addresses and ports.</li>
+                                </ul>
+                            </li>
+                            <li>Multiple routers possible
+                                <ul>
+                                    <li>Configured by admin in Ops Manager</li>
+                                    <li>Rewritten in Go since CF 1.4 – the GoRouter</li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div style="float: left;width:45%;font-size: xx-large;" align="right">
@@ -603,7 +626,7 @@
                 <h6>Where do I work - <span style="color:cadetblue;">Organizations & Spaces</span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Top-most administrative unit</li>
+                        <li>The <em>Org</em> is the top-most administrative unit</li>
                         <li>Any Cloud Foundry installation can have multiple organizations defined in any way
                             <ul>
                                 <li>
@@ -637,6 +660,11 @@
                     </ul>
                 </div>
             </section>
+        </section>
+
+        <section>
+            <h6><span style="color:green;"> Croco Break</span></h6>
+            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
         </section>
 
         <section>
@@ -709,7 +737,7 @@
                     <div style="float: left;width:50%;font-size: x-large;" align="left">
                         <ol>
                             <li>Login to the virtual machine</li>
-                            <li>Open chrome browser go to settings and in proxy the automatic mode with : <em>http://myapps.setpac.ge.com/pac.pac</em>
+                            <li>Open chrome browser go to settings and in proxy set the automatic mode with : <em>http://myapps.setpac.ge.com/pac.pac</em>
                             </li>
                             <li>Check that you can have acces to https://predix.io</li>
                         </ol>
@@ -743,12 +771,14 @@
                             </ul>
                         </li>
                         <li>Logout of the VM and Login again</li>
-                        <li>Open a terminal and check that the following command result is empty</li>
-                        <code> env | grep http_proxy</code>
-                        <li>Try to download google index</li>
-                        <code>wget https://www.google.com</code>
-                        <li>Check that you have something</li>
-                        <code>cat index.html</code>
+                        <li>Open a terminal and check that the following command result is empty
+                            <code> env | grep http_proxy</code>
+                        </li>
+                        <li>Try to download google index
+                            <code>wget https://www.google.com</code>
+                        </li>
+                        <li>Check that you have something
+                            <code>cat index.html</code></li>
                     </ul>
                 </div>
             </section>
@@ -787,12 +817,15 @@
                 <div style="float: left;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>On the devbox open <em>~/.m2/settings.xml</em></li>
-                        <li>Search for proxies</li>
-                        <p>&lt;proxies&gt;<br/> &lt;proxy&gt;<br/> &lt;id&gt;corporate&lt;/id&gt;<br/> &lt;active&gt;true&lt;/active&gt;<br/>
-                            &lt;protocol&gt;http&lt;/protocol&gt;<br/> &lt;host&gt;sjc1intproxy01.crd.ge.com&lt;/host&gt;<br/>
-                            &lt;port&gt;8080&lt;/port&gt;<br/> &lt;username&gt;proxyuser&lt;/username&gt;<br/> &lt;password&gt;proxypass&lt;/password&gt;<br/>
-                            &lt;nonProxyHosts&gt;127.0.0.1,localhost,localhost.localdomain,*.ge.com&lt;/nonProxyHosts&gt;<br/>
-                            &lt;/proxy&gt;<br/> &lt;/proxies&gt;</p>
+                        <li>Search for proxies:
+                            <pre><code data-trim data-noescape>
+<p>&lt;proxies&gt;<br/>&lt;proxy&gt;<br/>&lt;id&gt;corporate&lt;/id&gt;<br/>&lt;active&gt;true&lt;/active&gt;<br/>
+&lt;protocol&gt;http&lt;/protocol&gt;<br/>&lt;host&gt;sjc1intproxy01.crd.ge.com&lt;/host&gt;<br/>
+&lt;port&gt;8080&lt;/port&gt;<br/>&lt;username&gt;proxyuser&lt;/username&gt;<br/>&lt;password&gt;proxypass&lt;/password&gt;<br/>
+&lt;nonProxyHosts&gt;127.0.0.1,localhost,localhost.localdomain,*.ge.com&lt;/nonProxyHosts&gt;<br/>
+&lt;/proxy&gt;<br/>&lt;/proxies&gt;</p>
+                        </code></pre>
+                        </li>
                         <li>Comment the whole block</li>
                     </ul>
                 </div>
@@ -943,7 +976,7 @@
                                 <li><code style="font-size: x-large;">cf delete {AppName}</code></li>
                             </ul>
                         </li>
-                        <li>Get Environment of an applications
+                        <li>Get Environment of a running application
                             <ul>
                                 <li><code style="font-size: x-large;">cf env {AppName}</code></li>
                             </ul>
@@ -1011,13 +1044,11 @@
             <section>
                 <h6>Lab - <span style="color:deeppink;">The first app </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li><code style="font-size: x-large;color:darkgrey;">mkdir nullApp && cd nullApp</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">touch Procfile</code></li>
-                        <li><code style="font-size: x-large;color:darkgrey;">cf push nullApp -b
-                            http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 64M -k 64M</code>
-                        </li>
-                    </ul>
+                    <pre><code data-trim data-noescape>
+mkdir nullApp && cd nullApp
+touch Procfile
+cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 32m -k 64m
+                    </code></pre>
                 </div>
                 <br/>
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
@@ -1027,6 +1058,7 @@
                                 <li>Check the logs</li>
                                 <li>Try to scale it to two instances</li>
                                 <li>Try to restart the application</li>
+                                <li>Delete the application</li>
                             </ul>
                         </li>
                     </ul>
@@ -1035,7 +1067,11 @@
         </section>
 
         <section>
+            <h6><span style="color:green;"> Croco Break</span></h6>
+            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
+        </section>
 
+        <section>
             <section>
                 <h6>Predix Security Model - <span style="color:cadetblue;"> Architecture intro </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
@@ -1068,7 +1104,7 @@
 
             <section>
                 <h6>Predix Security Model - <span style="color:cadetblue;"> UAA intro </span></h6>
-                <div style="float:left;width:120%;font-size: x-large;" align="left">
+                <div style="float:left;width:110%;font-size: x-large;" align="left">
                     <ul>
                         <li>We must differentiate two kind of usages :
                             <ul>
@@ -1113,7 +1149,7 @@
                         <li>User login required a session storage (using redis most of the time)
                             <ul>
                                 <li>
-                                    Require a <em>User Account (login/password)</em> in UAA, a <em> CLient
+                                    Require a <em>User Account (login/password)</em> in UAA, a <em> Client
                                     (client_id/client_secret</em> and a <em>Callback</em> setup
                                 </li>
                             </ul>
@@ -1223,7 +1259,7 @@
                                 <li>Instance name: <em>uaa-lab</em></li>
                                 <li>Use the <em>Free Plan</em></li>
                                 <li>Please keep the password</li>
-                                <li>Use <em>lab</em> as subdomains</li>
+                                <li>Use <em>lab-{your initials}</em> as subdomains</li>
                             </ul>
                         </li>
                         <li>Select space lab and click on uaa-lab service, login using the password previously saved
@@ -1250,15 +1286,16 @@
                     We said that anything done with cf and uaac cli can be automated...<br/>
                     <code style="font-size: large;color:darkgrey;">
                         cf cs predix-uaa Free "uua-lab" -c
-                        '{"adminClientSecret":"{UAA_SECRET}","subdomain":"lab"}'
+                        '{"adminClientSecret":"{UAA_SECRET}","subdomain":"lab-{your initials}"}'
                     </code>
                 </div>
                 </br>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <div style="font-size: large;color:darkgrey;">
-                        <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
+                        <code>uaac target https://lab-{your
+                            initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
                         <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
-                        <code style="font-size: large;color:darkgrey;">
+                        <code>
                             uaac client add rest_client -s "{CLIENT_SECRET}" --authorized_grant_types
                             "client_credentials" --scope "uaa.none" --authorities "uaa.none"
                         </code>
@@ -1337,7 +1374,8 @@
                         <li>In the devbox open chrome and install <em>postman</em> its a chrome extension that allow you
                             to call any rest api
                         </li>
-                        <li>Enter the url of the uaa service <br/> <code>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code>
+                        <li>Enter the url of the uaa service <br/> <code>https://lab-{your
+                            initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code>
                             plus add the extension to obtain a token
                         </li>
                         <li>Send a basic authentication <em>POST</em> request to get a JSON web token for the client
@@ -1372,7 +1410,8 @@
                 </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Enter the url of the uaa service <br/> <code>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code>
+                        <li>Enter the url of the uaa service <br/> <code>https://lab-{your
+                            initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code>
                             plus add the extension to check a token
                         </li>
                         <li>Send a basic authentication <em>POST</em> request to check the bearer token
@@ -1388,7 +1427,8 @@
                                 <li>You need a Basic Auth Header (Postman can generate it for you) containing
                                     {client_id}:{client_secret}
                                 </li>
-                                <li>The body of the request need to include the <em>token_type</em> with <em>bearer</em> and
+                                <li>The body of the request need to include the <em>token_type</em> with <em>bearer</em>
+                                    and
                                     <em>bearer</em> to the token you got from the previous call.
                                 </li>
                                 <li>Use <em>x-www-form-urlencoded</em></li>
@@ -1421,7 +1461,7 @@
     "rest_client"
   ],
   "sub": "rest_client",
-  "iss": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
+  "iss": "https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
   "iat": 1481129628,
   "cid": "rest_client",
   "grant_type": "client_credentials",
@@ -1457,7 +1497,7 @@
     "rest_client"
   ],
   "sub": "rest_client",
-  "iss": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
+  "iss": "https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
   "iat": 1481129628,
   "cid": "rest_client",
   "grant_type": "client_credentials",
@@ -1475,11 +1515,12 @@
                         style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
                 </h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
-                    <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> <br/>
-                    <code>uaac token client get admin -s {UAA_SECRET}</code> <br/>
-                    <code>
-                        uaac client update rest_client --authorities "uaa.none uaa.resource"
-                    </code>
+                    <pre><code data-trim data-noescape>
+uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
+uaac token client get admin -s {UAA_SECRET}
+uaac client update rest_client --authorities "uaa.none uaa.resource"
+                        </code>
+                    </pre>
                 </div>
             </section>
 
@@ -1519,16 +1560,13 @@
                         style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
                 </h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
-                    <code>uaac target https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> <br/>
-                    <code>uaac token client get admin -s {UAA_SECRET}</code> <br/>
-                    <code>
-                        uaac client add login_client --authorized_grant_types
-                        "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --authorities
-                        "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
-                    </code><br/>
-                    <code>
-                        uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"
-                    </code>
+                                        <pre><code data-trim data-noescape>
+uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
+uaac token client get admin -s {UAA_SECRET}
+uaac client add login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
+uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"
+                     </code>
+                </pre>
                 </div>
             </section>
 
@@ -1541,8 +1579,10 @@
                             <ul>
                                 <li>Token Name: <em>Bearer</em></li>
                                 <li>Auth URL:
-                                    <em>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/authorize</em></li>
-                                <li>Access Token URL: <em>https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token</em>
+                                    <em>https://lab-{your
+                                        initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/authorize</em></li>
+                                <li>Access Token URL: <em>https://lab-{your
+                                    initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token</em>
                                 </li>
                                 <li>Client ID: login_client</li>
                                 <li>Client Secret: {client_secret}</li>
@@ -1550,7 +1590,8 @@
                             </ul>
                         </li>
                         <li>Press Request Token</li>
-                        <li>At the end you will have a Bearer token registered that could be added to to any request</li>
+                        <li>At the end you will have a Bearer token registered that could be added to any request
+                        </li>
                     </ul>
                 </div>
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
@@ -1565,6 +1606,697 @@
                 </div>
             </section>
         </section>
+
+        <section>
+            <h6><span style="color:green;"> Croco Break</span></h6>
+            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
+        </section>
+
+        <section>
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">TimeSeries Intro</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>
+                            The Time Series service enables you to quickly and efficiently ingest, store, and analyze
+                            time-series data.
+                        </li>
+                        <li>The query API allows you to query data using groups, time ranges, values, aggregations,
+                            qualities, and filters
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>We are going to ingest several datasets and build our application around</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">TimeSeries Architecture</span></h6>
+                <div style="-webkit-column-count: 2;">
+                    <div style="width:100%;font-size: x-large;">
+                        <img style="margin: 0;width:auto;"
+                             src="./images/Time_Series_High_Level_Architecture_resize.png"/>
+                    </div>
+                    <div style="float:left;width:100%;font-size: large;" align="left">
+                        <ul>
+                            <li>Same Cloud service different use case:
+                                <ul>
+                                    <li><b>Site A:</b> <br/>
+                                        Sensors produce time series data associated with a tag name and send it to
+                                        Historian for storage and management. S2C subscribes to tags and collects
+                                        generated data from those tags only. S2C requests a websocket connection from a
+                                        gateway application that is used for data ingestion.
+                                    </li>
+                                    <li><b>Site B:</b> <br/>
+                                        The WebSocket River establishes a connection when you first attempt a data
+                                        transfer and keeps that channel open for as long as possible. Each data transfer
+                                        verifies that the websocket connection is open. If the connection has been
+                                        closed, the service opens a new connection. For more information about WebSocket
+                                        River, see WebSocket River.
+                                        To communicate with the Time Series gateway, the data must be structured as
+                                        shown in Pushing Time Series Data.
+                                    </li>
+                                    <li><b>Site C:</b><br/>
+                                        Devices use an application to communicate directly with the websocket.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fragment fade-up" style="width:100%;font-size: x-large;color:greenyellow"> In our case we
+                    will focus only on case C direct websocket connection to Timeseries
+                </div>
+            </section>
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">TimeSeries APIs</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>The Time series service offers two APIs:
+                            <ul>
+                                <li>WebSocket: for data ingestion <br/><em>wss://gateway-predix-data-services.run.asv-pr.ice.predix.io/v1/stream/messages</em>
+                                    <ul>
+                                        <li>
+                                            Supported Payload format: Json and GZIP Json
+                                        </li>
+                                        <li>
+                                            Decompressed Payload size cannot be greater than 512K
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    REST API: for data query and basic aggregation <br/>
+                                    <em>
+                                        https://time-series-store-predix.run.asv-pr.ice.predix.io
+                                    </em>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <div style="float: bottom;width:100%;font-size: x-large;" align="left">
+                    The API endpoints are the same whatever TimeService service instance we created. To differentiate
+                    between instances there is a tenant ID named :
+                    <em>predix-zone-id</em> that needs to be included in any headers (http, ws) sent to Timeseries
+                    Services.
+                </div>
+            </section>
+
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">TimeSeries Query API</span></h6>
+                <div style="font-size: x-large;" align="left">
+                    <div style="-webkit-column-count: 2;">
+                        <div>POST <em>/v1/datapoints</em> <br/>
+                            Payload:
+                            <pre><code data-trim data-noescape>
+{
+  "tags": [
+    {
+      "name": "Compressor-2015:CompressionRatio",
+      "order": "desc",
+      "aggregations": [
+        {
+          "type": "avg",
+          "sampling": {
+            "unit": "s",
+            "value": "30"
+          }
+        }
+      ]
+    }
+  ],
+  "start": 1452112200000,
+  "end": 1453458896222
+}
+                        </code></pre>
+                        </div>
+                        <div>GET <em>/v1/tags</em></div>
+                        <div>POST <em>/v1/datapoints</em>
+                            Payload:
+                            <pre><code data-trim data-noescape>
+{
+  "start": "1y-ago",
+  "tags": [
+    {
+      "name": "Compressor-2015:CompressionRatio",
+      "order": "desc",
+      "groups": [
+        {
+          "name": "quality"
+        }
+      ]
+    }
+  ]
+}
+                            </code></pre>
+                        </div>
+                        <div> POST <em>/v1/datapoints/latest</em>
+                            Payload:
+                            <pre><code data-trim data-noescape>
+{
+  "tags": [
+    {
+      "name": "Compressor-2015:CompressionRatio"
+    }
+  ]
+}
+                        </code></pre>
+                        </div>
+                        <div>POST <em>/v1/datapoints</em>
+                            Payload:
+                            <pre><code data-trim data-noescape>
+{
+  "cache_time": 0,
+  "tags": [
+    {
+      "name": "Compressor-2015:CompressionRatio",
+      "order": "desc",
+      "limit": 2
+    }
+  ],
+  "start": 1452112200000,
+  "end": 1453458896222
+}
+                        </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Service Management</span> - <span
+                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>List all services available:
+                            <ul>
+                                <li><em>cf marketplace</em></li>
+                            </ul>
+                        </li>
+                        <li>Create a service:
+                            <ul>
+                                <li><em>cf create-service {service name} {service plan} {service instance name}</em>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Bind an application to a running service
+                            <ul>
+                                <li><em>cf bind-service {App Name} {service instance name}</em></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Service Management</span></h6>
+                <div style="-webkit-column-count: 2;font-size: x-large;">
+                    <ul>
+                        <li>Each time you bind a service to an application an environment variables called
+                            <em>VCAP</em>
+                            is updated
+                        </li>
+                        <li>This variable contains a json object that contains various information:
+                            <ul>
+                                <li><em>Credentials</em></li>
+                                <li><em>Zone id</em></li>
+                                <li><em>Dashboard url</em></li>
+                            </ul>
+                        </li>
+                        <li>Various framework abstract the access to this variable to handle service authentication
+                            transparently and service discovery
+                        </li>
+                        <li>A binded service cannot be deleted :</li>
+                    </ul>
+                    <pre><code data-trim data-noescape style="font-size: small;">
+cf delete-service uaa-foundry                                                                                                                                                 ──(Sat,Dec10)─┘
+
+Really delete the service uaa-foundry?> y
+Deleting service uaa-foundry in org European_Foundry_Basic / space demos-dev as Benoit.Laurent@ge.com...
+FAILED
+Cannot delete service instance, service keys and bindings must first be deleted
+                            </code></pre>
+
+                    <pre><code data-trim data-noescape style="font-size: small;">
+{
+  "staging_env_json": {},
+  "running_env_json": {},
+  "environment_json": {},
+  "system_env_json": {
+    "VCAP_SERVICES": {
+      "predix-uaa": [
+        {
+          "credentials": {
+            "issuerId": "https://demos-dev.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
+            "subdomain": "demos-dev",
+            "zone": {
+              "http-header-value": "f082b5bf-37b6-4720-9a9b-fe06efd274d0",
+              "http-header-name": "X-Identity-Zone-Id"
+            },
+            "uri": "https://demos-dev.predix-uaa.run.aws-usw02-pr.ice.predix.io"
+          },
+          "syslog_drain_url": null,
+          "volume_mounts": [],
+          "label": "predix-uaa",
+          "provider": null,
+          "plan": "Tiered",
+          "name": "uaa-foundry",
+          "tags": []
+        }
+      ]
+    }
+  },
+  "application_env_json": {
+    "VCAP_APPLICATION": {
+      "limits": {
+        "fds": 16384,
+        "mem": 1024,
+        "disk": 1024
+      },
+      "application_name": "cfapp-UBmZpR",
+      "application_uris": [],
+      "name": "cfapp-UBmZpR",
+      "space_name": "demos-dev",
+      "space_id": "f902086a-c66d-44f6-a1d6-1e92c4f0fef8",
+      "uris": [],
+      "users": null,
+      "application_id": "c9596a69-b144-4950-b726-16afa8273133",
+      "version": "d2579a7d-d8c0-4750-bc9f-a62059b22cdd",
+      "application_version": "d2579a7d-d8c0-4750-bc9f-a62059b22cdd"
+    }
+  }
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Service Management</span> - <span
+                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Each service exposed to public IP needs to be registered against at least one UAA service
+                            <ul>
+                                <li>Create a service with UAA authentication:
+                                    <ul>
+                                        <li><em>cf create-service {service name} {service plan} {service name instances}
+                                            -c
+                                            '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'</em></li>
+                                        <li><em>uaaIssuerId</em> can be retrieved using env variables of an app binded
+                                            to a
+                                            service
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>How to get the uaaIssuerId ?
+                            <ul>
+                                <li><em>cf bind-service {App Name} {service instance name}</em></li>
+                                <li><em>cf env {App Name}</em>
+                                    <ul>
+                                        <li>Search for a <em>issuerId</em> tag</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Env Automation</span> - <span
+                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    Easy env access
+                    <pre><code data-trim data-noescape>
+export cftempapp_dir=`mktemp -d /tmp/cfapp-XXXXXX`
+cd $cftempapp_dir
+export cftempapp_name=${PWD##*/}
+touch Procfile
+cf push $cftempapp_name -b http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 32m >/dev/null
+cf bs $cftempapp_name uaa-lab >/dev/null
+export cftempapp_guid=`cf app uaa-lab --guid`
+cf curl /v2/apps/$cftempapp_guid/env
+cf delete $cftempapp_name -f >/dev/null
+cd
+rm -f $cftempapp_dir/Procfile
+rmdir $cftempapp_dir
+                    </code></pre>
+                    As you can see there some inter dependencies between services, it's important to be able to
+                    script
+                    service configuration as much as possible
+                </div>
+
+                <div style="float: bottom;width:100%;font-size: x-large;" align="left">
+                    This task of fetching fields from the <em>VCAP</em> variable is done so often that a script is
+                    really handy:
+                    <ul>
+                        <li>
+                            <em>
+                                <a href="./cfcred.sh">cfcred.sh</a> {service1} {service2} ...
+                            </em>
+                        </li>
+                    </ul>
+                    <br/>
+                    This will output the <em>VCAP</em> containing information related to all those services.
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
+                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                <div style="float:top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Create a <em>predix-timeseries</em> services using the <em>cf cli</em> named <em>timeseries-lab</em>
+                        </li>
+                        <li>Using a mechanism of your choice find the zone-id of your timeseries service</li>
+                        <li class="fragment fade-up">Automated way:
+                            <ul>
+                                <li>
+                                <pre><code data-trim data-noescape>
+export uaaIssuerId=$(./cfcred.sh "uaa-lab" | jq  -r '.system_env_json.VCAP_SERVICES."predix-uaa"[].credentials.issuerId')
+cf create-service predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'
+                                </code></pre>
+                                </li>
+                                <li><a href="https://stedolan.github.io/jq/">jq</a> is a lightweight and flexible
+                                    command-line JSON processor.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Data Ingestion</span></h6>
+
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>To perform data ingestion we need to open a web socket with a header containing :
+                            <ul>
+                                <li>Authorization: Bearer {TOKEN}</li>
+                                <li>Predix-Zone-Id: {ZONE}</li>
+                                <li>Origin: {Origin}</li>
+                            </ul>
+                        </li>
+                        <li>Once the web socket is opened we can send our data as a json payload
+                            <pre><code data-trim data-noescape>
+{
+   "messageId":"{MessageID}",
+   "body":[
+      {
+         "name":"{TagName}",
+         "datapoints":[
+            [
+               "{EpochInMs}",
+               "{Measure}",
+               "{Quality}"
+            ]
+         ],
+         "attributes":{
+            "{AttributeKey}":"{AttributeValue}",
+            "{AttributeKey2}":"{AttributeValue2}"
+         }
+      }
+   ]
+}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: bottom;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>
+                            Accessing a Timeseries service require a token generated by UAA service using <br/><em>Resource
+                            access</em> aka <em>client_credentials</em>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Predix Dev Tools Interlude - <span style="color:cadetblue;">Predix Starter</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>
+                            It's often desirable to be able to execute some simple operation like
+                            <ul>
+                                <li>open web socket</li>
+                                <li>test uaa client</li>
+                                <li>Test Predix services API</li>
+                            </ul>
+                            without having to create our own script each time.
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>
+                            For this reason the Predix Team created the <em>predix-starter</em> tool UI :
+                            <a href="https://github.com/PredixDev/predix-starter"> Predix Starter</a>
+                        </li>
+                        <li>Depending on the data center you are using select <em>Basic</em> for AWS hosted or <em>Select</em>
+                            for GE hosted infrastructure
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
+                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                <div style="float:top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Create a new uaa client using UAA console in predix.io with :
+                            <ul>
+                                <li>Client Id: <em>timeseries_client</em></li>
+                                <li>Grant type: <em>client_credentials</em></li>
+                                <li>Client Secret: <em>{PICK ONE}</em></li>
+                                <li>Scope: <em>uaa.none</em></li>
+                                <li>Authorities: <em>uaa.none</em></li>
+                                <li>Allowed Providers: <em>uaa</em></li>
+                            </ul>
+                        </li>
+                        <br/>
+                        <li>Automated way:<br/>
+                            <div style="font-size: large;">
+                                <code>uaac target https://lab-{your
+                                    initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
+                                <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
+                                <code>
+                                    uaac client add timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types
+                                    "client_credentials" --scope "uaa.none" --authorities "uaa.none"
+                                </code>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
+                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                <div style="float:top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>
+                            Using the predix starter tools <em>API explorer</em> try to open a web socket to the
+                            timeseries service
+                        </li>
+                        <li>
+                            This can be done in the <em>API explorer</em> tab
+                        </li>
+                        <li><em>Login as Client</em> :
+                            <ul>
+                                <li>timeseries-client</li>
+                                <li>{Your Secret}</li>
+                            </ul>
+                            the client you just created and use the uaa url : <br/><em>https://lab-{your
+                                initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</em></li>
+                        <li>Go to <em>Time Series Ingest</em> item and put your <em>predix-zone-id</em> you've retrieved
+                            previously
+                        </li>
+                        <li>Click on <em>Open Socket</em></li>
+                        <li class="fragment fade-right">
+                            You got an error:
+                            <pre><code data-trim data-noescape>
+{
+"error": "Error: unexpected server response (401)",
+"url": "wss://gateway-predix-data-services.run.aws-usw02-pr.ice.predix.io/v1/stream/messages"
+}
+                              </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;"> UAA Groups </span> - <span
+                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Our request include the <em>predix-zone-id</em> in the header</li>
+                        <li>But our token do not include any zone related information</li>
+                    </ul>
+                </div>
+                <div style="float: bottom;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>UAA offers the concept of groups that can be used to enable expression of common Group or
+                            role based access control models
+                        </li>
+                        <li class="fragment fade-left">
+                            For Predix Services the naming convention is :
+                            <ul>
+                                <li>
+                                    {servicename}.zones.{Predix-Zone-Id}.{role}
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-left"> For Time Series Eg:
+                            <ul>
+                                <li><em>timeseries.zones.{Predix-Zone-Id}.user</em> group to allow general access
+                                </li>
+                                <li><em>timeseries.zones.{Predix-Zone-Id}.query</em> group to allow query access
+                                </li>
+                                <li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em> group to allow ingest access
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-left">
+                            To allow a client to perform data ingestion the client needs to contains int its scope:
+                            <ul>
+                                <li><em>timeseries.zones.{Predix-Zone-Id}.user</em> and</li>
+                                <li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-left">
+                            It's absolutely possible (recommended) to create two clients : one for query and one for
+                            ingestion
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Time Series Group & Ingestion</span> <span
+                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Using the UAA console create the three groups for the Time Series Services name <br/> <em>timeseries-lab</em>
+                            <ul>
+                                <li>The group management piece is in : <em>User Management</em> Tab</li>
+                                <li>Display Name and Description (can be empty)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+
+                <div style="width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Update <em>timeseries-client</em> using the UAA console to add to its <em>authorities</em>
+                            the three groups we just created
+                        </li>
+                        <li>Try to using the <em>predix-starter</em> tool open the socket again : Login as client then
+                            Open socket
+                            <pre><code data-trim data-noescape>
+{"socketId":2121290809009224200,"readyState":"OPEN"}
+                            </code></pre>
+                        </li>
+
+                        <li>Start ingesting some data by clicking on the Ingest Button
+                            <pre><code data-trim data-noescape>
+{"statusCode":202,"messageId":"1453338376222"}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Time Series Group </span> <span
+                        style="color:crimson;font-size: large;"> Non Devbox </span></h6>
+                <div style="width:100%;font-size: xx-large;" align="left">
+                    Automated Way:
+                    <pre><code data-trim data-noescape>
+uaac group add timeseries.zones.{predix-zone-id}.user
+uaac group add timeseries.zones.{predix-zone-id}.query
+uaac group add timeseries.zones.{predix-zone-id}.ingest
+uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{predix-zone-id}.user timeseries.zones.{predix-zone-id}.query timeseries.zones.{predix-zone-id}.ingest"
+                        </code>
+                    </pre>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Time Series Query </span> <span
+                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Open the <em>Time Series Query</em> item</li>
+                        <li><em>Select Limited Datapoints</em></li>
+                        <li>Enter the <em>predix-zone-id</em></li>
+                        <li>Press Submit</li>
+                    </ul>
+                    <pre><code data-trim data-noescape>
+{
+  "tags": [
+    {
+      "name": "Compressor-2015:CompressionRatio",
+      "results": [
+        {
+          "groups": [
+            {
+              "name": "type",
+              "type": "number"
+            }
+          ],
+          "values": [
+            [
+              1453338377222,
+              10,
+              1
+            ],
+            [
+              1453338377222,
+              10,
+              1
+            ]
+          ],
+          "attributes": {
+            "customer": [
+              "Acme"
+            ],
+            "host": [
+              "server2"
+            ],
+            "valid": [
+              "true"
+            ]
+          }
+        }
+      ],
+      "stats": {
+        "rawCount": 2
+      }
+    }
+  ]
+}
+                    </code></pre>
+                </div>
+            </section>
+
+        </section>
+
+        <!--https://m.popkey.co/01115d/jwevQ.gif-->
+        <!--https://m.popkey.co/fe020c/v4x8k.gif-->
+        <!--http://gif-finder.com/wp-content/uploads/2015/03/Anders-Holm-OMG.gif-->
     </div>
 </div>
 
