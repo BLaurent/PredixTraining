@@ -1,0 +1,11 @@
+applications:
+  - name: timeseries-ingestion-service
+    buildpack: python_buildpack
+    memory: 512M
+    disk_quota: 1G
+    env:
+        CLIENT_ID: timeseries-ingestion-service
+        CLIENT_SECRET: timeseries-ingestion-service
+    services:
+            - uaa-lab
+            - timeseries-lab

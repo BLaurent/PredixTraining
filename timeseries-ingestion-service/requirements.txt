@@ -1,0 +1,8 @@
+Flask
+uuid
+requests
+werkzeug
+pandas
+pyyaml
+pypugjs
+websocket-client
