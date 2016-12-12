@@ -1133,6 +1133,8 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                         <li>Obtain token key (for decoding JWT tokens locally) at <em>/token_key</em></li>
                         <li>Login ui to access application <em>/login</em></li>
                         <li>Authorization Requests Code <em>/oauth/authorize</em></li>
+                        <li>Validate an access token <em>/check_token</em></li>
+                        <li>Given an appropriate access_token, returns information about a user <em>/userinfo</em></li>
                     </ul>
                 </div>
             </section>
@@ -1270,7 +1272,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                             with the following
                             parameters
                             <ul>
-                                <li>Client Id:<em>rest_client</em></li>
+                                <li>Client Id:<em>rest-client</em></li>
                                 <li>Grant type: <em>client_credentials</em></li>
                                 <li>Client Secret: <em>{PICK ONE}</em></li>
                                 <li>Scope: <em>uaa.none</em></li>
@@ -1298,7 +1300,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                             initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
                         <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
                         <code>
-                            uaac client add rest_client -s "{CLIENT_SECRET}" --authorized_grant_types
+                            uaac client add rest-client -s "{CLIENT_SECRET}" --authorized_grant_types
                             "client_credentials" --scope "uaa.none" --authorities "uaa.none"
                         </code>
                     </div>
@@ -1381,7 +1383,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                             plus add the extension to obtain a token
                         </li>
                         <li>Send a basic authentication <em>POST</em> request to get a JSON web token for the client
-                            <em>rest_client</em></li>
+                            <em>rest-client</em></li>
 
                         <li>You should have something like:</li>
                     </ul>
@@ -1417,7 +1419,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                             plus add the extension to check a token
                         </li>
                         <li>Send a basic authentication <em>POST</em> request to check the bearer token
-                            <em>rest_client</em></li>
+                            <em>rest-client</em></li>
                         <li>You should have something like:</li>
                     </ul>
                     <pre><code data-trim data-noescape>
@@ -1453,21 +1455,21 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                     </ul>
                     <pre><code data-trim data-noescape>
                         {
-  "client_id": "rest_client",
+  "client_id": "rest-client",
   "exp": 1481172828,
   "scope": [
     "uaa.none"
   ],
   "jti": "d8fd8a1cc0714bfd97870ff50f677034",
   "aud": [
-    "rest_client"
+    "rest-client"
   ],
-  "sub": "rest_client",
+  "sub": "rest-client",
   "iss": "https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
   "iat": 1481129628,
-  "cid": "rest_client",
+  "cid": "rest-client",
   "grant_type": "client_credentials",
-  "azp": "rest_client",
+  "azp": "rest-client",
   "zid": "221446d2-3b5e-402c-a6d5-6aaece22d43b",
   "rev_sig": "300dbbd8",
   "revocable": false
@@ -1489,21 +1491,21 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                     </ul>
                     <pre><code data-trim data-noescape>
                         {
-  "client_id": "rest_client",
+  "client_id": "rest-client",
   "exp": 1481172828,
   "scope": [
     "uaa.none"
   ],
   "jti": "d8fd8a1cc0714bfd97870ff50f677034",
   "aud": [
-    "rest_client"
+    "rest-client"
   ],
-  "sub": "rest_client",
+  "sub": "rest-client",
   "iss": "https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
   "iat": 1481129628,
-  "cid": "rest_client",
+  "cid": "rest-client",
   "grant_type": "client_credentials",
-  "azp": "rest_client",
+  "azp": "rest-client",
   "zid": "221446d2-3b5e-402c-a6d5-6aaece22d43b",
   "rev_sig": "300dbbd8",
   "revocable": false
@@ -1520,7 +1522,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                     <pre><code data-trim data-noescape>
 uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
 uaac token client get admin -s {UAA_SECRET}
-uaac client update rest_client --authorities "uaa.none uaa.resource"
+uaac client update rest-client --authorities "uaa.none uaa.resource"
                         </code>
                     </pre>
                 </div>
@@ -1620,24 +1622,51 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
 
         <section>
             <section id="JavaUAA">
-                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Java Application</span></h6>
-
+                <h6>Lab - <span style="color:deeppink;"> Securing REST API with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
+                        <li>Compile it and deploy
+                            <pre><code data-trim data-noescape>
+mvn clean package
+cf push --random-route
+                        </code></pre>
+                        </li>
+                        <li>Check that the application is working by opening a browser and checking that <em>/dashboard?user=toto</em>
+                        </li>
+                    </ul>
+                </div>
             </section>
 
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing REST API with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Add <em>org.springframework.cloud:spring-cloud-starter-oauth2</em> dependency in the pom</li>
+                        <pre><code data-trim data-noescape>
+mvn clean package
+cf push
+                        </code></pre>
+                    </ul>
+                </div>
+            </section>
         </section>
 
         <!--<section>-->
-            <!--<section id="PythonUAA">-->
-                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Python Application</span></h6>-->
+        <!--<section id="PythonUAA">-->
+        <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Python Application</span></h6>-->
 
-            <!--</section>-->
+        <!--</section>-->
         <!--</section>-->
 
         <!--<section>-->
-            <!--<section id="Node.JsUAA">-->
-                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Node.js Application</span></h6>-->
+        <!--<section id="Node.JsUAA">-->
+        <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Node.js Application</span></h6>-->
 
-            <!--</section>-->
+        <!--</section>-->
         <!--</section>-->
 
         <section>
@@ -2404,17 +2433,17 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
         </section>
 
         <!--<section>-->
-            <!--<section id="PythonTS">-->
-                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Python Client</span></h6>-->
+        <!--<section id="PythonTS">-->
+        <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Python Client</span></h6>-->
 
-            <!--</section>-->
+        <!--</section>-->
         <!--</section>-->
 
         <!--<section>-->
-            <!--<section id="Node.JsTS">-->
-                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Node.js Client</span></h6>-->
+        <!--<section id="Node.JsTS">-->
+        <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Node.js Client</span></h6>-->
 
-            <!--</section>-->
+        <!--</section>-->
         <!--</section>-->
 
         <!--https://m.popkey.co/01115d/jwevQ.gif-->
