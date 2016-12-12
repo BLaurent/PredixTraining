@@ -10,12 +10,12 @@
 		{
 			"name": "/oauth/token client_credentials",
 			"request": {
-				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io//oauth/token",
+				"url": "https://lab-bl.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic cmVzdF9jbGllbnQ6cmVzdF9jbGllbnQ=",
+						"value": "Basic dGltZXNlcmllcy1pbmdlc3Rpb24tc2VydmljZTp0aW1lc2VyaWVzLWluZ2VzdGlvbi1zZXJ2aWNl",
 						"description": ""
 					}
 				],
@@ -38,7 +38,7 @@
 		{
 			"name": "/token_key",
 			"request": {
-				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/token_key",
+				"url": "https://lab-bl.predix-uaa.run.aws-usw02-pr.ice.predix.io/token_key",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -60,12 +60,12 @@
 		{
 			"name": "/check_token",
 			"request": {
-				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
+				"url": "https://lab-bl.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic cmVzdF9jbGllbnQ6cmVzdF9jbGllbnQ=",
+						"value": "Basic dGltZXNlcmllcy1jbGllbnQ6dGltZXNlcmllcy1jbGllbnQ=",
 						"description": ""
 					}
 				],
@@ -73,15 +73,8 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "token_type",
-							"value": "bearer",
-							"type": "text",
-							"enabled": true,
-							"warning": ""
-						},
-						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJkOGZkOGExY2MwNzE0YmZkOTc4NzBmZjUwZjY3NzAzNCIsInN1YiI6InJlc3RfY2xpZW50Iiwic2NvcGUiOlsidWFhLm5vbmUiXSwiY2xpZW50X2lkIjoicmVzdF9jbGllbnQiLCJjaWQiOiJyZXN0X2NsaWVudCIsImF6cCI6InJlc3RfY2xpZW50IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIzMDBkYmJkOCIsImlhdCI6MTQ4MTEyOTYyOCwiZXhwIjoxNDgxMTcyODI4LCJpc3MiOiJodHRwczovL2xhYi5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6IjIyMTQ0NmQyLTNiNWUtNDAyYy1hNmQ1LTZhYWVjZTIyZDQzYiIsImF1ZCI6WyJyZXN0X2NsaWVudCJdfQ.S15G0DGHtevQVvzjhWyU4FGIkp6PwuY_puLlDaJGAUkEcNLU4TmLoGkn36ZWJKU4CI7UcpmMjUizt_q4-sISLCJQakYPLZjn1S0usZCBopeI1SunwUUA0Ku2h1EAoRvH90ZUpZyfdgugWxlSHHVRis7S2-39NmaTSx5i99QnOhuILsvHS0bt7ox-UKMbzuJtpThhKp0QrKI-v6BGhyhJiCI6qb6h6TVONumiEKkU7gisHS5pgImOttQjK3XtWw4MbxQSElZ7kdnlFAr-M05bAHcnnzgNPPLA_QH9k9ZrAbRbd0f-CIEcQTpZEtpmtNZVdGf8LLUTeypcPprwrt5AqA",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJlNmU3ZjRmZmVjYjI0YTUzOGI1YmUxYzEzNDIxMDc3MyIsInN1YiI6InRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiLCJzY29wZSI6WyJ0aW1lc2VyaWVzLnpvbmVzLmQ3ZjBiOWI0LWMyNmUtNDY0Ni04NzczLTliN2JlOGUyYWZjZS51c2VyIiwidWFhLnJlc291cmNlIiwidGltZXNlcmllcy56b25lcy5kN2YwYjliNC1jMjZlLTQ2NDYtODc3My05YjdiZThlMmFmY2UuaW5nZXN0IiwidWFhLm5vbmUiXSwiY2xpZW50X2lkIjoidGltZXNlcmllcy1pbmdlc3Rpb24tc2VydmljZSIsImNpZCI6InRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiLCJhenAiOiJ0aW1lc2VyaWVzLWluZ2VzdGlvbi1zZXJ2aWNlIiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiI3NDVkZjFjZSIsImlhdCI6MTQ4MTQ5MDY4NCwiZXhwIjoxNDgxNTMzODg0LCJpc3MiOiJodHRwczovL2xhYi1ibC5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6IjQ0ZWI3ZWMwLTY2MDQtNGNkNy1iNGE0LWNiNWI5NTdkYjdkZSIsImF1ZCI6WyJ0aW1lc2VyaWVzLnpvbmVzLmQ3ZjBiOWI0LWMyNmUtNDY0Ni04NzczLTliN2JlOGUyYWZjZSIsInVhYSIsInRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiXX0.rfVZPZ0OnYD1-ucwJPWN4OGVBAMzuek1qUGYQmiSkxE54JM-O3Eh4K1Doh5By8a9pjwIvHATmHlrA2WDoz1s0fkFBl8vgwLkbVG7zBWwpLeQEhSu1Z97oyhz2eQWgDnQ33AGjibFCnAHSI7YTlWd1A4TCduA_QSIxrijjcUgeem0H8obicJZWiyHrDq46H969A0z8s52GL0XK719K6MKpu_o5cn_EvGU3khyZd4yjYroD9tBkVhe7-iRw8HTUguFfKRZTVE0RYfB7SfhHh10L7DajzmvfZ7Mq3ywp_-wE8re90Ff-FKpSAb0YcAklYuqxeX3nb1g0miba_sCEm9VYQ",
 							"type": "text",
 							"enabled": true,
 							"warning": ""
@@ -95,9 +88,57 @@
 		{
 			"name": "login with authorization_code",
 			"request": {
-				"url": "https://lab.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
+				"url": "https://lab-bl.predix-uaa.run.aws-usw02-pr.ice.predix.io/check_token",
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ingestion request",
+			"request": {
+				"url": "https://timeseries-ingestion-service-bl.run.aws-usw02-pr.ice.predix.io/upload",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJkZTE1Y2Y3NzY3NDI0ZTVhODlkMTVhOTc3YWY2MWY2ZiIsInN1YiI6InRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiLCJzY29wZSI6WyJ0aW1lc2VyaWVzLnpvbmVzLmQ3ZjBiOWI0LWMyNmUtNDY0Ni04NzczLTliN2JlOGUyYWZjZS51c2VyIiwidWFhLnJlc291cmNlIiwidGltZXNlcmllcy56b25lcy5kN2YwYjliNC1jMjZlLTQ2NDYtODc3My05YjdiZThlMmFmY2UuaW5nZXN0IiwidWFhLm5vbmUiXSwiY2xpZW50X2lkIjoidGltZXNlcmllcy1pbmdlc3Rpb24tc2VydmljZSIsImNpZCI6InRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiLCJhenAiOiJ0aW1lc2VyaWVzLWluZ2VzdGlvbi1zZXJ2aWNlIiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiI3NDVkZjFjZSIsImlhdCI6MTQ4MTQ5NzE4MywiZXhwIjoxNDgxNTQwMzgzLCJpc3MiOiJodHRwczovL2xhYi1ibC5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6IjQ0ZWI3ZWMwLTY2MDQtNGNkNy1iNGE0LWNiNWI5NTdkYjdkZSIsImF1ZCI6WyJ0aW1lc2VyaWVzLnpvbmVzLmQ3ZjBiOWI0LWMyNmUtNDY0Ni04NzczLTliN2JlOGUyYWZjZSIsInVhYSIsInRpbWVzZXJpZXMtaW5nZXN0aW9uLXNlcnZpY2UiXX0.uwqrGq7IWhx9oP98xH3Ftj5iL4Gr2bSUxK5pHn3UTrnVvkHPd4b0o3CAdfUtRabRiDFh6A2aOrSwy-m-hn8beNaRMUpSHuM7wyz8G8CvvwbFZEi-mqTvHwQNC6OSUtqFS4d2ppNRfeB2aBP1E72fRbrFn7U2OojW_sPfhA0lsnbgmYFjzXrHnxgS0vYmLFfUi0GusfbPmBaDfDB--mwvragiFidUV8_QbbgEfOJ3pjwIzt86jLvWEg3MHKbxbgsiqYW2tA-EulAiEM6ffOjmhdgmsqCCOcSGPz4xfeXUur83tl8roDmNvu2Yx6jP7UVMnrggMDlgac6l71CmB6GaFA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files[]",
+							"type": "file",
+							"enabled": true,
+							"warning": "",
+							"src": "place-de-la-nation-mesures-de-bruit-valeur-minimum.json"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ingestion request localhost",
+			"request": {
+				"url": "http://localhost:8888/upload",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI3MWY3N2FiMDRkNTM0ZGE1YWUzMzE1ZTVkY2NkZDFmOSIsInN1YiI6InRpbWVzZXJpZXMtY2xpZW50Iiwic2NvcGUiOlsidGltZXNlcmllcy56b25lcy5kN2YwYjliNC1jMjZlLTQ2NDYtODc3My05YjdiZThlMmFmY2UudXNlciIsInRpbWVzZXJpZXMuem9uZXMuZDdmMGI5YjQtYzI2ZS00NjQ2LTg3NzMtOWI3YmU4ZTJhZmNlLmluZ2VzdCIsInVhYS5yZXNvdXJjZSIsInVhYS5ub25lIiwidGltZXNlcmllcy56b25lcy5kN2YwYjliNC1jMjZlLTQ2NDYtODc3My05YjdiZThlMmFmY2UucXVlcnkiXSwiY2xpZW50X2lkIjoidGltZXNlcmllcy1jbGllbnQiLCJjaWQiOiJ0aW1lc2VyaWVzLWNsaWVudCIsImF6cCI6InRpbWVzZXJpZXMtY2xpZW50IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiJmODIyYjc5ZiIsImlhdCI6MTQ4MTQ4OTczOSwiZXhwIjoxNDgxNTM5NzM5LCJpc3MiOiJodHRwczovL2xhYi1ibC5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6IjQ0ZWI3ZWMwLTY2MDQtNGNkNy1iNGE0LWNiNWI5NTdkYjdkZSIsImF1ZCI6WyJ0aW1lc2VyaWVzLWNsaWVudCIsInRpbWVzZXJpZXMuem9uZXMuZDdmMGI5YjQtYzI2ZS00NjQ2LTg3NzMtOWI3YmU4ZTJhZmNlIiwidWFhIl19.gihyc8vAcLJEQGLH_wSlxCh03VcK_51GeR8G1MAWd2AGYvNbjEAi-RnaWLlWMdw1UDgodxzdlSEbbJJIoG2iyuMXC-087UfGtnlITBBell8xKB-gtvWFJtpSNn3svYoeHRClzGyQPPUJhxg3JZZON5W4PU61bQgzdWiqJS1GepQaqarOG22Fc9w6pmYctyvRgbN47G1UeIb-XDbzVbjwm-HlQBgYqc1tMdou_7u4wmDfwCnW5syWGiW4o632omPQUQKrRzW79qfhTyH0xqtww_TuqNev3Hbzsov08fy-Ju2oGDaq2kBVZ2KOVzAfzA5Q5cz9CfQy-H4mNKTFiKC0_w",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []

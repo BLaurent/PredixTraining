@@ -664,7 +664,8 @@
 
         <section>
             <h6><span style="color:green;"> Croco Break</span></h6>
-            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
+            <img class="stretch"
+                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
         </section>
 
         <section>
@@ -1068,7 +1069,8 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
 
         <section>
             <h6><span style="color:green;"> Croco Break</span></h6>
-            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
+            <img class="stretch"
+                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
         </section>
 
         <section>
@@ -1514,7 +1516,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                 <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
                         style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
                 </h6>
-                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                <div style="font-size: xx-large;" align="left">
                     <pre><code data-trim data-noescape>
 uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
 uaac token client get admin -s {UAA_SECRET}
@@ -1559,7 +1561,7 @@ uaac client update rest_client --authorities "uaa.none uaa.resource"
                 <h6>Lab - <span style="color:deeppink;">UAA Login</span> <span
                         style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
                 </h6>
-                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                <div style="font-size: xx-large;" align="left">
                                         <pre><code data-trim data-noescape>
 uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
 uaac token client get admin -s {UAA_SECRET}
@@ -1605,11 +1607,43 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
                     </ul>
                 </div>
             </section>
+
+            <section>
+                <h6>Security - <span style="color:cadetblue;">Multi Language</span></h6>
+                <ul>
+                    <li><a href="#/JavaUAA">Java</a></li>
+                    <li><a href="#/PythonUAA">Python</a></li>
+                    <li><a href="#/Node.JsUAA">Node.js</a></li>
+                </ul>
+            </section>
         </section>
 
         <section>
+            <section id="JavaUAA">
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Java Application</span></h6>
+
+            </section>
+
+        </section>
+
+        <!--<section>-->
+            <!--<section id="PythonUAA">-->
+                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Python Application</span></h6>-->
+
+            <!--</section>-->
+        <!--</section>-->
+
+        <!--<section>-->
+            <!--<section id="Node.JsUAA">-->
+                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Node.js Application</span></h6>-->
+
+            <!--</section>-->
+        <!--</section>-->
+
+        <section>
             <h6><span style="color:green;"> Croco Break</span></h6>
-            <img src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif">
+            <img class="stretch"
+                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
         </section>
 
         <section>
@@ -1671,6 +1705,7 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
                     will focus only on case C direct websocket connection to Timeseries
                 </div>
             </section>
+
             <section>
                 <h6>Data Ingestion/Query - <span style="color:cadetblue;">TimeSeries APIs</span></h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
@@ -1980,7 +2015,7 @@ rmdir $cftempapp_dir
                                 <li>
                                 <pre><code data-trim data-noescape>
 export uaaIssuerId=$(./cfcred.sh "uaa-lab" | jq  -r '.system_env_json.VCAP_SERVICES."predix-uaa"[].credentials.issuerId')
-cf create-service predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'
+cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'
                                 </code></pre>
                                 </li>
                                 <li><a href="https://stedolan.github.io/jq/">jq</a> is a lightweight and flexible
@@ -2011,15 +2046,15 @@ cf create-service predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":
    "messageId":"{MessageID}",
    "body":[
       {
-         "name":"{TagName}",
+         "name":"{TagName (Required)}",
          "datapoints":[
             [
-               "{EpochInMs}",
-               "{Measure}",
-               "{Quality}"
+               "{EpochInMs (Required)}",
+               "{Measure (Required)}",
+               "{Quality (Optional)}"
             ]
          ],
-         "attributes":{
+         "attributes (Optional)":{
             "{AttributeKey}":"{AttributeValue}",
             "{AttributeKey2}":"{AttributeValue2}"
          }
@@ -2084,7 +2119,7 @@ cf create-service predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":
                             </ul>
                         </li>
                         <br/>
-                        <li>Automated way:<br/>
+                        <li class="fragment fade-left">Automated way:<br/>
                             <div style="font-size: large;">
                                 <code>uaac target https://lab-{your
                                     initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
@@ -2169,7 +2204,7 @@ cf create-service predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":
                             </ul>
                         </li>
                         <li class="fragment fade-left">
-                            To allow a client to perform data ingestion the client needs to contains int its scope:
+                            To allow a client to perform data ingestion the client needs to contains in its scope:
                             <ul>
                                 <li><em>timeseries.zones.{Predix-Zone-Id}.user</em> and</li>
                                 <li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>
@@ -2292,7 +2327,95 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
                 </div>
             </section>
 
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Time Series Open Data ingestion </span> <span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>
+                            Create a new client :
+                            <ul>
+                                <li>Client Id: <em>timeseries-ingestion-service</em></li>
+                                <li>Grant type: <em>client_credentials</em></li>
+                                <li>Client Secret: <em>timeseries-ingestion-service</em></li>
+                                <li>Scope: <em>uaa.none</em></li>
+                                <li>Authorities: <em>uaa.none</em> <em>uaa.resource</em> <em>timeseries.zones.{Predix-Zone-Id}.user</em>
+                                    <em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>
+                                <li>Allowed Providers: <em>uaa</em></li>
+                            </ul>
+                        </li>
+                        <li>Execute the following script <a href="./data/download.sh">download.sh</a> this will download
+                            few datasets
+                        </li>
+                        <li>Download the ingester client <a href="./timeseries-ingestion-service.tar.gz">
+                            timeseries-ingestion-service</a></li>
+                        <li>Decompress it using the following command <em>tar xvfz
+                            timeseries-ingestion-service.tar.gz</em></li>
+                        <li>Deploy it in your space with <em>cf p --random-route</em></li>
+                        <br/>
+                        <li>For your information this ingester is a python app that use plain web socket to perform the
+                            ingestion
+                        </li>
+                        <ul>
+                            <li>Open <em>ingest.py</em> and check the openWSS</li>
+                            <li>We find our headers parameters just as descibed previously</li>
+                        </ul>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Time Series Open Data ingestion </span> <span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Decompress each dataset using gunzip</li>
+                        <li>Open Postman and create a new <em>POST</em> request to <br/> <em>https://timeseries-ingestion-service-{your
+                            random route}.run.aws-usw02-pr.ice.predix.io/upload</em></li>
+                        <li>Use the OAuth 2.0 helper to get a Bearer Token (use Client Credential in Grant Type)</li>
+                        <li>In Body select <em>form-data</em> set <em>key</em> to <em>files[]</em> and <em>value</em>
+                            set to <em>path to a json file</em> (Use drop down to change the type)
+                        </li>
+                        <li>Wait...</li>
+                        <br/>
+                        <li>Using <em>predix-starter</em> check that you have new tags and new values with the <em>Limited
+                            Datapoints</em> Query
+                        </li>
+                    </ul>
+                    <img class="fragment fade-left" src="https://m.popkey.co/fe020c/v4x8k.gif"/>
+                </div>
+            </section>
+
+            <section>
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Multi Language Client </span></h6>
+                <ul>
+                    <li><a href="#/JavaTS">Java</a></li>
+                    <li><a href="#/PythonTS">Python</a></li>
+                    <li><a href="#/Node.JsTS">Node.js</a></li>
+                </ul>
+            </section>
         </section>
+
+        <section>
+            <section id="JavaTS">
+                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Java Client</span></h6>
+
+            </section>
+        </section>
+
+        <!--<section>-->
+            <!--<section id="PythonTS">-->
+                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Python Client</span></h6>-->
+
+            <!--</section>-->
+        <!--</section>-->
+
+        <!--<section>-->
+            <!--<section id="Node.JsTS">-->
+                <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Node.js Client</span></h6>-->
+
+            <!--</section>-->
+        <!--</section>-->
 
         <!--https://m.popkey.co/01115d/jwevQ.gif-->
         <!--https://m.popkey.co/fe020c/v4x8k.gif-->
