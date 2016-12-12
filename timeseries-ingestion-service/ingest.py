@@ -54,7 +54,7 @@ def prepareData(payloads, data):
 def payload(meter, datapoints, m):
     datapointsstr = ""
     for d in datapoints:
-        datapointsstr += "[" + str(d[0]) + "," + str(d[1]) + "," + str(3) + "],"
+        datapointsstr += "[" + str(d[0]) + "," + str(d[1]) + "],"
 
     datapointsstr = datapointsstr[:-1]
 
