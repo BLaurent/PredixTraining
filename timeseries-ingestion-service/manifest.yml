@@ -1,7 +1,7 @@
 applications:
   - name: timeseries-ingestion-service
     buildpack: python_buildpack
-    memory: 512M
+    memory: 1G
     disk_quota: 1G
     env:
         CLIENT_ID: timeseries-ingestion-service

@@ -663,9 +663,7 @@
         </section>
 
         <section>
-            <h6><span style="color:green;"> Croco Break</span></h6>
-            <img class="stretch"
-                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
+            <h6><span style="color:green;"> Break</span></h6>
         </section>
 
         <section>
@@ -1068,9 +1066,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
         </section>
 
         <section>
-            <h6><span style="color:green;"> Croco Break</span></h6>
-            <img class="stretch"
-                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
+            <h6><span style="color:green;"> Break</span></h6>
         </section>
 
         <section>
@@ -1200,9 +1196,15 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                     <ul>
                         <li>Install OSX
                             <ul>
+                                <li>brew install gpg</li>
+                                <li><em>gpg --keyserver hkp://keys.gnupg.net --recv-keys
+                                    409B6B1796C275462A1703113804BB82D39DC0E3</em>em
+                                </li>
+                                <li><em>\curl -sSL https://get.rvm.io | bash -s stable</em>em</li>
                                 <li><code style="font-size: x-large;">gem install cf-uaac
                                 </code>
                                 </li>
+                                <li></li>
                             </ul>
                         </li>
                         <li>Install Linux
@@ -1222,7 +1224,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                     <ul>
                         <li>Set target uaa
                             <ul>
-                                <li><code style="font-size: x-large;">uaa target {uaaUri}</code></li>
+                                <li><code style="font-size: x-large;">uaac target {uaaUri}</code></li>
                             </ul>
                         </li>
                         <li>Get client token
@@ -1431,9 +1433,8 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                                 <li>You need a Basic Auth Header (Postman can generate it for you) containing
                                     {client_id}:{client_secret}
                                 </li>
-                                <li>The body of the request need to include the <em>token_type</em> with <em>bearer</em>
-                                    and
-                                    <em>bearer</em> to the token you got from the previous call.
+                                <li>The body of the request need to include the <em>token</em> with the token you got
+                                    from the previous call.
                                 </li>
                                 <li>Use <em>x-www-form-urlencoded</em></li>
                             </ul>
@@ -1539,8 +1540,8 @@ uaac client update rest-client --authorities "uaa.none uaa.resource"
                                 <li>Client Id:<em>login_client</em></li>
                                 <li>Grant type: <em>authorization_code</em></li>
                                 <li>Client Secret: <em>{client_secret}</em></li>
-                                <li>Scope: <em>uaa.none</em></li>
-                                <li>Authorities: <em>uaa.none</em> and <em>uaa.user</em></li>
+                                <li>Scope: <em>uaa.none</em> and <em>uaa.user</em></li>
+                                <li>Authorities: <em>uaa.none</em></li>
                                 <li>Allowed Providers: <em>uaa</em></li>
                                 <li>Redirect URL: <em>https://www.getpostman.com/oauth2/callback</em></li>
                             </ul>
@@ -1567,7 +1568,7 @@ uaac client update rest-client --authorities "uaa.none uaa.resource"
                                         <pre><code data-trim data-noescape>
 uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
 uaac token client get admin -s {UAA_SECRET}
-uaac client add login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
+uaac client add login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
 uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"
                      </code>
                 </pre>
@@ -1579,7 +1580,7 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
                 </h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>In postman open Authentication Helper and select OAuth2.0 and enter :
+                        <li>In postman open Authorization Helper and select OAuth2.0 and enter :
                             <ul>
                                 <li>Token Name: <em>Bearer</em></li>
                                 <li>Auth URL:
@@ -1645,7 +1646,8 @@ cf push --random-route
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Add <em>org.springframework.cloud:spring-cloud-starter-oauth2</em> dependency in the pom</li>
+                        <li>Add <em>org.springframework.cloud:spring-cloud-starter-oauth2</em> dependency in the pom
+                        </li>
                         <pre><code data-trim data-noescape>
 mvn clean package
 cf push
@@ -1670,9 +1672,7 @@ cf push
         <!--</section>-->
 
         <section>
-            <h6><span style="color:green;"> Croco Break</span></h6>
-            <img class="stretch"
-                 src="http://68.media.tumblr.com/426b335f5912373a00df15b027c3b31c/tumblr_inline_o8x9oknSsB1sfsefv_500.gif"/>
+            <h6><span style="color:green;"> Break</span></h6>
         </section>
 
         <section>
@@ -2431,6 +2431,21 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
 
             </section>
         </section>
+
+        <section>
+            <h3>Ingestion Lvl 2 and Descriptive Analytics</h3>
+            <ul>
+                <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Blob & SQL</li>
+                <li><b style="color:grey">10:45 – 11:00</b> Break</li>
+                <li><b style="color:grey">11:00 – 12:45</b> Asset & Key-Value</li>
+                <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
+                <li><b style="color:grey">13:45 – 14:45</b> Predix UI : Tooling Review & Vis Introduction</li>
+                <li><b style="color:grey">14:45 – 15:00</b> Break</li>
+                <li><b style="color:grey">15:00 – 17:00</b> Data Visualization Lvl 1</li>
+                <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
+            </ul>
+        </section>
+
 
         <!--<section>-->
         <!--<section id="PythonTS">-->
