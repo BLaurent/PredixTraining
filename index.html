@@ -1624,10 +1624,11 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
         <section>
             <section id="JavaUAA">
                 <h6>Lab - <span style="color:deeppink;"> Securing REST API with Java - </span><span
-                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
+                        <li>Checkout the branch security</li>
                         <li>Compile it and deploy
                             <pre><code data-trim data-noescape>
 mvn clean package
@@ -2387,7 +2388,7 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
                         </li>
                         <ul>
                             <li>Open <em>ingest.py</em> and check the openWSS</li>
-                            <li>We find our headers parameters just as descibed previously</li>
+                            <li>We find our headers parameters just as described previously</li>
                         </ul>
                     </ul>
                 </div>
@@ -2411,7 +2412,6 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
                             Datapoints</em> Query
                         </li>
                     </ul>
-                    <img class="fragment fade-left" src="https://m.popkey.co/fe020c/v4x8k.gif"/>
                 </div>
             </section>
 
@@ -2433,17 +2433,254 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
         </section>
 
         <section>
-            <h3>Ingestion Lvl 2 and Descriptive Analytics</h3>
-            <ul>
-                <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Blob & SQL</li>
-                <li><b style="color:grey">10:45 – 11:00</b> Break</li>
-                <li><b style="color:grey">11:00 – 12:45</b> Asset & Key-Value</li>
-                <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
-                <li><b style="color:grey">13:45 – 14:45</b> Predix UI : Tooling Review & Vis Introduction</li>
-                <li><b style="color:grey">14:45 – 15:00</b> Break</li>
-                <li><b style="color:grey">15:00 – 17:00</b> Data Visualization Lvl 1</li>
-                <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
-            </ul>
+            <section>
+                <h3>Data Management Lvl 2 and Descriptive Analytics</h3>
+                <ul>
+                    <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Blob & SQL</li>
+                    <li><b style="color:grey">10:45 – 11:00</b> Break</li>
+                    <li><b style="color:grey">11:00 – 12:45</b> Asset & Key-Value</li>
+                    <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
+                    <li><b style="color:grey">13:45 – 14:45</b> Predix UI : Tooling Review & Vis Introduction</li>
+                    <li><b style="color:grey">14:45 – 15:00</b> Break</li>
+                    <li><b style="color:grey">15:00 – 17:00</b> Data Visualization Lvl 1</li>
+                    <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
+                </ul>
+            </section>
+
+            <section>
+                <h6>Data Management Lvl 2 - <span style="color:cadetblue;">Blob - Simple Storage Service</span></h6>
+
+                <!--<div style="-webkit-column-count: 2;">-->
+
+                <div style="font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Highly scalable data storage in-the-cloud</li>
+                        <li>Programmatic access via web services API</li>
+                        <li>Web store =! Filesystem
+                            <ul>
+                                <li>Optimized for WORM (write once, read many)</li>
+                                <li>Eventually consistent</li>
+                            </ul>
+                        </li>
+                        <li>Fast
+                            <ul>
+                                <li>But with a relatively high latency</li>
+                            </ul>
+                        </li>
+                        <li>Highly available and durable !</li>
+                    </ul>
+                </div>
+
+
+            </section>
+
+            <section>
+                <h6>Data Management Lvl 2 - <span style="color:cadetblue;">Blob - Eventually consistent</span></h6>
+
+                <div style="font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Updates to a key are atomic, succeed or fail. No partial update Replication across S3 can
+                            take some time
+                            <ul>
+                                <li>Write
+                                    <ul>
+                                        <li>Write then read, could report key does not exist</li>
+                                        <li>Write then list, might not include key in list</li>
+                                        <li>Overwrite then read, old data could be returned</li>
+                                    </ul>
+                                </li>
+                                <li>Delete
+                                    <ul>
+                                        <li>Delete then read, could still get old data</li>
+                                        <li>Delete then list, deleted key could be included in list</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Data Management Lvl 2 - <span style="color:cadetblue;">Blob - Storage structure </span></h6>
+                <div style="font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Bucket == Root</li>
+                        <li>Bucket name <b>must</b> be globaly unique
+                            <ul>
+                                <li>companyname-project-xxx</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="font-size: xx-large;" align="left">
+                    <img src="./images/s3-struct.png">
+                </div>
+            </section>
+
+            <section>
+                <h6>Data Management Lvl 2 - <span style="color:cadetblue;">Blob - Storage structure </span></h6>
+                <div style="font-size: xx-large;" align="left">
+                    <img src="./images/s3-struct-2.png">
+                </div>
+            </section>
+
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Blob in CF </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Using the command line create a blob service named <em>blob-lab</em></li>
+                        <li class="fragment fade-right"> <em>cf cs predix-blobstore Tiered blob-lab</em></li>
+                        <li class="fade-right fragment">Using the <em>cfcred.sh</em> script get the env
+                            <pre><code data-trim data-noescape>
+{
+   "staging_env_json": {},
+   "running_env_json": {},
+   "environment_json": {},
+   "system_env_json": {
+      "VCAP_SERVICES": {
+         "predix-blobstore": [
+            {
+               "credentials": {
+                  "url": "https://bucket-9a0233bc-19b3-4fe4-b6f6-17ccad2dc6e8.s3-us-west-2.amazonaws.com",
+                  "access_key_id": "AKIAIVTXHHI6CMTARVXA",
+                  "secret_access_key": "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",
+                  "bucket_name": "bucket-9a0233bc-19b3-4fe4-b6f6-17ccad2dc6e8",
+                  "host": "s3-us-west-2.amazonaws.com"
+               },
+               "syslog_drain_url": null,
+               "volume_mounts": [],
+               "label": "predix-blobstore",
+               "provider": null,
+               "plan": "Tiered",
+               "name": "blob-lab",
+               "tags": [
+                  "blobstore",
+                  "blob-store",
+                  "blob store"
+               ]
+            }
+         ]
+      }
+   },
+   "application_env_json": {
+      "VCAP_APPLICATION": {
+         "limits": {
+            "fds": 16384,
+            "mem": 32,
+            "disk": 1024
+         },
+         "application_name": "cfapp-VaJnyO",
+         "application_uris": [],
+         "name": "cfapp-VaJnyO",
+         "space_name": "demos-dev",
+         "space_id": "f902086a-c66d-44f6-a1d6-1e92c4f0fef8",
+         "uris": [],
+         "users": null,
+         "application_id": "6ca00285-6c71-4326-bc58-ae9c43e7dbc4",
+         "version": "1876ac0f-94d2-4e2d-9467-369ce611b26b",
+         "application_version": "1876ac0f-94d2-4e2d-9467-369ce611b26b"
+      }
+   }
+}
+                    </code></pre>
+                        </li>
+                        <li class="fragment fade-right"> The CF Blob service is in fact powered by AWS S3 !!!</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Blob - <span style="color:cadetblue;">Multi Language</span></h6>
+                <ul>
+                    <li><a href="#/JavaBlob">Java</a></li>
+                    <li><a href="#/PythonBlob">Python</a></li>
+                    <li><a href="#/Node.JsBlob">Node.js</a></li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section>
+            <section id="JavaBlob">
+                <h6>Lab - <span style="color:deeppink;"> Using Blob Service with Java - </span><span
+                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
+                        <li>Checkout the branch blob</li>
+                    </ul>
+                    <br/>
+                    <ul>
+                        <li>Edit the <em>pom.xml</em> and add in the <em>properties</em>
+                            <pre><code data-trim data-noescape>
+&ltjclouds.version&gt2.0.0&lt/jclouds.version&gt
+                            </code></pre>
+                        </li>
+                        <li>In <em>dependencies</em> Add <em>JClouds</em>
+                            <pre><code data-trim data-noescape>
+&ltdependency&gt
+    &ltgroupId&gtorg.apache.jclouds&lt/groupId&gt
+    &ltartifactId&gtjclouds-all&lt/artifactId&gt
+    &ltversion&gt${jclouds.version}&lt/version&gt
+&lt/dependency&gt
+                            </code></pre>
+                        </li>
+
+                        <li> Add logging engine for JClouds
+                            <pre><code data-trim data-noescape>
+&ltdependency&gt
+    &ltgroupId&gtorg.apache.jclouds.driver&lt/groupId&gt
+    &ltartifactId&gtjclouds-slf4j&lt/artifactId&gt
+    &ltversion&gt${jclouds.version}&lt/version&gt
+&lt/dependency&gt
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;font-size: x-large;"> Using Blob Service with Java - MultiPart Upload</span><span
+                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Create a new class to handle the route <em>blob</em>
+                            <ul class="fragment fade-right">
+                                <li>Add a <em>POST</em> method to support <em>Multipart</em> Upload
+                                    <pre><code data-trim data-noescape style="font-size:small;">
+@POST
+@Path("blob")
+@Consumes(MediaType.MULTIPART_FORM_DATA)
+public Response uploadFile(@Multipart(value = "vendor") String vendor,
+                               @Multipart(value = "uploadedFile") @NonNull Attachment attachment)
+                                        </code></pre>
+                                </li>
+                                <li> Add <em>blob-lab</em> in the service list in the <em>manifest.yml</em></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>
+                <ul>
+                    <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Make it real-time</li>
+                    <li><b style="color:grey">10:45 – 11:00</b> Break</li>
+                    <li><b style="color:grey">11:00 – 12:45</b> Deployment</li>
+                    <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
+                    <li><b style="color:grey">13:45 – 14:45</b> Data Science Methodology</li>
+                    <li><b style="color:grey">14:45 – 15:00</b> Break</li>
+                    <li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture
+                    </li>
+                    <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
+                </ul>
+            </section>
         </section>
 
 
@@ -2464,29 +2701,29 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
         <!--https://m.popkey.co/01115d/jwevQ.gif-->
         <!--https://m.popkey.co/fe020c/v4x8k.gif-->
         <!--http://gif-finder.com/wp-content/uploads/2015/03/Anders-Holm-OMG.gif-->
+
     </div>
-</div>
 
-<script src="lib/js/head.min.js"></script>
-<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-<script>
-    // More info https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-        history: true,
+    <script>
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            history: true,
 
-        // More info https://github.com/hakimel/reveal.js#dependencies
-        dependencies: [
-            {src: 'plugin/markdown/marked.js'},
-            {src: 'plugin/markdown/markdown.js'},
-            {src: 'plugin/notes/notes.js', async: true},
-            {
-                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
-                hljs.initHighlightingOnLoad();
-            }
-            }
-        ]
-    });
-</script>
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [
+                {src: 'plugin/markdown/marked.js'},
+                {src: 'plugin/markdown/markdown.js'},
+                {src: 'plugin/notes/notes.js', async: true},
+                {
+                    src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+                }
+            ]
+        });
+    </script>
 </body>
 </html>

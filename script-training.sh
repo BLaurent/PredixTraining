@@ -14,3 +14,12 @@ uaac group add timeseries.zones.${timeseriesZoneId}.query
 uaac client add timeseries-ingestion-service -s timeseries-ingestion-service --authorized_grant_types "client_credentials" --authorities "uaa.none uaa.resource timeseries.zones.${timeseriesZoneId}.user timeseries.zones.${timeseriesZoneId}.query timeseries.zones.${timeseriesZoneId}.ingest"  --access_token_validity 1800
 
 uaac client add rest_client -s rest_client --authorized_grant_types "client_credentials" --authorities "uaa.none uaa.resource"
+
+wget https://github.build.ge.com/pages/100026625/Predix-Training/timeseries-ingestion-service.tar.gz
+wget https://github.build.ge.com/pages/100026625/Predix-Training/data/download.sh
+
+chmod +x download.sh
+./download.sh
+tar xfz timeseries-ingestion-service.tar.gz
+cd timeseries-ingestion-service
+cf p --random-route
