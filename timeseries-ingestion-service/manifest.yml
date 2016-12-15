@@ -4,8 +4,8 @@ applications:
     memory: 1G
     disk_quota: 1G
     env:
-        CLIENT_ID: timeseries-ingestion-service
-        CLIENT_SECRET: timeseries-ingestion-service
+      CLIENT_ID: timeseries-ingestion-service
+      CLIENT_SECRET: timeseries-ingestion-service
     services:
-            - uaa-lab
-            - timeseries-lab
+      - uaa-lab
+      - timeseries-lab

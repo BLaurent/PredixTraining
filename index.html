@@ -2531,7 +2531,7 @@ uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{p
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Using the command line create a blob service named <em>blob-lab</em></li>
-                        <li class="fragment fade-right"> <em>cf cs predix-blobstore Tiered blob-lab</em></li>
+                        <li class="fragment fade-right"><em>cf cs predix-blobstore Tiered blob-lab</em></li>
                         <li class="fade-right fragment">Using the <em>cfcred.sh</em> script get the env
                             <pre><code data-trim data-noescape>
 {
@@ -2663,7 +2663,147 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                     </ul>
                 </div>
             </section>
+        </section>
 
+        <section>
+            <section>
+                <h6>Prescriptive Analytics Lvl1- <span style="color:cadetblue;"> Overview Px Analytics </span></h6>
+                <div style="font-size: x-large;" align="left">
+                    <ul>
+                        <li>Simplify developing advanced business analyses and deploying to production</li>
+                        <li>Composed of three main components
+                            <ul>
+                                <li>Catalog
+                                    <ul>
+                                        <li>software catalog for sharing reusable analytics across development teams
+                                        </li>
+                                        <li>facilitates deploying analytics into production</li>
+                                    </ul>
+                                </li>
+                                <li>Runtime
+                                    <ul>
+                                        <li>cloud-based framework on which developers can implement, test, and deploy
+                                            new combinations (orchestrations) of analytics
+                                        </li>
+                                        <li>efficient, scalable, cloud-based approach for both the development and
+                                            production
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Ui
+                                    <ul>
+                                        <li>web application for data scientists to upload and test analytics</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Prescriptive Analytics Lvl1- <span style="color:cadetblue;">Public Px Analytics</span></h6>
+                <div style="font-size: x-large;" align="left">
+                    <ul>
+                        <li>Analytic Developers
+                            <ul>
+                                <li>Ability to deploy analytics as Cloud Foundry compatible microservices without
+                                    code
+                                    changes.
+                                </li>
+                                <li>Ability to test and validate analytics in the cloud.
+                                </li>
+                                <li>Faster development by facilitating discovery, publication, and analytic sharing
+                                    through classification and cataloging.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Application Developers
+                            <ul>
+                                <li>Faster analytic solution development by abstracting the complexity of developing
+                                    and
+                                    deploying orchestrations in the cloud.
+                                </li>
+                                <li>Ability to test and validate orchestrations in the cloud.
+                                </li>
+                                <li>Faster analytic solution deployment by favoring configuration over coding.
+                                    Changes
+                                    to orchestration configurations (data sources, asset applicability, and so on)
+                                    have
+                                    been simplified
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Supports analytics written in <em>Java</em>, <em>Matlab</em> and <em>Python</em></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Prescriptive Analytics Lvl1- <span style="color:cadetblue;">Workflow Px Analytics</span></h6>
+                <div style="-webkit-column-count: 2;">
+
+                    <div style="font-size: x-large;" align="left">
+                        <img src="./images/i_analytics_services_overview_simplified04.png">
+                    </div>
+
+                    <div style="font-size: large;" align="left">
+                        <ol>
+                            <li>Develop the Analytic
+                                Develop the analytic in either Java, Matlab, or Python. This work is done outside of
+                                Analytics
+                                Services
+                            </li>
+                            <li>Publish the Analytic to the Analytics Catalog. Add the analytic to the Analytics Catalog
+                                and upload the artifact
+                            </li>
+                            <li>Validate the Analytic
+                                <ul>
+                                    <li>Test the analytic with a sample data set and verify the results using the
+                                        Analytics Catalog service
+                                    </li>
+                                    <li>If necessary, modify the analytic and upload new artifact to the catalog using
+                                        the Analytics Catalog service
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> Release the Analytic Deploy the analytic to the production environment using the
+                                Analytics Catalog service
+                            </li>
+                            <li>Execute the Analytic
+                                Execute an orchestration that includes the analytic using the Analytics Runtime service.
+                                The Analytics Runtime service also provides a scheduling feature for running an
+                                individual
+                                analytic or an orchestration at time-based intervals
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Data Exploration </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Install docker for mac beta <a href="https://download.docker.com/mac/beta/Docker.dmg">install</a>
+                        </li>
+                        <li>In the pref of docker set the proxy <span
+                                style="color:crimson;font-size: large;"> (If on GE Network) </span>
+                            <ul>
+                                <li><em>http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80</em></li>
+                            </ul>
+                        </li>
+                        <li>Check that the network is working by doing:
+                            <ul>
+                                <li><em>docker run hello-world</em></li>
+                            </ul>
+                        </li>
+                        <li>Then do <em>docker run -d -p 8888:8888 jupyter/datascience-notebook</em></li>
+                        <li>Wait ...</li>
+                        <li>Open your browser to <a href="http://localhost:8888">http://localhost:8888</a></li>
+                    </ul>
+                </div>
+            </section>
         </section>
 
         <section>
@@ -2725,5 +2865,6 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
             ]
         });
     </script>
+</div>
 </body>
 </html>
