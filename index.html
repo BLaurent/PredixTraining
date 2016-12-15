@@ -2801,7 +2801,48 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                         <li>Do <em>docker run -d -p 8888:8888 jupyter/datascience-notebook</em></li>
                         <li>Wait ...</li>
                         <li>Open your browser to <a href="http://localhost:8888">http://localhost:8888</a></li>
-                        <li>Import the following notebook <a href="./GillesS.Desplumes.ipynb">GillesS.Desplumes.ipynb</a></li>
+                        <li>Import the following notebook <a
+                                href="./GillesS.Desplumes.ipynb">GillesS.Desplumes.ipynb</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Clone the following repository
+                            <br/><em>https://github.com/PredixDev/predix-analytics-sample</em></li>
+                        <li>Open postman and import the postman directory</li>
+                        <li>Setup OAuth2.0 with clientId <em>analytics-client</em> and clientSecret
+                            <em>analytics-client</em></li>
+                        <li>Explore some possibilities of the tools box
+                            <ul>
+                                <li>To get all uris use :
+                                    <ul>
+                                        <li><em>./cfcred.sh analytics-catalog-lab</em></li>
+                                        <li><em>./cfcred.sh analytics-runtime-lab</em></li>
+                                        <li><em>./cfcred.sh analytics-ui-lab</em></li>
+                                        <li><em>./cfcred.sh timeseries-lab</em></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Open the analytics UI
+                            <em>https://lab-ge.predix-analytics-ui.run.aws-usw02-pr.ice.predix.io</em>
+                            <ul>
+                                <li>Login: <em>analytics-ui@ge.com</em></li>
+                                <li>Password: <em>analytics-ui</em></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </section>
