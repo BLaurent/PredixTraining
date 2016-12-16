@@ -2820,10 +2820,11 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                             <ul>
                                 <li>To get all uris use :
                                     <ul>
-                                        <li><em>./cfcred.sh analytics-catalog-lab</em></li>
-                                        <li><em>./cfcred.sh analytics-runtime-lab</em></li>
-                                        <li><em>./cfcred.sh analytics-ui-lab</em></li>
-                                        <li><em>./cfcred.sh timeseries-lab</em></li>
+                                        <li><em>cf service analytics-catalog-lab --guid</em></li>
+                                        <li><em>cf service analytics-runtime-lab --guid</em></li>
+                                        <li><em>cf service analytics-ui-lab --guid</em></li>
+                                        <li><em>cf service timeseries-lab --guid</em></li>
+                                        <li><em>./cfcred.sh uaa-lab</em></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -2843,9 +2844,41 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                                 <li>Password: <em>analytics-ui</em></li>
                             </ul>
                         </li>
+                        <li>Import a new analytic <em>demo-adder</em>
+                            <ul>
+                                <li>Name : <em>demo-adder-py-{Your Initials}</em></li>
+                                <li>Author Some name</li>
+                                <li>Version: <em>{Your name}</em></li>
+                                <li>Languages: <em>Python</em></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Test Analytics from catalog </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Open Postman and select <em>Retrieve Analytic(s) By Name</em> in Analytics folder
+                            <ul>
+                                <li>Should end up by <em>/api/v1/catalog/analytics/versions?name=demo-adder-py-{Your Initials}</em>
+                            </ul>
+                        </li>
+                        <li>Select <em>Execute Analytic</em> in the Validation Folder
+                            <ul>
+                                <li>Name : <em>demo-adder-py-{Your Initials}</em></li>
+                                <li>Author Some name</li>
+                                <li>Version: <em>{Your name}</em></li>
+                                <li>Languages: <em>Python</em></li>
+                            </ul>
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+            </section>
+
+
         </section>
 
         <section>

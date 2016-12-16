@@ -55,7 +55,7 @@ uaac client update analytics-client --authorized_grant_types "client_credentials
 uaac group add analytics.zones.${analyticsRuntimeZoneId}.user &
 wait
 
-uaac client add analytics-ui -s analytics-ui --authorized_grant_types "client_credentials authorization_code refresh_token" --scope "uaa.resource analytics.zones.${analyticsCatalogZoneId}.user analytics.zones.${analyticsRuntimeZoneId}.user uaa.none uaa.user" --autoapprove "uaa.user analytics.zones.${analyticsCatalogZoneId}.user analytics.zones.${analyticsRuntimeZoneId}.user" --access_token_validity 1800 &
+uaac client add analytics-ui -s analytics-ui --authorized_grant_types "client_credentials authorization_code refresh_token" --scope "uaa.resource analytics.zones.${analyticsCatalogZoneId}.user analytics.zones.${analyticsRuntimeZoneId}.user uaa.none uaa.user" --autoapprove "uaa.user analytics.zones.${analyticsCatalogZoneId}.user analytics.zones.${analyticsRuntimeZoneId}.user" --access_token_validity 18000 &
 cf cs predix-analytics-ui Free analytics-ui-lab -c '{"uaaHostUri":"'${uaaUri}'","clientId":"analytics-ui","clientSecret":"analytics-ui","domainPrefix":"lab-ge","catalogPredixZoneId":"'${analyticsCatalogZoneId}'","runtimePredixZoneId":"'${analyticsRuntimeZoneId}'"}'
 
 uaac user add analytics-ui@ge.com -p analytics-ui --emails analytics-ui@ge.com
@@ -72,3 +72,6 @@ for i in ${dataList[@]}; do
   TOKEN=$(curl -s -m 600 -X POST -H "Authorization: Basic ${basic_creds}" -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" -d 'grant_type=client_credentials' "${uaaIssuerId}" | jq -r '.access_token')
   curl -s -m 10000 -X POST  -H "Authorization: Bearer ${TOKEN}" -F "files[]=@${i}" "https://${ingesterUri}/upload"
 done
+
+cf cs predix-blobstore Tiered blob-lab
+
