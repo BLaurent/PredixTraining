@@ -1113,18 +1113,16 @@ predix cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no
                 <h6>Lab - <span style="color:deeppink;">UAA Automation</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     We said that anything done with cf and uaac cli can be automated...<br/>
-                    <code style="font-size: large;color:darkgrey;">
-                        predix create-service predix-uaa Free uaa-lab -a {UAA_SECRET} -C
-                        '{"subdomain":"lab-{your initials}"}'
-                    </code>
+                    <pre><code data-trim data-noescape>
+                        predix create-service predix-uaa Free uaa-lab -a {UAA_SECRET} -C '{"subdomain":"lab-{your initials}"}'
+                    </code></pre>
                 </div>
                 </br>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                    <div style="font-size: large;color:darkgrey;">
-                        <code>
-                            predix uaa client create rest-client -s "{CLIENT_SECRET}" --authorized_grant_types
-                            "client_credentials" --scope "uaa.none" --authorities "uaa.none"
-                        </code>
+                    <div style="font-size: xx-large;color:darkgrey;">
+                    <pre><code data-trim data-noescape>
+                            predix uaa client create rest-client -s "{CLIENT_SECRET}" --authorized_grant_types "client_credentials" --scope "uaa.none" --authorities "uaa.none"
+                    </code></pre>
                     </div>
                 </div>
             </section>
@@ -1580,7 +1578,7 @@ predix uaa client update login_client --authorized_grant_types "authorization_co
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - Summary</span><span
+                <h6><span style="color:cadetblue;"> Securing application with Java - Summary</span><span
                         style="color:crimson;font-size: large;"> </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
 
@@ -1631,7 +1629,7 @@ predix uaa client update login_client --authorized_grant_types "authorization_co
                         <li>Deploying application is done using <em>Predix CLI</em></li>
                         <li>go to the <em>simple-predix-service-python</em> directory</li>
                     </ul>
-                    <pre><code data-trim data-noescape>
+                    <pre><code style="font-size: x-large;" data-trim data-noescape>
 predix cf push
                     </code></pre>
                 </div>
@@ -1683,8 +1681,8 @@ message: "The server could not verify that you are authorized to access the URL 
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Python - </span><span
-                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <h6> <span style="color:cadetblue;"> Securing REST endpoints with Python </span><span
+                        style="color:crimson;font-size: large;"> </span></h6>
 
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
@@ -1967,7 +1965,7 @@ applications:
                         <li>A binded service cannot be deleted :</li>
                     </ul>
                     <pre><code data-trim data-noescape style="font-size: small;">
-predix delete-service uaa-foundry                                                                                                                                                 ──(Sat,Dec10)─┘
+predix delete-service uaa-foundry
 
 Really delete the service uaa-foundry?> y
 Deleting service uaa-foundry in org European_Foundry_Basic / space demos-dev as Benoit.Laurent@ge.com...
@@ -2037,8 +2035,7 @@ Cannot delete service instance, service keys and bindings must first be deleted
                             <ul>
                                 <li>Create a service with UAA authentication:
                                     <ul>
-                                        <li><em>cf create-service {service name} {service plan} {service name instance}
-                                            -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'</em></li>
+                                        <li><em>cf create-service {service name} {service plan} {service name instance} -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'</em></li>
                                         <li><em>uaaIssuerId</em> can be retrieved using env variables of an app binded to a service
                                         </li>
                                     </ul>
@@ -2168,7 +2165,7 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
             </section>
 
             <section>
-                <h6>Predix Dev Tools Interlude - <span style="color:cadetblue;">Predix Starter</span></h6>
+                <h6>Predix Dev Tools Interlude - <span style="color:cadetblue;">Predix Toolkit</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>
@@ -2211,7 +2208,7 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                         </li>
                         <br/>
                         <li class="fragment fade-left">Automated way:<br/>
-                            <div style="font-size: x-large;">
+                            <div style="font-size: xx-large;">
                                 <pre><code data-trim data-noescape>
 predix uaa login lab-{yourinitials} {UAA_SECRET}
 predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types "client_credentials" --scope "uaa.none" --authorities "uaa.none"
@@ -2465,7 +2462,7 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                         </li>
                         <li>Wait...</li>
                         <br/>
-                        <li>Using <em>predix-starter</em> check that you have new tags and new values with the <em>Limited
+                        <li>Using <em>predix-toolkit</em> check that you have new tags and new values with the <em>Limited
                             Datapoints</em> Query
                         </li>
                     </ul>
