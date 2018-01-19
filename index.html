@@ -138,21 +138,87 @@
                 </ol>
             </section>
 
-            <section>
-                <h6>Predix Cloud Foundry Commercialization Model</h6>
-                <div>
-                    <div style="float: left;width:25%;font-size: xx-large;" align="left"><br/>Open source software
-                        provides
-                        the basis for the platform <br/><br/><br/>
-                        Commercial distribution provides value add features, enterprise services, support, docs,
-                        certs,
-                        etc.
-                    </div>
-                    <div style="float: right;width:70%;">
-                        <img src="./images/predix-cf.png" style="background-color:white;width:120%;height:120%;">
-                    </div>
-                </div>
-            </section>
+            <!--<section>-->
+                <!--<h6>UAA and Login Services</h6>-->
+                <!--<div>-->
+                    <!--<div style="float: left;width:50%;font-size: xx-large;" align="left">-->
+                        <!--<p align="left" style="color:cornflowerblue;">Description:</p>-->
+                        <!--<ul style="font-size: x-large;">-->
+                            <!--<li>UAA = “User Account and Authentication”</li>-->
+                            <!--<li>Provides identity, security and-->
+                                <!--authorization services.-->
+                            <!--</li>-->
+                            <!--<li>Manages third party OAuth 2.0 access credentials</li>-->
+                            <!--<li>Can provide application access & identity-as-a-service for CF apps</li>-->
+                            <!--<li>Composed of</li>-->
+                            <!--<ul>-->
+                                <!--<li>UAA Server</li>-->
+                                <!--<li>Command Line Interface (UAAC)</li>-->
+                                <!--<li>Library.</li>-->
+                            <!--</ul>-->
+                            <!--<li>Multiple UAA/Login Servers possible</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div style="float: left;width:45%;font-size: xx-large;" align="right">-->
+                        <!--<p align="left" style="color:cornflowerblue;">Responsibilities:</p>-->
+                        <!--<ul style="font-size: x-large;">-->
+                            <!--<li>Token Server</li>-->
+                            <!--<li>ID Server (User management)</li>-->
+                            <!--<li>OAuth Scopes (Groups) and SCIM (System for Cross-domain Identity Management)</li>-->
+                            <!--<li>Login Server</li>-->
+                            <!--<ul>-->
+                                <!--<li>UAA Database</li>-->
+                                <!--<li>SAML support (for SSO-->
+                                    <!--integration) and Active Directory support with the VMWare SSO Appliance-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                            <!--<li>Access auditing</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <!--<section>-->
+                <!--<h6>Cloud Controller (CC)</h6>-->
+                <!--<div>-->
+                    <!--<div style="float: left;width:50%;font-size: xx-large;" align="left">-->
+                        <!--<p align="left" style="color:cornflowerblue;">Description:</p>-->
+                        <!--<ul style="font-size: x-large;">-->
+                            <!--<li>Command and Control-->
+                                <!--<ul>-->
+                                    <!--<li>Responds to clients (CLI, App Manager, IDEs)</li>-->
+                                    <!--<li>Account and provisioning control.</li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li>Provides RESTful interface to domain objects-->
+                                <!--<ul>-->
+                                    <!--<li>Apps, services, organizations, spaces, service instances, user roles, and-->
+                                        <!--more-->
+                                        <!--...-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li>Multiple Cloud Controllers possible-->
+                                <!--<ul>-->
+                                    <!--<li>Configurable by Admin</li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div style="float: left;width:45%;font-size: xx-large;" align="right">-->
+                        <!--<p align="left" style="color:cornflowerblue;">Responsibilities:</p>-->
+                        <!--<ul style="font-size: x-large;">-->
+                            <!--<li>Expected Application state</li>-->
+                            <!--<li>State transitions</li>-->
+                            <!--<li>Permissions/Authorization</li>-->
+                            <!--<li>Organizations/Spaces/Users</li>-->
+                            <!--<li>Services management</li>-->
+                            <!--<li>Auditing/Journaling and billing events</li>-->
+                            <!--<li>Blob Storage</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</section>-->
 
             <section>
                 <h6>Predix CF Components - 1.4</h6>
@@ -347,73 +413,6 @@
             </section>
 
             <section>
-                <h6>BlobStore</h6>
-                <div>
-                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                        <p align="left" style="color:cornflowerblue;">Description:</p>
-                        <ul>
-                            <li>Storage for binary large objects</li>
-                            <li>Eliminates need for upload / re- staging when scaling applications</li>
-                            <li>Currently NFS mounted storage
-                                <ul>
-                                    <li>Or Amazon S3 store</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                        <ul>
-                            <li>Stores uploaded application packages (cf push)</li>
-                            <li>Stores Droplets
-                                <ul>
-                                    <li>As a compressed tar file</li>
-                                    <li>Or Docker containers</li>
-                                    <li>Or (coming) Windows .NET applications</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h6> CC Bridge - Diego</h6>
-                <div>
-                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                        <p align="left" style="color:cornflowerblue;">Description:</p>
-                        <ul style="font-size: x-large;">
-                            <li>Translate app-specific requests into the generic language of LRP and Task
-                                <ul>
-                                    <li>For example requests to stage,
-                                        start, stop, scale applications
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Allows existing CF components to interact with Diego</li>
-                        </ul>
-                    </div>
-                    <div style="float: left;width:45%;font-size: xx-large;" align="right">
-                        <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
-                        <ul style="font-size: x-large;">
-                            <li>Places requests (actions) onto the Bulletin Board to be actioned by a Cell's
-                                “Executor”
-                            </li>
-                            <li>Ensures that these actions take place (eventually)</li>
-                            <li>Tracks running processes
-                                <ul>
-                                    <li>Provides info on running tasks and LRPs (Long Running Processes) to Cloud
-                                        Controller
-                                    </li>
-                                    <li>Accepts desired state of tasks and LRPs from Cloud Controller</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
                 <h6>Droplet Execution Agents / Cells</h6>
                 <div>
                     <div style="float: left;width:45%;font-size: xx-large;" align="left">
@@ -429,7 +428,7 @@
                             <li>Typically many DEA's/cells in a Cloud Foundry installation</li>
                         </ul>
                     </div>
-                    <br/>
+
                     <div style="float: left;width:45%;font-size: xx-large;" align="right">
                         <p align="left" style="color:cornflowerblue;">Responsibilities:</p>
                         <ul style="font-size: x-large;">
@@ -444,46 +443,6 @@
                             <li>Sending heartbeats for health monitoring</li>
                         </ul>
                     </div>
-                </div>
-            </section>
-
-            <section>
-                <h6>Cell Internal Components</h6>
-                <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li><p style="color:dodgerblue;">Rep</p>
-                            <ul>
-                                <li>Represents Cell</li>
-                                <li>Mediates BBS comms</li>
-                                <li>Bids on tasks</li>
-                                <li>Schedules them on the Executor</li>
-                            </ul>
-                        </li>
-                        <li><p style="color:dodgerblue;">Receptor</p>
-                            <ul>
-                                <li>Respond to request for tasks ans desired LRPs</li>
-                                <li>Fetch information about currently running tasks and LRP instances</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="float: right;width:50%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li><p style="color:dodgerblue;">Executor</p>
-                            <ul>
-                                <li>Responsible for executing work (actions) given to it</li>
-                                <li>Spins up a Garden container and executes the work encoded in Task/LRP</li>
-                            </ul>
-                        </li>
-                        <li><p style="color:dodgerblue;">Metron Agent</p>
-                            <ul>
-                                <li>Monitors all containers on Cell</li>
-                                <li>Provides logging and metrics to Loggregator for all apps/tasks running on Cell
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
             </section>
 
@@ -522,112 +481,11 @@
             </section>
 
             <section>
-                <h6>Garden - Implementations</h6>
-                <div>
-                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                        <p align="left" style="color:cornflowerblue;">Description:</p>
-                        <ul>
-                            <li>Default implementation is Linux
-                                <ul>
-                                    <li>Pivotal's secure implementation
-                                        of a Linux Container
-                                    </li>
-                                    <li>Similar to LXC using much
-                                        lighter implementation
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>But other implementations are
-                                possible
-                                <ul>
-                                    <li>Such as Docker or Windows (coming)</li>
-                                </ul>
-                            </li>
-                            <li>Garden is Warden rewritten in Go</li>
-                        </ul>
-                    </div>
-                    <div style="float: left;width: 50%;font-size: xx-large;" align="right">
-                        <p align="left" style="color:cornflowerblue;">Implementations:</p>
-                        <ul>
-                            <li><b>Default</b> Implementation
-                                <ul>
-                                    <li>Runs on a Linux VM (Cell)</li>
-                                    <li>Uses kernel namespaces</li>
-                                    <li>Uses Linux cgroups</li>
-                                </ul>
-                            </li>
-                            <li>Docker implementation
-                                <ul>
-                                    <li>Runs on a Linux VM (Cell)</li>
-                                    <li>Boots and runs a Docker
-                                        application
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Windows implementation
-                                <ul>
-                                    <li>Runs on a Windows VM (Cell)</li>
-                                    <li>Runs .NET applications</li>
-                                    <li>Not yet available</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h6>Cloud Foundry BOSH</h6>
-                <div>
-                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                        <p align="left" style="color:cornflowerblue;">Description:</p>
-                        <ul>
-                            <li>Tool chain for managing large scale distributed systems
-                                <ul>
-                                    <li>Release engineering</li>
-                                    <li>Deployment and lifecycle
-                                        management
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Continuous and predictive updates with minimal downtime</li>
-                            <li>Control primitives (CPI) written for
-                                each underlying infrastructure
-                                provider
-                                <ul>
-                                    <li>Abstraction layer for the underlying IaaS</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="float: left;width:50%;font-size: xx-large;" align="left">
-                        <p align="left" style="color:cornflowerblue;">Responsible For:</p>
-                        <ul>
-                            <li>IaaS installer
-                                <ul>
-                                    <li>vSphere, vCloud Air, AWS, Openstack, Azure(soon)</li>
-                                </ul>
-                            </li>
-                            <li>VM creation and management</li>
-                            <li>Continuous and predictive updates with minimal downtime</li>
-                            <li>High Availability
-                                <ul>
-                                    <li>Restarts failed CF internal processes, DEA's</li>
-                                </ul>
-                            </li>
-                            <li>CPI (Cloud Provider Interface) to control underling infrastructure (IaaS) primitives
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
                 <h6>Where do I work - <span style="color:cadetblue;">Organizations & Spaces</span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>The <em>Org</em> is the top-most administrative unit</li>
-                        <li>Any Cloud Foundry installation can have multiple organizations defined in any way
+                        <li>Any Cloud Foundry installation can have multiple organizations defined in many way
                             <ul>
                                 <li>
                                     Typically a company, department, application suite or large project
@@ -640,15 +498,15 @@
                 <br/>
                 <div style="float:bottom;width:100%;font-size: x-large;" align="left">
                     <ul style="font-style:oblique;">
-                        <li>Organizations contains multiple spaces</li>
-                        <li>Spaces also can be defined in any way</li>
+                        <li>Organizations contains multiple <em>spaces</em></li>
+                        <li><em>Spaces</em> also can be defined in any way</li>
                         <li>For example, staging and production</li>
                     </ul>
                 </div>
                 <br/>
                 <div style="float:bottom;width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>Applications and services are scoped to a space</li>
+                        <li>Applications and services are bounded to a space <small>(tricks around that)</small></li>
                         <li>Provides a set of users access for:
                             <ul>
                                 <li>Application development</li>
@@ -680,7 +538,7 @@
                                     Box</a></li>
                             <br/>
                             <li>Otherwise you could use the latest and greatest <a
-                                    href="http://download.virtualbox.org/virtualbox/5.1.10/VirtualBox-5.1.10-112026-Win.exe">Virtual
+                                    href="http://download.virtualbox.org/virtualbox/5.2.4/VirtualBox-5.2.4-119785-Win.exe">Virtual
                                 Box</a></li>
                         </ul>
                     </div>
@@ -704,17 +562,17 @@
                                     href="https://devcloud.swcoe.ge.com/devspace/display/SOLSVC/Predix+DevBox+Program">Predix
                                 DevBox Program</a>
                                 <ul>
-                                    <li><a href="https://goo.gl/PaHpfc">DevBox3.5.2-i.ova</a></li>
-                                    <li><a href="https://goo.gl/lVyIME">sha</a></li>
-                                    <li><a href="https://goo.gl/HFFxSV">md5</a></li>
+                                    <li><a href="http://sc.ge.com/*GEDevBox">DevBox3.5.9-e.ova</a></li>
+                                    <li><a href="http://sc.ge.com/*GEDevBox.sha2">sha</a></li>
+                                    <li><a href="http://sc.ge.com/*GEDevBox.md5">md5</a></li>
                                 </ul>
                             </li>
                             <br>
                             <li>For non Ge Employee go to
                                 <ul>
-                                    <li><a href="https://goo.gl/IxulwE">DevBox3.5.2-i.ova</a></li>
-                                    <li><a href="https://goo.gl/DUu1IJ">sha</a></li>
-                                    <li><a href="https://goo.gl/0LG2r6">md5</a></li>
+                                    <li><a href="http://sc.ge.com/*PredixDevBox">DevBox3.5.9-i.ova</a></li>
+                                    <li><a href="http://sc.ge.com/*PredixDevBox.sha2">sha</a></li>
+                                    <li><a href="http://sc.ge.com/*PredixDevBox.md5">md5</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -849,7 +707,7 @@
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>The Devbox comes with STS Tool suite (eclipse based IDE)</li>
-                        <li>JDK version is 1.8.0_111</li>
+                        <li>JDK version is 1.8.0_151</li>
                         <li>Maven version 3.3.9</li>
                     </ul>
                 </div>
@@ -884,11 +742,11 @@
             </section>
 
             <section>
-                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli</span></h6>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Predix cli</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>A simple, text-based Cloud Foundry client</li>
-                        <li>Used by <b>operators</b> and <b>developers</b> to access and work with any Cloud Foundry
+                        <li>A simple, text-based Predix client</li>
+                        <li>Used by <b>operators</b> and <b>developers</b> to access and work with any Predix
                             installation
                         </li>
                         <li>Anything you do with the CLI can be scripted/automated</li>
@@ -898,10 +756,9 @@
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Already install on the devbox</li>
-                        <li>OSX install: <code style="font-size: x-large;">brew tap cloudfoundry/tap &&
-                            brew install cf-cli</code></li>
-                        <li>Test after install <code style="font-size: x-large;"> cf --version
-                            </br> cf version 6.22.2+a95e24c-2016-10-27</code>
+                        <li style="font-style:oblique;">see: https://github.com/PredixDev/predix-cli</li>
+                        <li>Go for the manual install the one liner is broken</li>
+                        <li>See https://github.com/PredixDev/predix-cli/wiki for more info</li>
                     </ul>
                 </div>
             </section>
@@ -960,34 +817,33 @@
             </section>
 
             <section>
-                <h6>Predix Dev Tools - <span style="color:cadetblue;">Cf cli primer suite</span></h6>
+                <h6>Predix Dev Tools - <span style="color:cadetblue;">Predix Cf cli primer suite</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Get log of your app
                             <ul>
-                                <li><code style="font-size: x-large;">cf logs {AppName}</code></li>
-                                <li>Only latest ones <code style="font-size: x-large;color:darkgrey;">cf logs --recent
-                                    {AppName}</code></li>
+                                <li><code style="font-size: x-large;">predix logs {AppName}</code></li>
+                                <li>Only latest ones <code style="font-size: x-large;color:darkgrey;">predix logs {AppName} --recent</code></li>
                             </ul>
                         </li>
                         <li>Delete an app
                             <ul>
-                                <li><code style="font-size: x-large;">cf delete {AppName}</code></li>
+                                <li><code style="font-size: x-large;">predix cf delete {AppName}</code></li>
                             </ul>
                         </li>
                         <li>Get Environment of a running application
                             <ul>
-                                <li><code style="font-size: x-large;">cf env {AppName}</code></li>
+                                <li><code style="font-size: x-large;">predix cf env {AppName}</code></li>
                             </ul>
                         </li>
                         <li>List running services
                             <ul>
-                                <li><code style="font-size: x-large;">cf services </code></li>
+                                <li><code style="font-size: x-large;">predix cf services </code></li>
                             </ul>
                         </li>
                         <li>Get info of a given app
                             <ul>
-                                <li><code style="font-size: x-large;">cf app {AppName}</code></li>
+                                <li><code style="font-size: x-large;">predix cf app {AppName}</code></li>
                             </ul>
                         </li>
                     </ul>
@@ -1010,7 +866,7 @@
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;">Few cf cli usage </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Few predix cli usage </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Set your org</li>
@@ -1028,14 +884,14 @@
                 <h6>Lab - <span style="color:deeppink;">Few cf cli usage </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li><code style="font-size: x-large;">cf target -o "Email"</code></li>
-                        <li><code style="font-size: x-large;">cf create-space lab</code></li>
-                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
-                        <li><code style="font-size: x-large;">cf create-space lab2</code></li>
-                        <li><code style="font-size: x-large;">cf target -s "lab2"</code></li>
-                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
-                        <li><code style="font-size: x-large;">cf delete-space "lab2"</code></li>
-                        <li><code style="font-size: x-large;">cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;">predix cf target -o "Email"</code></li>
+                        <li><code style="font-size: x-large;">predix cf create-space lab</code></li>
+                        <li><code style="font-size: x-large;">predix cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;">predix cf create-space lab2</code></li>
+                        <li><code style="font-size: x-large;">predix cf target -s "lab2"</code></li>
+                        <li><code style="font-size: x-large;">predix cf target -s "lab"</code></li>
+                        <li><code style="font-size: x-large;">predix cf delete-space "lab2"</code></li>
+                        <li><code style="font-size: x-large;">predix cf target -s "lab"</code></li>
                     </ul>
                 </div>
             </section>
@@ -1046,13 +902,13 @@
                     <pre><code data-trim data-noescape>
 mkdir nullApp && cd nullApp
 touch Procfile
-cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 32m -k 64m
+predix cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start --no-route -m 32m -k 64m
                     </code></pre>
                 </div>
                 <br/>
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Using cf cli try to :
+                        <li>Using predix cli try to :
                             <ul>
                                 <li>Check the logs</li>
                                 <li>Try to scale it to two instances</li>
@@ -1190,64 +1046,31 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                 </div>
             </section>
 
-            <section>
-                <h6>uaac cli - <span style="color:cadetblue;"> primer </span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li>Install OSX
-                            <ul>
-                                <li>brew install gpg</li>
-                                <li><em>gpg --keyserver hkp://keys.gnupg.net --recv-keys
-                                    409B6B1796C275462A1703113804BB82D39DC0E3</em>em
-                                </li>
-                                <li><em>\curl -sSL https://get.rvm.io | bash -s stable</em>em</li>
-                                <li><code style="font-size: x-large;">gem install cf-uaac
-                                </code>
-                                </li>
-                                <li></li>
-                            </ul>
-                        </li>
-                        <li>Install Linux
-                            <ul>
-                                <li><code style="font-size: x-large;color:red;">TODO
-                                </code>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </section>
 
             <section>
                 <h6>uaac cli - <span style="color:cadetblue;"> primer</span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Set target uaa
+                        <li>Get or Set target uaa
                             <ul>
-                                <li><code style="font-size: x-large;">uaac target {uaaUri}</code></li>
-                            </ul>
-                        </li>
-                        <li>Get client token
-                            <ul>
-                                <li><code style="font-size: x-large;">uaac token client get -s
-                                    {uaa_admin_secret} </code></li>
+                                <li><code style="font-size: x-large;">predix uaa target {uaaUri}</code></li>
                             </ul>
                         </li>
                         <li>Create uaa client
                             <ul>
-                                <li><code style="font-size: x-large;">uaac client add {client_id} -s
+                                <li><code style="font-size: x-large;">predix uaa client create {client_id} -s
                                     {client_secret} </code></li>
                             </ul>
                         </li>
                         <li>Update uaa client
                             <ul>
-                                <li><code style="font-size: x-large;">uaac client update {client_id}
+                                <li><code style="font-size: x-large;">predix uaa client update {client_id}
                                     {Additional properties} </code></li>
                             </ul>
                         </li>
                         <li>Create a group
                             <ul>
-                                <li><code style="font-size: x-large;">uaac group add {groupname}</code>
+                                <li><code style="font-size: x-large;">predix uaa group add {groupname}</code>
                                 </li>
                             </ul>
                         </li>
@@ -1291,18 +1114,15 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     We said that anything done with cf and uaac cli can be automated...<br/>
                     <code style="font-size: large;color:darkgrey;">
-                        cf cs predix-uaa Free "uua-lab" -c
-                        '{"adminClientSecret":"{UAA_SECRET}","subdomain":"lab-{your initials}"}'
+                        predix create-service predix-uaa Free uaa-lab -a {UAA_SECRET} -C
+                        '{"subdomain":"lab-{your initials}"}'
                     </code>
                 </div>
                 </br>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <div style="font-size: large;color:darkgrey;">
-                        <code>uaac target https://lab-{your
-                            initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
-                        <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
                         <code>
-                            uaac client add rest-client -s "{CLIENT_SECRET}" --authorized_grant_types
+                            predix uaa client create rest-client -s "{CLIENT_SECRET}" --authorized_grant_types
                             "client_credentials" --scope "uaa.none" --authorities "uaa.none"
                         </code>
                     </div>
@@ -1373,11 +1193,11 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
-                        style="color:crimson;font-size: large;"> Devbox </span>
+                        style="color:crimson;font-size: large;"> Console </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>In the devbox open chrome and install <em>postman</em> its a chrome extension that allow you
+                        <li>In the devbox install <em>postman</em> its a chrome app that allow you
                             to call any rest api
                         </li>
                         <li>Enter the url of the uaa service <br/> <code>https://lab-{your
@@ -1412,7 +1232,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
             </section>
             <section>
                 <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
-                        style="color:crimson;font-size: large;"> Devbox </span>
+                        style="color:crimson;font-size: large;"> Console </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
@@ -1444,7 +1264,7 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
             </section>
             <section>
                 <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
-                        style="color:crimson;font-size: large;"> Devbox </span>
+                        style="color:crimson;font-size: large;"> Console </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
@@ -1480,13 +1300,13 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
             </section>
             <section>
                 <h6>Lab - <span style="color:deeppink;">Resource access </span> <span
-                        style="color:crimson;font-size: large;"> Non-Devbox </span>
+                        style="color:crimson;font-size: large;"> Predix cli </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>To check the token the client needs to have <em>uaa.resource</em> in its
                             <em>Authorities</em></li>
-                        <li>Using the uaac cli to update the client</li>
+                        <li>Using the predix uaa cli to update the client</li>
                         <li>ReSend the previous request request</li>
                         <li>You should have something like:</li>
                     </ul>
@@ -1517,20 +1337,18 @@ cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no-start 
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">Resource access</span> <span
-                        style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
+                        style="color:crimson;font-size: large;"> Cli Solution</span>
                 </h6>
                 <div style="font-size: xx-large;" align="left">
                     <pre><code data-trim data-noescape>
-uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
-uaac token client get admin -s {UAA_SECRET}
-uaac client update rest-client --authorities "uaa.none uaa.resource"
-                        </code>
-                    </pre>
+predix uaa login lab-{your initials}
+predix uaa client update rest-client --authorities "uaa.none uaa.resource"
+                        </code></pre>
                 </div>
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;">UAA Login</span> <span style="color:crimson;font-size: large;"> Devbox </span>
+                <h6>Lab - <span style="color:deeppink;">UAA Login</span> <span style="color:crimson;font-size: large;"> Console </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
@@ -1562,27 +1380,31 @@ uaac client update rest-client --authorities "uaa.none uaa.resource"
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">UAA Login</span> <span
-                        style="color:crimson;font-size: large;"> Non-Devbox Solution</span>
+                        style="color:crimson;font-size: large;"> CLI Solution</span>
                 </h6>
                 <div style="font-size: xx-large;" align="left">
                                         <pre><code data-trim data-noescape>
-uaac target https://lab-{your initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io
-uaac token client get admin -s {UAA_SECRET}
-uaac client add login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
-uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"
-                     </code>
-                </pre>
+predix uaa login lab-{your initials}
+predix uaa client create login_client -s {SECRET} --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback"
+predix uaa user create {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pick One}"</code></pre>
+                </div>
+                <div style="font-size: xx-large;" align="left">
+                    Be carefull with the password format :
+                    <pre><code data-trim data-noescape>
+                    Invalid status response: 400. Password must be at least 8 characters in length. Password must contain at least 1 special characters. Password must contain at least 2 digit characters. Password must contain at least 2 uppercase characters.
+                    </code></pre>
                 </div>
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;">UAA Login </span> <span style="color:crimson;font-size: large;"> Devbox </span>
+                <h6>Lab - <span style="color:deeppink;">UAA Login </span> <span style="color:crimson;font-size: large;"> GUI  </span>
                 </h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>In postman open Authorization Helper and select OAuth2.0 and enter :
                             <ul>
                                 <li>Token Name: <em>Bearer</em></li>
+                                <li>Callback URL: https://www.getpostman.com/oauth2/callback</li>
                                 <li>Auth URL:
                                     <em>https://lab-{your
                                         initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/authorize</em></li>
@@ -1604,7 +1426,7 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
                         <li class="fragment fade-up">What can be added to remove the approval step ?</li>
                         <li class="fragment fade-up">
                             <code>
-                                uaac client update login_client --autoapprove "uaa.user"
+                                predix uaa client update login_client --autoapprove "uaa.user"
                             </code>
                         </li>
                     </ul>
@@ -1616,60 +1438,307 @@ uaac user add {Pick One} --emails "{Pick One}" --given_name "{Pick One}" -p "{Pi
                 <ul>
                     <li><a href="#/JavaUAA">Java</a></li>
                     <li><a href="#/PythonUAA">Python</a></li>
-                    <li><a href="#/Node.JsUAA">Node.js</a></li>
+                    <!--<li><a href="#/Node.JsUAA">Node.js</a></li>-->
                 </ul>
             </section>
         </section>
 
         <section>
             <section id="JavaUAA">
-                <h6>Lab - <span style="color:deeppink;"> Securing REST API with Java - </span><span
-                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;"> Securing Application with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
-                        <li>Checkout the branch security</li>
+                        <li>Go to the directory security-demo</li>
                         <li>Compile it and deploy
                             <pre><code data-trim data-noescape>
 mvn clean package
-cf push --random-route
+predix cf push
                         </code></pre>
                         </li>
                         <li>Check that the application is working by opening a browser and checking that <em>/dashboard?user=toto</em>
                         </li>
+                        <li>This is important to prefix things with <em>https</em></li>
                     </ul>
                 </div>
             </section>
 
 
             <section>
-                <h6>Lab - <span style="color:deeppink;"> Securing REST API with Java - </span><span
+                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - </span><span
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Add <em>org.springframework.cloud:spring-cloud-starter-oauth2</em> dependency in the pom
+                        <li>Add in the pom
+                            <pre><code data-trim data-noescape>
+&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+&lt;artifactId&gt;spring-cloud-starter-oauth2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+                            </code></pre>
                         </li>
                         <pre><code data-trim data-noescape>
 mvn clean package
-cf push
+predix cf push
                         </code></pre>
+                        <li>
+                            Open the same URL as before, you should have a prompt for a basic auth login
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>We need to enable the User auth mechanism</li>
+                        <li class="fragment fade-in">
+                            Add the following annotation <em>@EnableOAuth2Sso</em> after the <em>@Log</em> annotation in the class <em>SecurityDemoApplication</em>
+                        </li>
+                        <li class="fragment fade-in">Open the application.yml file and uncomment all lines</li>
+                        <li class="fragment fade-in">Change all things that fit your setup: <em>clientId</em>, <em>clientSecret</em>, <em>accessTokenUri</em>, <em>userAuthorizationUri</em>, <em>userInfoUri</em></li>
+                        <li class="fragment fade-in"> This should look like that
+                            <pre><code data-trim data-noescape>
+security:
+  oauth2:
+    client:
+      clientId: login_client
+      clientSecret: secret
+      accessTokenUri: https://lab-demo.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token
+      userAuthorizationUri: https://lab-demo.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/authorize
+      tokenName: oauth_token
+    resource:
+      userInfoUri: https://lab-demo.predix-uaa.run.aws-usw02-pr.ice.predix.io/userinfo
+spring:
+  resources:
+    chain:
+      enabled: true
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Redo the deployment and open the url as in the previous step</li>
+                        <li class="fragment fade-in">You now have a login page: enter the login and password of the user you've created</li>
+                        <li class="fragment fade-in">You should should have an error :
+                            <em>
+                                Invalid redirect
+                            </em>
+                        </li>
+                        <li class="fragment fade-in">
+                            We didn't setup the url redirection in the token as we did for postman. With spring the URL is by default: <em>http://{Your App URL}/login</em>
+                        </li>
+                        <li class="fragment fade-in">
+                            Either with the web console or with the Cli update the <em>login_client</em> to enable the redirection
+                        </li>
+                    </ul>
+                    <pre class="fragment fade-in"><code data-trim data-noescape>
+predix uaa client update login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback, http://security-demo-noisy-numbat.run.aws-usw02-pr.ice.predix.io/login"
+                        </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Redo the deployment and open the url as in the previous step</li>
+                        <li class="fragment fade-in">You now have a login page: enter the login and password of the user you've created</li>
+                        <li class="fragment fade-in">You should should have an error :
+                            <em>
+                                Authentication Failed: Could not obtain user details from token
+                            </em>
+                        </li>
+                        <li class="fragment fade-in">
+                            We didn't enable the sso login on the client to fetch <em>userinfo</em> from uaa <a href="https://github.com/cloudfoundry/uaa/blob/master/docs/UAA-Security.md#user-profiles">UAA SSO</a>,
+                            <a href="https://github.com/cloudfoundry/uaa/blob/master/docs/UAA-APIs.rst#openid-user-info-endpoint-get-userinfo">UAA user info</a>
+                        </li>
+                        <li class="fragment fade-in">
+                            Either with the web console or with the Cli update the <em>login_client</em> to enable the redirection
+                        </li>
+
+                    </ul>
+                    <pre class="fragment fade-in"><code data-trim data-noescape>
+predix uaa client update login_client --authorized_grant_types "authorization_code" --scope "uaa.none uaa.user openid" --authorities "uaa.none" --redirect_uri "https://www.getpostman.com/oauth2/callback, https://security-demo-noisy-numbat.run.aws-usw02-pr.ice.predix.io"
+                        </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing application with Java - Summary</span><span
+                        style="color:crimson;font-size: large;"> </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+
+                    <ul>
+                        <li>We seen how to user <em>@EnableOAuth2Sso</em> to manage user login
+                            <ul>
+                                <li>Your web server is in Java maybe have a look to <a href="http://www.jhipster.tech/presentation/#/"> JHipster</a></li>
+                                <li>You do not known Node.js (Predix web server is written in Node.js)</li>
+                            </ul>
+                        </li>
+
+                        <li class="fragment fade-in">
+                            What happen if we want to secure services with only not user facing rest endpoints
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+
+                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+
+                <ul>
+                    <li>Go into the <em>simple-predix-service</em> directory this directory will serve as a base for many of our experiments</li>
+                    <li>The heart of this feature is a Single Java Class, an annotation and Maven GE package:
+                    <ul>
+                        <li>Class SecurityConfig extends <em>ResourceServerConfigurerAdapter</em> complex rules</li>
+                        <li><em>uaa-token-lib</em> GE package allow you to implement fast token with UAA see <a href="#/FastToken">fast token slide</a> </li>
+                    </ul>
+
+                    </li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section>
+            <section id="PythonUAA">
+                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Python - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                Securing Rest endpoint is a more manual to setup
+
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>We use <em>Flask</em> package as server with python 3.6</li>
+                        <li>Deploying application is done using <em>Predix CLI</em></li>
+                        <li>go to the <em>simple-predix-service-python</em> directory</li>
+                    </ul>
+                    <pre><code data-trim data-noescape>
+predix cf push
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Python - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>To run it locally</li>
+                    </ul>
+                    <pre><code data-trim data-noescape>
+pip install pipenv
+pipenv install
+pipenv shell
+python app.py runserver
+                    </code></pre>
+                    <ul>
+                        <li>Open a new terminal</li>
+                    </ul>
+                    <pre><code data-trim data-noescape>
+curl http://127.0.0.1:8080/api/v1/drones
+"Hello World!"
+                    </code></pre>
+                    <ul>
+                        <li>Uncomment the line containing <em>@app.before_request</em></li>
+                        <li>Redeploy the application
+                            <pre><code data-trim data-noescape>
+predix cf push
+                    </code></pre>
+                        </li>
+                        <li>Open Your browser and check that the security in enabled
+                            <pre><code data-trim data-noescape>
+https://simple-predix-service-python-xxx-yyy.run.aws-usw02-pr.ice.predix.io/api/v1/drones
+                            </code></pre>
+                        </li>
+                        <li> This shall gave you an error:
+                            <pre><code data-trim data-noescape>
+{
+message: "The server could not verify that you are authorized to access the URL requested.
+                                You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required."
+}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Python - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Predix python SDK to simplify bootstrap</li>
+                        <li>Fast Token is not implemented, the download of the key is needed</li>
+                        <li>Some dependencies have been updated for this training</li>
                     </ul>
                 </div>
             </section>
         </section>
 
-        <!--<section>-->
-        <!--<section id="PythonUAA">-->
-        <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Python Application</span></h6>-->
+        <section>
+            <h6><span style="color:cadetblue;"> Anatomy of an application</span><span
+                    style="color:crimson;font-size: large;"> Devbox </span></h6>
+            <div style="float: top;width:100%;font-size: x-large;" align="left">
+                How do we depoy an App ?
 
-        <!--</section>-->
-        <!--</section>-->
+                <ul>
+                    <li>Cloud Foundry support many languages: Java, Node.js, Python, Php...</li>
+                    <li>Some property of the application are in a <em>manifest.yml</em> file:
+                        <pre><code data-trim data-noescape>
+---
+applications:
+  - name: simple-predix-service
+    random-route: true
+    memory: 512M
+    disk_quota: 512M
+    instances: 1
+    buildpack: java-buildpack
+    path: target/simple-predix-service-0.0.1-SNAPSHOT.jar
+    services:
+      - uaa-lab
+    env:
+      uaaClientId: rest-client
+      uaaClientSecret: rest-client
+      SPRING_PROFILES_ACTIVE: security
+                        </code></pre>
+                    </li>
+                    <li>Source code is uploaded, then packaged into a container</li>
+                    <li>This packaging is done using a buildpack: <strong>The recipe</strong>
+                    <ul>
+                        <li>Dependencies: pip install, npm install, ...</li>
+                        <li>Handling of the routing</li>
+                        <li>Allocation of resources</li>
+                        <li>...</li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
 
-        <!--<section>-->
+        </section>
+
         <!--<section id="Node.JsUAA">-->
         <!--<h6>Data Ingestion/Query - <span style="color:cadetblue;">Securing Node.js Application</span></h6>-->
-
-        <!--</section>-->
         <!--</section>-->
 
         <section>
@@ -2151,11 +2220,10 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                         <br/>
                         <li class="fragment fade-left">Automated way:<br/>
                             <div style="font-size: large;">
-                                <code>uaac target https://lab-{your
-                                    initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</code> </br>
-                                <code>uaac token client get admin -s {UAA_SECRET}</code> </br>
+                                <code>predix uaa login lab-{your
+                                    initials} {UAA_SECRET} </code> </br>
                                 <code>
-                                    uaac client add timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types
+                                    predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types
                                     "client_credentials" --scope "uaa.none" --authorities "uaa.none"
                                 </code>
                             </div>
@@ -2290,10 +2358,10 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                 <div style="width:100%;font-size: xx-large;" align="left">
                     Automated Way:
                     <pre><code data-trim data-noescape>
-uaac group add timeseries.zones.{predix-zone-id}.user
-uaac group add timeseries.zones.{predix-zone-id}.query
-uaac group add timeseries.zones.{predix-zone-id}.ingest
-uaac client update timeseries-client --authorities "uaa.none timeseries.zones.{predix-zone-id}.user timeseries.zones.{predix-zone-id}.query timeseries.zones.{predix-zone-id}.ingest"
+predix uaa group create timeseries.zones.{predix-zone-id}.user
+predix uaa group create timeseries.zones.{predix-zone-id}.query
+predix uaa group create timeseries.zones.{predix-zone-id}.ingest
+predix uaa client update timeseries-client --authorities "uaa.none timeseries.zones.{predix-zone-id}.user timeseries.zones.{predix-zone-id}.query timeseries.zones.{predix-zone-id}.ingest"
                         </code>
                     </pre>
                 </div>
@@ -2667,6 +2735,21 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
 
         <section>
             <section>
+                    <h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>
+                    <ul>
+                        <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Make it real-time</li>
+                        <li><b style="color:grey">10:45 – 11:00</b> Break</li>
+                        <li><b style="color:grey">11:00 – 12:45</b> Deployment</li>
+                        <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
+                        <li><b style="color:grey">13:45 – 14:45</b> Data Science Methodology</li>
+                        <li><b style="color:grey">14:45 – 15:00</b> Break</li>
+                        <li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture
+                        </li>
+                        <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
+                    </ul>
+                </section>
+
+            <section>
                 <h6>Prescriptive Analytics Lvl1- <span style="color:cadetblue;"> Overview Px Analytics </span></h6>
                 <div style="font-size: x-large;" align="left">
                     <ul>
@@ -2878,24 +2961,6 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                 </div>
             </section>
 
-
-        </section>
-
-        <section>
-            <section>
-                <h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>
-                <ul>
-                    <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Make it real-time</li>
-                    <li><b style="color:grey">10:45 – 11:00</b> Break</li>
-                    <li><b style="color:grey">11:00 – 12:45</b> Deployment</li>
-                    <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
-                    <li><b style="color:grey">13:45 – 14:45</b> Data Science Methodology</li>
-                    <li><b style="color:grey">14:45 – 15:00</b> Break</li>
-                    <li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture
-                    </li>
-                    <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
-                </ul>
-            </section>
         </section>
 
 
@@ -2917,6 +2982,36 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
         <!--https://m.popkey.co/fe020c/v4x8k.gif-->
         <!--http://gif-finder.com/wp-content/uploads/2015/03/Anders-Holm-OMG.gif-->
 
+
+        <section id="FastToken">
+            <h6><span style="color:deeppink;"> FastToken why you really need it </span><span
+                    style="color:crimson;font-size: large;">  </span></h6>
+            <div align="left" >
+                <h7>Without fast token:</h7>
+            </div>
+            <div style="float: top;width:100%;font-size: xx-large;">
+                <ol>
+                    <li>Send the request to UAA to get a token</li>
+                    <li>Inject the token to your request</li>
+                    <li>Check the token against UAA</li>
+                    <li>Serve the response</li>
+                </ol>
+            </div>
+            <div align="left" >
+                <h7>With fast token:</h7>
+            </div>
+            <div style="float: top;width:100%;font-size: xx-large;">
+                <ol>
+                    <li>Send the request to UAA to get a token</li>
+                    <li>Inject the token to your request</li>
+                    <li>Check the token against local using the token key</li>
+                    <li>Serve the response</li>
+                </ol>
+            </div>
+            <div align="left" class="fragment fade-in">
+                <h7>The second is way faster than the first one.</h7>
+            </div>
+        </section>
     </div>
 
     <script src="lib/js/head.min.js"></script>
