@@ -1923,7 +1923,7 @@ applications:
 
             <section>
                 <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Service Management</span> - <span
-                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                        style="color:crimson;font-size: large;"> Devbox</span></h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>List all services available:
@@ -1967,7 +1967,7 @@ applications:
                         <li>A binded service cannot be deleted :</li>
                     </ul>
                     <pre><code data-trim data-noescape style="font-size: small;">
-cf delete-service uaa-foundry                                                                                                                                                 ──(Sat,Dec10)─┘
+predix delete-service uaa-foundry                                                                                                                                                 ──(Sat,Dec10)─┘
 
 Really delete the service uaa-foundry?> y
 Deleting service uaa-foundry in org European_Foundry_Basic / space demos-dev as Benoit.Laurent@ge.com...
@@ -2030,19 +2030,16 @@ Cannot delete service instance, service keys and bindings must first be deleted
 
             <section>
                 <h6>Cloud Foundry Interlude - <span style="color:cadetblue;">Service Management</span> - <span
-                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
+                        style="color:crimson;font-size: large;"> Devbox</span></h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>Each service exposed to public IP needs to be registered against at least one UAA service
                             <ul>
                                 <li>Create a service with UAA authentication:
                                     <ul>
-                                        <li><em>cf create-service {service name} {service plan} {service name instances}
-                                            -c
-                                            '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'</em></li>
-                                        <li><em>uaaIssuerId</em> can be retrieved using env variables of an app binded
-                                            to a
-                                            service
+                                        <li><em>cf create-service {service name} {service plan} {service name instance}
+                                            -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'</em></li>
+                                        <li><em>uaaIssuerId</em> can be retrieved using env variables of an app binded to a service
                                         </li>
                                     </ul>
                                 </li>
@@ -2082,8 +2079,7 @@ rm -f $cftempapp_dir/Procfile
 rmdir $cftempapp_dir
                     </code></pre>
                     As you can see there some inter dependencies between services, it's important to be able to
-                    script
-                    service configuration as much as possible
+                    script service configuration as much as possible
                 </div>
 
                 <div style="float: bottom;width:100%;font-size: x-large;" align="left">
@@ -2103,7 +2099,7 @@ rmdir $cftempapp_dir
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
-                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Devbox</span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Create a <em>predix-timeseries</em> services using the <em>cf cli</em> named <em>timeseries-lab</em>
@@ -2116,9 +2112,6 @@ rmdir $cftempapp_dir
 export uaaIssuerId=$(./cfcred.sh "uaa-lab" | jq  -r '.system_env_json.VCAP_SERVICES."predix-uaa"[].credentials.issuerId')
 cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'
                                 </code></pre>
-                                </li>
-                                <li><a href="https://stedolan.github.io/jq/">jq</a> is a lightweight and flexible
-                                    command-line JSON processor.
                                 </li>
                             </ul>
                         </li>
@@ -2192,11 +2185,10 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>
-                            For this reason the Predix Team created the <em>predix-starter</em> tool UI :
-                            <a href="https://github.com/PredixDev/predix-starter"> Predix Starter</a>
+                            For this reason the Predix Team created the <em>predix-toolkit</em> tool UI :
+                            <a href="https://predix-toolkit.run.aws-usw02-pr.ice.predix.io/"> Predix Toolkit</a>
                         </li>
-                        <li>Depending on the data center you are using select <em>Basic</em> for AWS hosted or <em>Select</em>
-                            for GE hosted infrastructure
+                        <li>Depending on the data center you are using select the proper Availibility Zones (US West) for Us
                         </li>
                     </ul>
                 </div>
@@ -2204,7 +2196,7 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
-                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Create a new uaa client using UAA console in predix.io with :
@@ -2219,13 +2211,11 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                         </li>
                         <br/>
                         <li class="fragment fade-left">Automated way:<br/>
-                            <div style="font-size: large;">
-                                <code>predix uaa login lab-{your
-                                    initials} {UAA_SECRET} </code> </br>
-                                <code>
-                                    predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types
-                                    "client_credentials" --scope "uaa.none" --authorities "uaa.none"
-                                </code>
+                            <div style="font-size: x-large;">
+                                <pre><code data-trim data-noescape>
+predix uaa login lab-{yourinitials} {UAA_SECRET}
+predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types "client_credentials" --scope "uaa.none" --authorities "uaa.none"
+                                </code></pre>
                             </div>
                         </li>
                     </ul>
@@ -2234,7 +2224,7 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
-                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>
@@ -2318,7 +2308,7 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">Time Series Group & Ingestion</span> <span
-                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>Using the UAA console create the three groups for the Time Series Services name <br/> <em>timeseries-lab</em>
@@ -2369,7 +2359,7 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">Time Series Query </span> <span
-                        style="color:crimson;font-size: large;"> Devbox & Non Devbox </span></h6>
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>Open the <em>Time Series Query</em> item</li>
@@ -2442,13 +2432,12 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                                 <li>Allowed Providers: <em>uaa</em></li>
                             </ul>
                         </li>
-                        <li>Execute the following script <a href="./data/download.sh">download.sh</a> this will download
+                        <li>Execute the following script <a href="download.sh">download.sh</a> this will download
                             few datasets
                         </li>
                         <li>Download the ingester client <a href="./timeseries-ingestion-service.tar.gz">
                             timeseries-ingestion-service</a></li>
-                        <li>Decompress it using the following command <em>tar xvfz
-                            timeseries-ingestion-service.tar.gz</em></li>
+                        <li>Decompress it using the following command <em>tar xvfz timeseries-ingestion-service.tar.gz</em></li>
                         <li>Deploy it in your space with <em>cf p --random-route</em></li>
                         <br/>
                         <li>For your information this ingester is a python app that use plain web socket to perform the
