@@ -556,7 +556,7 @@
                     <div style="float: left;width:50%;font-size: x-large;" align="left">
                         <ul style="float:left;font-size: x-large;">
                             <li>
-                                For non GE Employee go to <a
+                                For GE Employee go to <a
                                     href="https://devcloud.swcoe.ge.com/devspace/display/SOLSVC/Predix+DevBox+Program">Predix
                                 DevBox Program</a>
                                 <ul>
@@ -566,7 +566,7 @@
                                 </ul>
                             </li>
                             <br>
-                            <li>For Ge Employee go to
+                            <li>For non Ge Employee go to
                                 <ul>
                                     <li><a href="http://sc.ge.com/*PredixDevBox">DevBox3.5.9-e.ova</a></li>
                                     <li><a href="http://sc.ge.com/*PredixDevBox.sha2">sha</a></li>
@@ -754,9 +754,9 @@
                 <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Already install on the devbox</li>
-                        <li style="font-style:oblique;">see: https://github.com/PredixDev/predix-cli</li>
+                        <li style="font-style:oblique;">see: <em>https://github.com/PredixDev/predix-cli</em></li>
                         <li>Go for the manual install the one liner is broken</li>
-                        <li>See https://github.com/PredixDev/predix-cli/wiki for more info</li>
+                        <li>See <em>https://github.com/PredixDev/predix-cli/wiki</em> for more info</li>
                     </ul>
                 </div>
             </section>
@@ -984,7 +984,8 @@ predix cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no
                         <li>Login ui to access application <em>/login</em></li>
                         <li>Authorization Requests Code <em>/oauth/authorize</em></li>
                         <li>Validate an access token <em>/check_token</em></li>
-                        <li>Given an appropriate access_token, returns information about a user <em>/userinfo</em></li>
+                        <li>Given an appropriate access_token,  <br>
+                            returns information about a user <em>/userinfo</em></li>
                     </ul>
                 </div>
             </section>
@@ -1641,6 +1642,7 @@ predix uaa client update login_client --authorized_grant_types "authorization_co
 
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
+                        <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
                         <li>We use <em>Flask</em> package as server with python 3.6</li>
                         <li>Deploying application is done using <em>Predix CLI</em></li>
                         <li>go to the <em>simple-predix-service-python</em> directory</li>
@@ -1661,7 +1663,7 @@ predix cf push
                     </ul>
                     <pre><code data-trim data-noescape>
 pip install pipenv
-pipenv install
+pipenv install --three
 pipenv shell
 python app.py runserver
                     </code></pre>
@@ -2181,18 +2183,16 @@ rmdir $cftempapp_dir
                         style="color:crimson;font-size: large;"> Devbox</span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Create a <em>predix-timeseries</em> services using the <em>cf cli</em> named <em>timeseries-lab</em>
+                        <li>Create a client named <em>timeseries-ingestion-client</em> using <em>predix cli</em> </li>
+                        <li>Create a <em>predix-timeseries</em> services using the <em>predix cli</em> named <em>timeseries-lab</em>
                         </li>
-                        <li>Using a mechanism of your choice find the zone-id of your timeseries service</li>
-                        <li class="fragment fade-up">Automated way:
-                            <ul>
-                                <li>
+                        <li class="fragment fade-up" > Automated way:
+                            <div style="float: top;width:100%;font-size: x-large;">
                                 <pre><code data-trim data-noescape>
-export uaaIssuerId=$(./cfcred.sh "uaa-lab" | jq  -r '.system_env_json.VCAP_SERVICES."predix-uaa"[].credentials.issuerId')
-cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssuerId}'"]}'
+predix uaa client create timeseries-ingestion-client -s timeseries-ingestion-client --authorized_grant_types client_credentials
+predix create-service predix-timeseries Free timeseries-lab uaa-lab -c timeseries-ingestion-client -s timeseries-ingestion-client
                                 </code></pre>
-                                </li>
-                            </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -2278,34 +2278,6 @@ cf cs predix-timeseries Free timeseries-lab -c '{"trustedIssuerIds":["'${uaaIssu
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Create a new uaa client using UAA console in predix.io with :
-                            <ul>
-                                <li>Client Id: <em>timeseries_client</em></li>
-                                <li>Grant type: <em>client_credentials</em></li>
-                                <li>Client Secret: <em>{PICK ONE}</em></li>
-                                <li>Scope: <em>uaa.none</em></li>
-                                <li>Authorities: <em>uaa.none</em></li>
-                                <li>Allowed Providers: <em>uaa</em></li>
-                            </ul>
-                        </li>
-                        <br/>
-                        <li class="fragment fade-left">Automated way:<br/>
-                            <div style="font-size: xx-large;">
-                                <pre><code data-trim data-noescape>
-predix uaa login lab-{yourinitials} {UAA_SECRET}
-predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_grant_types "client_credentials" --scope "uaa.none" --authorities "uaa.none"
-                                </code></pre>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <h6>Lab - <span style="color:deeppink;">TimesSeries </span> <span
-                        style="color:crimson;font-size: large;"> Devbox </span></h6>
-                <div style="float:top;width:100%;font-size: xx-large;" align="left">
-                    <ul>
                         <li>
                             Using the predix toolkit tools <em>API explorer</em> try to open a web socket to the
                             timeseries service
@@ -2315,8 +2287,8 @@ predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_gra
                         </li>
                         <li><em>Login as Client</em> :
                             <ul>
-                                <li>timeseries-client</li>
-                                <li>{Your Secret}</li>
+                                <li>id: <em>timeseries-ingestion-client</em></li>
+                                <li>secret: <em>timeseries-ingestion-client</em>                                                                                               </li>
                             </ul>
                             the client you just created and use the uaa url : <br/><em>https://lab-{your
                                 initials}.predix-uaa.run.aws-usw02-pr.ice.predix.io</em></li>
@@ -2324,117 +2296,107 @@ predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_gra
                             previously
                         </li>
                         <li>Click on <em>Open Socket</em></li>
-                        <li class="fragment fade-right">
-                            You got an error:
-                            <pre><code data-trim data-noescape>
-{
-    "error": "Error: unexpected server response (401)",
-    "url": "wss://gateway-predix-data-services.run.aws-usw02-pr.ice.predix.io/v1/stream/messages"
-}
-                              </code>
-                            </pre>
-                        </li>
                     </ul>
                 </div>
             </section>
 
-            <section>
-                <h6>Cloud Foundry Interlude - <span style="color:cadetblue;"> UAA Groups </span> - <span
-                        style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>
-                <div style="float: top;width:100%;font-size: x-large;" align="left">
-                    <ul>
-                        <li>Our request include the <em>predix-zone-id</em> in the header</li>
-                        <li>But our token do not include any zone related information</li>
-                    </ul>
-                </div>
-                <div style="float: bottom;width:100%;font-size: x-large;" align="left">
-                    <ul>
-                        <li>UAA offers the concept of groups that can be used to enable expression of common Group or
-                            role based access control models
-                        </li>
-                        <li class="fragment fade-left">
-                            For Predix Services the naming convention is :
-                            <ul>
-                                <li>
-                                    {servicename}.zones.{Predix-Zone-Id}.{role}
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="fragment fade-left"> For Time Series Eg:
-                            <ul>
-                                <li><em>timeseries.zones.{Predix-Zone-Id}.user</em> group to allow general access
-                                </li>
-                                <li><em>timeseries.zones.{Predix-Zone-Id}.query</em> group to allow query access
-                                </li>
-                                <li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em> group to allow ingest access
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="fragment fade-left">
-                            To allow a client to perform data ingestion the client needs to contains in its scope:
-                            <ul>
-                                <li><em>timeseries.zones.{Predix-Zone-Id}.user</em> and</li>
-                                <li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>
-                            </ul>
-                        </li>
-                        <li class="fragment fade-left">
-                            It's absolutely possible (recommended) to create two clients : one for query and one for
-                            ingestion
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            <!--<section>-->
+                <!--<h6>Cloud Foundry Interlude - <span style="color:cadetblue;"> UAA Groups </span> - <span-->
+                        <!--style="color:crimson;font-size: large;"> Devbox & OSX</span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: x-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Our request include the <em>predix-zone-id</em> in the header</li>-->
+                        <!--<li>But our token do not include any zone related information</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div style="float: bottom;width:100%;font-size: x-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>UAA offers the concept of groups that can be used to enable expression of common Group or-->
+                            <!--role based access control models-->
+                        <!--</li>-->
+                        <!--<li class="fragment fade-left">-->
+                            <!--For Predix Services the naming convention is :-->
+                            <!--<ul>-->
+                                <!--<li>-->
+                                    <!--{servicename}.zones.{Predix-Zone-Id}.{role}-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li class="fragment fade-left"> For Time Series Eg:-->
+                            <!--<ul>-->
+                                <!--<li><em>timeseries.zones.{Predix-Zone-Id}.user</em> group to allow general access-->
+                                <!--</li>-->
+                                <!--<li><em>timeseries.zones.{Predix-Zone-Id}.query</em> group to allow query access-->
+                                <!--</li>-->
+                                <!--<li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em> group to allow ingest access-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li class="fragment fade-left">-->
+                            <!--To allow a client to perform data ingestion the client needs to contains in its scope:-->
+                            <!--<ul>-->
+                                <!--<li><em>timeseries.zones.{Predix-Zone-Id}.user</em> and</li>-->
+                                <!--<li><em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li class="fragment fade-left">-->
+                            <!--It's absolutely possible (recommended) to create two clients : one for query and one for-->
+                            <!--ingestion-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
 
-            <section>
-                <h6>Lab - <span style="color:deeppink;">Time Series Group & Ingestion</span> <span
-                        style="color:crimson;font-size: large;"> Devbox </span></h6>
-                <div style="width:100%;font-size: x-large;" align="left">
-                    <ul>
-                        <li>Using the UAA console create the three groups for the Time Series Services name <br/> <em>timeseries-lab</em>
-                            <ul>
-                                <li>The group management piece is in : <em>User Management</em> Tab</li>
-                                <li>Display Name and Description (can be empty)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <br/>
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;">Time Series Group & Ingestion</span> <span-->
+                        <!--style="color:crimson;font-size: large;"> Devbox </span></h6>-->
+                <!--<div style="width:100%;font-size: x-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Using the UAA console create the three groups for the Time Series Services name <br/> <em>timeseries-lab</em>-->
+                            <!--<ul>-->
+                                <!--<li>The group management piece is in : <em>User Management</em> Tab</li>-->
+                                <!--<li>Display Name and Description (can be empty)</li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<br/>-->
 
-                <div style="width:100%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li>Update <em>timeseries-client</em> using the UAA console to add to its <em>authorities</em>
-                            the three groups we just created
-                        </li>
-                        <li>Try to using the <em>predix-starter</em> tool open the socket again : Login as client then
-                            Open socket
-                            <pre><code data-trim data-noescape>
-{"socketId":2121290809009224200,"readyState":"OPEN"}
-                            </code></pre>
-                        </li>
+                <!--<div style="width:100%;font-size: xx-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Update <em>timeseries-client</em> using the UAA console to add to its <em>authorities</em>-->
+                            <!--the three groups we just created-->
+                        <!--</li>-->
+                        <!--<li>Try to using the <em>predix-starter</em> tool open the socket again : Login as client then-->
+                            <!--Open socket-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--{"socketId":2121290809009224200,"readyState":"OPEN"}-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
 
-                        <li>Start ingesting some data by clicking on the Ingest Button
-                            <pre><code data-trim data-noescape>
-{"statusCode":202,"messageId":"1453338376222"}
-                            </code></pre>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+                        <!--<li>Start ingesting some data by clicking on the Ingest Button-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--{"statusCode":202,"messageId":"1453338376222"}-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
 
-            <section>
-                <h6>Lab - <span style="color:deeppink;">Time Series Group </span> <span
-                        style="color:crimson;font-size: large;"> Non Devbox </span></h6>
-                <div style="width:100%;font-size: xx-large;" align="left">
-                    Automated Way:
-                    <pre><code data-trim data-noescape>
-predix uaa group create timeseries.zones.{predix-zone-id}.user
-predix uaa group create timeseries.zones.{predix-zone-id}.query
-predix uaa group create timeseries.zones.{predix-zone-id}.ingest
-predix uaa client update timeseries-client --authorities "uaa.none timeseries.zones.{predix-zone-id}.user timeseries.zones.{predix-zone-id}.query timeseries.zones.{predix-zone-id}.ingest"
-                        </code>
-                    </pre>
-                </div>
-            </section>
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;">Time Series Group </span> <span-->
+                        <!--style="color:crimson;font-size: large;"> Non Devbox </span></h6>-->
+                <!--<div style="width:100%;font-size: xx-large;" align="left">-->
+                    <!--Automated Way:-->
+                    <!--<pre><code data-trim data-noescape>-->
+<!--predix uaa group create timeseries.zones.{predix-zone-id}.user-->
+<!--predix uaa group create timeseries.zones.{predix-zone-id}.query-->
+<!--predix uaa group create timeseries.zones.{predix-zone-id}.ingest-->
+<!--predix uaa client update timeseries-client &#45;&#45;authorities "uaa.none timeseries.zones.{predix-zone-id}.user timeseries.zones.{predix-zone-id}.query timeseries.zones.{predix-zone-id}.ingest"-->
+                        <!--</code>-->
+                    <!--</pre>-->
+                <!--</div>-->
+            <!--</section>-->
 
             <section>
                 <h6>Lab - <span style="color:deeppink;">Time Series Query </span> <span
@@ -2443,6 +2405,7 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                     <ul>
                         <li>Open the <em>Time Series Query</em> item</li>
                         <li><em>Select Limited Datapoints</em></li>
+                        <li>Change <em>1y</em> into <em>3y</em></li>
                         <li>Enter the <em>predix-zone-id</em></li>
                         <li>Press Submit</li>
                     </ul>
@@ -2499,18 +2462,6 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>
-                            Create a new client :
-                            <ul>
-                                <li>Client Id: <em>timeseries-ingestion-service</em></li>
-                                <li>Grant type: <em>client_credentials</em></li>
-                                <li>Client Secret: <em>timeseries-ingestion-service</em></li>
-                                <li>Scope: <em>uaa.none</em></li>
-                                <li>Authorities: <em>uaa.none</em> <em>uaa.resource</em> <em>timeseries.zones.{Predix-Zone-Id}.user</em>
-                                    <em>timeseries.zones.{Predix-Zone-Id}.ingest</em></li>
-                                <li>Allowed Providers: <em>uaa</em></li>
-                            </ul>
-                        </li>
                         <li>Execute the following script <a href="download.sh">download.sh</a> this will download
                             few datasets
                         </li>
@@ -2754,7 +2705,7 @@ String read(@RequestParam("tag") String tag, @RequestParam("startDate") String s
                 <h6> Lab - <span style="color:deeppink;">TimeSeries Data Ingestion </span> - Python SDK</span></h6>
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li> You can do it by hand if you are familiar with python and websocket <em>or</em></li>
+                        <li>You can do it by hand if you are familiar with python and websocket <em>or</em></li>
                         <li>Use the <em>predix</em> package</li>
                         <li>it's very easy to setup
                             <ul>
@@ -2764,8 +2715,8 @@ services:
   - uaa-xxx
   - timeseries-xxx
 env:
-  PREDIX_APP_CLIENT_ID: timeseries-ingestion-service
-  PREDIX_APP_CLIENT_SECRET: timeseries-ingestion-service
+  PREDIX_APP_CLIENT_ID: rest-client
+  PREDIX_APP_CLIENT_SECRET: rest-client
                                     </code></pre>
                                 </li>
                                 <li>
@@ -2822,6 +2773,7 @@ class DHandler(Resource):
         return 200
                             </code></pre>
                         </li>
+                        <li class="fragment fade-up"></li>
                         <li>This solution could be improve by taking advantage of the <em>ts.queue</em> method
                         see <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/cookbook/index.html#timeseries-cookbook"> here </a>
                         </li>
@@ -2834,7 +2786,7 @@ class DHandler(Resource):
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>For Query you can use the SDK to simplify your development</li>
-                        <li>The SDK support <em>get_datapoints</em> see doc<a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/services/index.html#predix.data.timeseries.TimeSeries.get_datapoints">here </a> to do the query for you</li>
+                        <li>The SDK support <em>get_datapoints</em> see doc <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/services/index.html#predix.data.timeseries.TimeSeries.get_datapoints">here </a> to do the query for you</li>
                     </ul>
                 </div>
                 <div style="width:100%;font-size: x-large;" align="left">
