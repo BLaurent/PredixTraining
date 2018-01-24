@@ -53,7 +53,6 @@
                             <li>Monitoring of pedestrians stream</li>
                             <li>Monitoring of bicycle stream</li>
                             <li>Monitoring of vehicle stream</li>
-                            <li>Sensors positions</li>
                         </ul>
                     </li>
                 </ul>
@@ -70,7 +69,6 @@
                 <li><b style="color:grey">13:45 – 14:45</b> Security Model & UAA</li>
                 <li><b style="color:grey">14:45 – 15:00</b> Break</li>
                 <li><b style="color:grey">15:00 – 17:00</b> Time Series</li>
-                <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
             </ul>
         </section>
 
@@ -499,7 +497,7 @@
                 <div style="float:bottom;width:100%;font-size: x-large;" align="left">
                     <ul style="font-style:oblique;">
                         <li>Organizations contains multiple <em>spaces</em></li>
-                        <li><em>Spaces</em> also can be defined in any way</li>
+                        <li><em>Spaces</em> also can be defined in many way</li>
                         <li>For example, staging and production</li>
                     </ul>
                 </div>
@@ -558,19 +556,19 @@
                     <div style="float: left;width:50%;font-size: x-large;" align="left">
                         <ul style="float:left;font-size: x-large;">
                             <li>
-                                For GE Employee go to <a
+                                For non GE Employee go to <a
                                     href="https://devcloud.swcoe.ge.com/devspace/display/SOLSVC/Predix+DevBox+Program">Predix
                                 DevBox Program</a>
                                 <ul>
-                                    <li><a href="http://sc.ge.com/*GEDevBox">DevBox3.5.9-e.ova</a></li>
+                                    <li><a href="http://sc.ge.com/*GEDevBox">DevBox3.5.9-i.ova</a></li>
                                     <li><a href="http://sc.ge.com/*GEDevBox.sha2">sha</a></li>
                                     <li><a href="http://sc.ge.com/*GEDevBox.md5">md5</a></li>
                                 </ul>
                             </li>
                             <br>
-                            <li>For non Ge Employee go to
+                            <li>For Ge Employee go to
                                 <ul>
-                                    <li><a href="http://sc.ge.com/*PredixDevBox">DevBox3.5.9-i.ova</a></li>
+                                    <li><a href="http://sc.ge.com/*PredixDevBox">DevBox3.5.9-e.ova</a></li>
                                     <li><a href="http://sc.ge.com/*PredixDevBox.sha2">sha</a></li>
                                     <li><a href="http://sc.ge.com/*PredixDevBox.md5">md5</a></li>
                                 </ul>
@@ -934,7 +932,7 @@ predix cf push nullApp -b http://github.com/ryandotsmith/null-buildpack.git --no
                             <ul>
                                 <li><em>https://</em> is the default and must be used as default prefix in the browser
                                 </li>
-                                <li>For web socket wss is used</li>
+                                <li>For web socket <em>wss</em> is used</li>
                             </ul>
                         </li>
                         <li> No direct tcp inbound : mqtt is not possible</li>
@@ -1583,7 +1581,7 @@ predix uaa client update login_client --authorized_grant_types "authorization_co
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
 
                     <ul>
-                        <li>We seen how to user <em>@EnableOAuth2Sso</em> to manage user login
+                        <li>We seen how to use <em>@EnableOAuth2Sso</em> to manage user login
                             <ul>
                                 <li>Your web server is in Java maybe have a look to <a href="http://www.jhipster.tech/presentation/#/"> JHipster</a></li>
                                 <li>You do not known Node.js (Predix web server is written in Node.js)</li>
@@ -1600,18 +1598,36 @@ predix uaa client update login_client --authorized_grant_types "authorization_co
 
             <section>
 
-                <h6>Lab - <span style="color:deeppink;"> Securing REST endpoints with Java - </span><span
+                <h6> <span style="color:cadetblue;"> Securing REST endpoints with Java - </span><span
+                        style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+
+                    <ul>
+                        <li>Go into the <em>simple-predix-service</em> directory this directory will serve as a base for many of our experiments</li>
+                        <li>The heart of this feature is a Single Java Class, an annotation and GE package:
+                            <ul>
+                                <li> The <em>@EnableResourceServer</em> annotation configure our endpoints to be secured</li>
+                                <li>Class SecurityConfig extends <em>ResourceServerConfigurerAdapter</em> complex rules</li>
+                                <li><em>uaa-token-lib</em> GE package allow you to implement fast token with UAA see <a href="#/FastToken">fast token slide</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section>
+
+                <h6> Lab - <span style="color:deeppink;"> Securing REST endpoints with Java - </span><span
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
 
                 <ul>
-                    <li>Go into the <em>simple-predix-service</em> directory this directory will serve as a base for many of our experiments</li>
-                    <li>The heart of this feature is a Single Java Class, an annotation and Maven GE package:
-                    <ul>
-                        <li>Class SecurityConfig extends <em>ResourceServerConfigurerAdapter</em> complex rules</li>
-                        <li><em>uaa-token-lib</em> GE package allow you to implement fast token with UAA see <a href="#/FastToken">fast token slide</a> </li>
-                    </ul>
-
-                    </li>
+                    <li>Update the <em>manifest.yml</em> file to match your previous configuration</li>
+                    <li>You need to enable the proper profile <em>SPRING_PROFILES_ACTIVE: security</em> add it to <em>env</em></li>
+                    <li>Add the <em>@EnableResourceServer</em> annotation under the <em>@SpringBootApplication</em> annotation</li>
+                    <li>Deploy this application </li>
+                    <li>Using your browser try to reach the URL : <em>https://Your App/dashboard?user=toto</em> </li>
+                    <li>Open Postman and try to generate a request including the token to make it work</li>
                 </ul>
             </section>
 
@@ -1658,7 +1674,7 @@ curl http://127.0.0.1:8080/api/v1/drones
                     </code></pre>
                     <ul>
                         <li>Uncomment the line containing <em>@app.before_request</em></li>
-                        <li>Redeploy the application
+                        <li>Deploy the application
                             <pre><code data-trim data-noescape>
 predix cf push
                     </code></pre>
@@ -1686,9 +1702,11 @@ message: "The server could not verify that you are authorized to access the URL 
 
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>Predix python SDK to simplify bootstrap</li>
-                        <li>Fast Token is not implemented, the download of the key is needed</li>
-                        <li>Some dependencies have been updated for this training</li>
+                        <li>We rely on <em>Flask</em> decorator <em>before_request</em> to execute the token validation before processing the request</li>
+                        <li>Each rest end point is describe as a blueprint class in the <em>drones</em> package</li>
+                        <li>Predix python SDK to simplify bootstrap and the integration Predix</li>
+                        <li>Fast Token is not implemented yet, the download of the key is needed</li>
+                        <li>Some dependencies have been updated for this training to support py3 <a href="https://github.com/BLaurent/predixpy">see</a> </li>
                     </ul>
                 </div>
             </section>
@@ -1729,6 +1747,70 @@ applications:
                         <li>Allocation of resources</li>
                         <li>...</li>
                     </ul>
+                    </li>
+                    <li>Example of cf push output:
+                        <pre><code data-trim data-noescape style="font-size: smaller">
+Pushing from manifest to org European_Foundry_Basic / space machine as Benoit.Laurent@ge.com...
+Using manifest file /Users/benoitlaurent/Git/predix-starter/simple-predix-service/manifest.yml
+Getting app info...
+Creating app with these attributes...
++ name:         simple-predix-service
+  path:         /Users/benoitlaurent/Git/predix-starter/simple-predix-service/target/simple-predix-service-0.0.1-SNAPSHOT.jar
++ buildpack:    java-buildpack
++ disk quota:   512M
++ instances:    1
++ memory:       512M
+  services:
++   uaa-lab
+  env:
++   SPRING_PROFILES_ACTIVE
++   uaaClientId
++   uaaClientSecret
+  routes:
++   simple-predix-service-quiet-parrot.run.aws-usw02-pr.ice.predix.io
+
+Creating app simple-predix-service...
+Mapping routes...
+Binding services...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 1.29 MiB / 1.29 MiB [========================================================================================================================================================================] 100.00% 2s
+
+Waiting for API to complete processing files...
+
+Staging app and tracing logs...
+   -----> Downloaded app package (51M)
+   -----> Java Buildpack Version: v3.13 | https://github.com/cloudfoundry/java-buildpack.git#03b493f
+   -----> Downloading Open Jdk JRE 1.8.0_121 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_121.tar.gz (0.8s)
+          Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.0s)
+   -----> Downloading Open JDK Like Memory Calculator 2.0.2_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-2.0.2_RELEASE.tar.gz (0.0s)
+          Memory Settings: -Xms317161K -XX:MetaspaceSize=64M -XX:MaxMetaspaceSize=64M -Xss228K -Xmx317161K
+   -----> Downloading Container Certificate Trust Store 2.1.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-certificate-trust-store/container-certificate-trust-store-2.1.0_RELEASE.jar (0.0s)
+          Adding certificates to .java-buildpack/container_certificate_trust_store/truststore.jks (0.3s)
+   -----> Downloading Spring Auto Reconfiguration 1.12.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-1.12.0_RELEASE.jar (0.0s)
+
+   -----> Uploading droplet (97M)
+
+Waiting for app to start...
+
+name:              simple-predix-service
+requested state:   started
+instances:         1/1
+usage:             512M x 1 instances
+routes:            simple-predix-service-quiet-parrot.run.aws-usw02-pr.ice.predix.io
+last uploaded:     Tue 23 Jan 12:40:19 CET 2018
+stack:             cflinuxfs2
+buildpack:         java-buildpack
+start command:     CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-2.0.2_RELEASE -memorySizes=metaspace:64m..,stack:228k..
+                   -memoryWeights=heap:65,metaspace:10,native:15,stack:10 -memoryInitials=heap:100%,metaspace:100% -stackThreads=300 -totMemory=$MEMORY_LIMIT) && JAVA_OPTS="-Djava.io.tmpdir=$TMPDIR
+                   -XX:OnOutOfMemoryError=$PWD/.java-buildpack/open_jdk_jre/bin/killjava.sh $CALCULATED_MEMORY
+                   -Djavax.net.ssl.trustStore=$PWD/.java-buildpack/container_certificate_trust_store/truststore.jks -Djavax.net.ssl.trustStorePassword=java-buildpack-trust-store-password" &&
+                   SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+
+     state     since                  cpu      memory           disk             details
+#0   running   2018-01-23T11:41:45Z   333.4%   429.9M of 512M   178.9M of 512M
+                        </code></pre>
                     </li>
                 </ul>
             </div>
@@ -1833,7 +1915,7 @@ applications:
                 <div style="float: bottom;width:100%;font-size: x-large;" align="left">
                     The API endpoints are the same whatever TimeService service instance we created. To differentiate
                     between instances there is a tenant ID named :
-                    <em>predix-zone-id</em> that needs to be included in any headers (http, ws) sent to Timeseries
+                    <em>predix-zone-id</em> that needs to be included in any headers (https, wss) sent to Timeseries
                     Services.
                 </div>
             </section>
@@ -2225,7 +2307,7 @@ predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_gra
                 <div style="float:top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>
-                            Using the predix starter tools <em>API explorer</em> try to open a web socket to the
+                            Using the predix toolkit tools <em>API explorer</em> try to open a web socket to the
                             timeseries service
                         </li>
                         <li>
@@ -2246,8 +2328,8 @@ predix uaa client create timeseries-client -s "{CLIENT_SECRET}" --authorized_gra
                             You got an error:
                             <pre><code data-trim data-noescape>
 {
-"error": "Error: unexpected server response (401)",
-"url": "wss://gateway-predix-data-services.run.aws-usw02-pr.ice.predix.io/v1/stream/messages"
+    "error": "Error: unexpected server response (401)",
+    "url": "wss://gateway-predix-data-services.run.aws-usw02-pr.ice.predix.io/v1/stream/messages"
 }
                               </code>
                             </pre>
@@ -2432,16 +2514,20 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                         <li>Execute the following script <a href="download.sh">download.sh</a> this will download
                             few datasets
                         </li>
-                        <li>Download the ingester client <a href="./timeseries-ingestion-service.tar.gz">
-                            timeseries-ingestion-service</a></li>
-                        <li>Decompress it using the following command <em>tar xvfz timeseries-ingestion-service.tar.gz</em></li>
-                        <li>Deploy it in your space with <em>cf p --random-route</em></li>
+                        <li>Get the ingester client in the predix starter repository</li>
+                        <li>Deploy it in your space with <em>cf p</em></li>
                         <br/>
                         <li>For your information this ingester is a python app that use plain web socket to perform the
                             ingestion
                         </li>
                         <ul>
                             <li>Open <em>ingest.py</em> and check the openWSS</li>
+                            </li>
+                            <li>Get the ingester client in the predix starter repository</li>
+                            <li>Deploy it in your space with <em>cf p</em></li>
+                            <br/>
+                            <li>For your information this ingester is a python app that use plain web socket to perform the
+                                ingestion
                             <li>We find our headers parameters just as described previously</li>
                         </ul>
                     </ul>
@@ -2453,12 +2539,11 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                         style="color:crimson;font-size: large;"> Devbox </span></h6>
                 <div style="width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>Decompress each dataset using gunzip</li>
                         <li>Open Postman and create a new <em>POST</em> request to <br/> <em>https://timeseries-ingestion-service-{your
                             random route}.run.aws-usw02-pr.ice.predix.io/upload</em></li>
                         <li>Use the OAuth 2.0 helper to get a Bearer Token (use Client Credential in Grant Type)</li>
                         <li>In Body select <em>form-data</em> set <em>key</em> to <em>files[]</em> and <em>value</em>
-                            set to <em>path to a json file</em> (Use drop down to change the type)
+                            set to <em>path to a json file</em> (Use drop down to change the type to file)
                         </li>
                         <li>Wait...</li>
                         <br/>
@@ -2474,23 +2559,314 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                 <ul>
                     <li><a href="#/JavaTS">Java</a></li>
                     <li><a href="#/PythonTS">Python</a></li>
-                    <li><a href="#/Node.JsTS">Node.js</a></li>
+                    <!--<li><a href="#/Node.JsTS">Node.js</a></li>-->
                 </ul>
             </section>
         </section>
 
         <section>
             <section id="JavaTS">
-                <h6>Data Ingestion/Query - <span style="color:cadetblue;">Java Client</span></h6>
-
+                <h6> <span style="color:cadetblue;">TimeSeries Data Ingestion </span> - Java Client</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    The ingestion is done using a web socket but you need to implement OAuth2, reconnection, it's simpler to use the SDK<br>
+                    <ul>
+                        <li>Predix offers a <a href="https://artifactory.predix.io/artifactory/PREDIX-EXT/com/ge/predix/timeseries/timeseries-client/0.0.18/">Java SDK</a></li>
+                        <li> The first things we need is to create a <em>TenantContext</em>
+                            <pre><code data-trim data-noescape>
+try {
+    tenantContext = TenantContextFactory.createTenantContextFromPropertiesFile("/predix-timeseries.properties");
+} catch (URISyntaxException | PredixTimeSeriesException | IOException e) {
+    e.printStackTrace();
+}
+                            </code></pre>
+There is several ways to create this tenant from a properties files, arguments, ... Have a look to this class for more information:
+                            <pre><code data-trim data-noescape>
+com.ge.predix.timeseries.client.TenantContextFactory
+                           </code></pre>
+                        </li>
+                        <li>The rest of the code is just POJO filling
+                            <pre><code data-trim data-noescape>
+IngestionRequestBuilder ingestionBuilder = IngestionRequestBuilder
+                                .createIngestionRequest()
+                                .withMessageId(timestamp)
+                                .addDataPoints(
+                                    Arrays.asList(
+                                        new DataPoint(new Date().getTime(), sensorValueAsInt, Quality.GOOD),
+                                        new DataPoint(new Date().getTime(), sensorValueAsDouble, Quality.NOT_APPLICABLE),
+                                        new DataPoint(new Date().getTime(), "Bad Value", Quality.BAD),
+                                        new DataPoint(new Date().getTime(), null, Quality.UNCERTAIN)
+                                    )
+                                )
+                                .addAttribute("AttributeKey", "AttributeValue")
+                                .addAttribute("AttributeKey2", "AttributeValue2")
+                                .build());
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
             </section>
+
+            <section>
+                <h6>Lab -  <span style="color:deeppink;">TimeSeries Data Ingestion </span> - Java Client</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Once the message have been created we need to extract the json:
+                            <pre><code data-trim data-noescape>
+String json = ingestionBuilder.build().get(0);
+                            </code></pre>
+                        </li>
+                        <li>We can now send the message over the wire:
+                            <pre><code data-trim data-noescape>
+IngestionResponse response = ClientFactory.ingestionClientForTenant(ingestionTenant).ingest(json);
+String responseStr = response.getMessageId() + response.getStatusCode();
+                            </code></pre>
+                        </li>
+                        <li>&#9888 The error code is not obvious if you get a exception at this point like <em>PredixTimeSeriesException</em>
+                            Just simply retry the <em>ingestionClientForTenant</em> web socket reconnection is handled by the SDK
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab -  <span style="color:deeppink;">TimeSeries Data Ingestion </span> - Java Application</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Checkout the branch <em>timeseries</em> and go to the directory <em>simple-predix-service</em></li>
+                        <li>This application contains a simple java application exposing a REST endpoint <em>/api/v1/sensor</em></li>
+                        <li>For Performance concerns the ingestion is not done each request but in batch fashion</li>
+                        <li>Everything is done in the <em>ingester</em> package</li>
+                        <li>To Deploy this application go to directory <em>simple-predix-service</em>
+                            <pre><code data-trim data-noescape>
+predix cf p
+                            </code></pre>
+                            Once deployed you can ingest some points using postman
+                        </li>
+                        <li>Create a POST request and put https://XXX.predix.io/api/v1/sensor and add as body
+                            <pre><code data-trim data-noescape>
+{
+    "value":{{$randomInt}},
+    "deviceId":"osx90r43y2",
+    "ip": "192.168.1.1",
+    "type":"mac",
+    "msec": {{$timestamp}}
+}
+                            </code></pre>
+                            Do not forget the token...
+                        </li>
+                        <li>Using predix toolkit check retreive your tags</li>
+                        <li>Retreive some data points</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6><span style="color:cadetblue;">TimeSeries Data Query </span> - Java Application</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Doing a query is very simple <em> Just a REST call</em>
+                            <ul>
+                                <li>Do it by hand using any REST capable toolkit <em>or</em></li>
+                                <li>Use the Java SDK</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><br>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Two parts as for ingestion
+                            <ul>
+                                <li>Create Your Query Object
+                                    <pre><code data-trim data-noescape>
+QueryBuilder builder = QueryBuilder.createQuery()
+        .withStartAbs(1427463525000L)
+        .withEndAbs(1427483525000L)
+        .addTags(
+                QueryTag.Builder.createQueryTag()
+                        .withTagNames(Arrays.asList("ALT_SENSOR", "TEMP_SENSOR"))
+                        .withLimit(1000)
+                        .addAggregation(Aggregation.Builder.averageWithInterval(1, TimeUnit.HOURS))
+                        .addFilters(FilterBuilder.getInstance()
+                                .addMeasurementFilter(FilterBuilder.Condition.GREATER_THAN_OR_EQUALS, Arrays.asList("23.1")).build())
+                        .addFilters(FilterBuilder.getInstance()
+                                .withQualitiesFilter(Arrays.asList(Quality.BAD, Quality.GOOD)).build())
+                        .build());
+                                    </code></pre>
+                                </li>
+                                <li>Then start the query:
+                                    <pre><code data-trim data-noescape>
+QueryResponse response = ClientFactory.queryClientForTenant(tenant).queryAll(builder.build());
+                                    </code></pre>
+                                </li>
+                                <li>The <em>response</em> can be return as string after converting it to json</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Lab - <span style="color:deeppink;">TimeSeries Data Query </span> - Java Application</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Implement a REST endpoint in the <em>SensorController</em></li>
+                        <li>Three Request Params
+                            <ul>
+                                <li><em>tag</em> tag that should be queried</li>
+                                <li><em>startDate</em> in millisec the starting date</li>
+                                <li><em>endDate</em> in millisec the ending date</li>
+                            </ul>
+                        </li>
+                        <li>Pay attention to the return value it has to be json</li>
+                        <li> You can try to your query using postman :
+                            <pre><code data-trim data-noescape>
+https://simple-predix-service-xxx-yyy.run.aws-usw02-pr.ice.predix.io/api/v1/sensor?tag=ZZZZ&startDate=OOOO&endDate={{$timestamp}}000
+                            </code></pre>
+                        </li>
+                        <li class="fragment fade-up">
+                            One solution
+                            <pre><code data-trim data-noescape>
+@GetMapping(path="/sensor", produces = "application/json")
+String read(@RequestParam("tag") String tag, @RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) throws IOException, PredixTimeSeriesException {
+    QueryBuilder builder = null;
+        builder = QueryBuilder.createQuery()
+                .withStartAbs(Long.parseLong(startDate))
+                .withEndAbs(Long.parseLong(endDate))
+                .addTags(
+                        QueryTag.Builder.createQueryTag()
+                                .withTagNames(Arrays.asList(tag))
+                                               .build());
+
+    QueryResponse response = null;
+        response = ClientFactory.queryClientForTenant(ingester.getTenantContext()).queryAll(builder.build());
+
+    Gson gson = new Gson();
+    return gson.toJson(response);
+}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section id="PythonTS">
+                <h6> Lab - <span style="color:deeppink;">TimeSeries Data Ingestion </span> - Python SDK</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li> You can do it by hand if you are familiar with python and websocket <em>or</em></li>
+                        <li>Use the <em>predix</em> package</li>
+                        <li>it's very easy to setup
+                            <ul>
+                                <li>First update your <em>manifest.yml</em> file make sure you have everything configured :
+                                    <pre><code data-trim data-noescape>
+services:
+  - uaa-xxx
+  - timeseries-xxx
+env:
+  PREDIX_APP_CLIENT_ID: timeseries-ingestion-service
+  PREDIX_APP_CLIENT_SECRET: timeseries-ingestion-service
+                                    </code></pre>
+                                </li>
+                                <li>
+                                    Then every where you want to ingest some data:
+                                    <pre><code data-trim data-noescape>
+import predix.data.timeseries
+ts = predix.data.timeseries.TimeSeries()
+ts.send('tag name', value)
+                                    </code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>try to add a post methods to the <em>DHandler</em> class to ingest this payload:
+                            <pre><code data-trim data-noescape>
+{
+  "value":{{$randomInt}},
+  "deviceId":"osx90r43y2",
+  "ip": "192.168.1.1",
+  "type":"mac",
+  "sec": {{$timestamp}},
+  "usec": 0
+}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Lab -  <span style="color:deeppink;">TimeSeries Data Ingestion </span> - Python Application</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li> Here is one possible solution, by sending directly data to timeseries as soon as possible
+                            <pre><code data-trim data-noescape>
+from flask import request
+from flask_restful import Resource
+import predix.data.timeseries
+import logging
+
+
+class DHandler(Resource):
+
+    def __init__(self):
+        self.ts = predix.data.timeseries.TimeSeries()
+
+    def get(self):
+        logging.debug(request.headers)
+        return 'Hello World!', 200
+
+    def post(self):
+        logging.debug(request.headers)
+        logging.debug(request.json)
+        data = request.json
+        self.ts.send(data['type']+'-'+data['deviceId'], data['value'])
+        return 200
+                            </code></pre>
+                        </li>
+                        <li>This solution could be improve by taking advantage of the <em>ts.queue</em> method
+                        see <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/cookbook/index.html#timeseries-cookbook"> here </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab -  <span style="color:deeppink;">TimeSeries Data Query </span> - Python Application</span></h6>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>For Query you can use the SDK to simplify your development</li>
+                        <li>The SDK support <em>get_datapoints</em> see doc<a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/services/index.html#predix.data.timeseries.TimeSeries.get_datapoints">here </a> to do the query for you</li>
+                    </ul>
+                </div>
+                <div style="width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li> Update the get method of the handler to query your recently ingested data</li>
+                        <li>You will use Postman to test using this request:
+                            <pre><code data-trim data-noescape>
+https://simple-predix-service-xxx-yyy.run.aws-usw02-pr.ice.predix.io/api/v1/drones?tag=ZZZZ&startDate=1422022587000&endDate={{$timestamp}}000
+                            </code></pre>
+                        </li>
+                        <li class="fragment fade-up">
+                            One solution
+                            <pre><code data-trim data-noescape>
+def get(self):
+    retval = self.ts.get_datapoints(tags=request.args['tag'], start=int(request.args['startDate']), end=int(request.args['endDate']))
+    return retval, 200
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <h6><span style="color:green;"> Break</span></h6>
         </section>
 
         <section>
             <section>
                 <h3>Data Management Lvl 2 and Descriptive Analytics</h3>
                 <ul>
-                    <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Blob & SQL</li>
+                    <li><b style="color:grey">&nbsp;&nbsp;9:00 – 10:45</b> Blob & SQL</li>
                     <li><b style="color:grey">10:45 – 11:00</b> Break</li>
                     <li><b style="color:grey">11:00 – 12:45</b> Asset & Key-Value</li>
                     <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
@@ -2585,7 +2961,7 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Using the command line create a blob service named <em>blob-lab</em></li>
-                        <li class="fragment fade-right"><em>cf cs predix-blobstore Tiered blob-lab</em></li>
+                        <li class="fragment fade-right"><em>predix cf cs predix-blobstore Tiered blob-lab</em></li>
                         <li class="fade-right fragment">Using the <em>cfcred.sh</em> script get the env
                             <pre><code data-trim data-noescape>
 {
@@ -2650,7 +3026,7 @@ predix uaa client update timeseries-client --authorities "uaa.none timeseries.zo
                 <ul>
                     <li><a href="#/JavaBlob">Java</a></li>
                     <li><a href="#/PythonBlob">Python</a></li>
-                    <li><a href="#/Node.JsBlob">Node.js</a></li>
+                    <!--<li><a href="#/Node.JsBlob">Node.js</a></li>-->
                 </ul>
             </section>
 
@@ -2723,7 +3099,7 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
             <section>
                     <h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>
                     <ul>
-                        <li><b style="color:grey">&nbsp;&nbsp;8:45 – 10:45</b> Make it real-time</li>
+                        <li><b style="color:grey">&nbsp;&nbsp;9:00 – 10:45</b> Make it real-time</li>
                         <li><b style="color:grey">10:45 – 11:00</b> Break</li>
                         <li><b style="color:grey">11:00 – 12:45</b> Deployment</li>
                         <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
@@ -2731,7 +3107,6 @@ public Response uploadFile(@Multipart(value = "vendor") String vendor,
                         <li><b style="color:grey">14:45 – 15:00</b> Break</li>
                         <li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture
                         </li>
-                        <li><b style="color:grey">17:00 – 17:30</b> Q&A</li>
                     </ul>
                 </section>
 
