@@ -2832,8 +2832,6 @@ def get(self):
             <section>
                 <h6>Data Management Lvl 2 - <span style="color:cadetblue;">Blob - Simple Storage Service</span></h6>
 
-                <!--<div style="-webkit-column-count: 2;">-->
-
                 <div style="font-size: xx-large;" align="left">
                     <ul>
                         <li>Highly scalable data storage in-the-cloud</li>
@@ -2852,8 +2850,6 @@ def get(self):
                         <li>Highly available and durable !</li>
                     </ul>
                 </div>
-
-
             </section>
 
             <section>
@@ -2913,58 +2909,19 @@ def get(self):
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Using the command line create a blob service named <em>blob-lab</em></li>
-                        <li class="fragment fade-right"><em>predix cf cs predix-blobstore Tiered blob-lab</em></li>
-                        <li class="fade-right fragment">Using the <em>cfcred.sh</em> script get the env
+                        <li class="fragment fade-right"><em>predix cs predix-blobstore Tiered blob-lab -x</em>
+                            <ul>
+                                <li><em>-x</em> make it exposed to public internet</li>
+                            </ul>
+                        </li>
+                        <li class="fade-right fragment"> You get some info after the creation:
                             <pre><code data-trim data-noescape>
 {
-   "staging_env_json": {},
-   "running_env_json": {},
-   "environment_json": {},
-   "system_env_json": {
-      "VCAP_SERVICES": {
-         "predix-blobstore": [
-            {
-               "credentials": {
-                  "url": "https://bucket-9a0233bc-19b3-4fe4-b6f6-17ccad2dc6e8.s3-us-west-2.amazonaws.com",
-                  "access_key_id": "AKIAIVTXHHI6CMTARVXA",
-                  "secret_access_key": "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",
-                  "bucket_name": "bucket-9a0233bc-19b3-4fe4-b6f6-17ccad2dc6e8",
-                  "host": "s3-us-west-2.amazonaws.com"
-               },
-               "syslog_drain_url": null,
-               "volume_mounts": [],
-               "label": "predix-blobstore",
-               "provider": null,
-               "plan": "Tiered",
-               "name": "blob-lab",
-               "tags": [
-                  "blobstore",
-                  "blob-store",
-                  "blob store"
-               ]
-            }
-         ]
-      }
-   },
-   "application_env_json": {
-      "VCAP_APPLICATION": {
-         "limits": {
-            "fds": 16384,
-            "mem": 32,
-            "disk": 1024
-         },
-         "application_name": "cfapp-VaJnyO",
-         "application_uris": [],
-         "name": "cfapp-VaJnyO",
-         "space_name": "demos-dev",
-         "space_id": "f902086a-c66d-44f6-a1d6-1e92c4f0fef8",
-         "uris": [],
-         "users": null,
-         "application_id": "6ca00285-6c71-4326-bc58-ae9c43e7dbc4",
-         "version": "1876ac0f-94d2-4e2d-9467-369ce611b26b",
-         "application_version": "1876ac0f-94d2-4e2d-9467-369ce611b26b"
-      }
-   }
+  "access_key_id": "AKIAJTOHTWLM3R5L5OEA",
+  "bucket_name": "bucket-2f260863-d236-4ed2-9952-c42523804578",
+  "host": "s3-us-west-2.amazonaws.com",
+  "secret_access_key": "x4RSwDCKVQpWYdFZQgyebIgqlL80FaeEjgFMRdZ0",
+  "url": "https://bucket-2f260863-d236-4ed2-9952-c42523804578.s3-us-west-2.amazonaws.com"
 }
                     </code></pre>
                         </li>
@@ -2976,7 +2933,7 @@ def get(self):
             <section>
                 <h6>Blob - <span style="color:cadetblue;">Multi Language</span></h6>
                 <ul>
-                    <li><a href="#/JavaBlob">Java</a></li>
+                    <!--<li><a href="#/JavaBlob">Java</a></li>-->
                     <li><a href="#/PythonBlob">Python</a></li>
                     <!--<li><a href="#/Node.JsBlob">Node.js</a></li>-->
                 </ul>
@@ -2985,66 +2942,171 @@ def get(self):
         </section>
 
         <section>
-            <section id="JavaBlob">
-                <h6>Lab - <span style="color:deeppink;"> Using Blob Service with Java - </span><span
-                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
+            <!--<section id="JavaBlob">-->
+                <!--<h6>Lab - <span style="color:deeppink;"> Using Blob Service with Java - </span><span-->
+                        <!--style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>-->
+                        <!--<li>Checkout the branch blob</li>-->
+                    <!--</ul>-->
+                    <!--<br/>-->
+                    <!--<ul>-->
+                        <!--<li>Edit the <em>pom.xml</em> and add in the <em>properties</em>-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--&ltjclouds.version&gt2.0.0&lt/jclouds.version&gt-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
+                        <!--<li>In <em>dependencies</em> Add <em>JClouds</em>-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--&ltdependency&gt-->
+    <!--&ltgroupId&gtorg.apache.jclouds&lt/groupId&gt-->
+    <!--&ltartifactId&gtjclouds-all&lt/artifactId&gt-->
+    <!--&ltversion&gt${jclouds.version}&lt/version&gt-->
+<!--&lt/dependency&gt-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
+
+                        <!--<li> Add logging engine for JClouds-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--&ltdependency&gt-->
+    <!--&ltgroupId&gtorg.apache.jclouds.driver&lt/groupId&gt-->
+    <!--&ltartifactId&gtjclouds-slf4j&lt/artifactId&gt-->
+    <!--&ltversion&gt${jclouds.version}&lt/version&gt-->
+<!--&lt/dependency&gt-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;font-size: x-large;"> Using Blob Service with Java - MultiPart Upload</span><span-->
+                        <!--style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Create a new class to handle the route <em>blob</em>-->
+                            <!--<ul class="fragment fade-right">-->
+                                <!--<li>Add a <em>POST</em> method to support <em>Multipart</em> Upload-->
+                                    <!--<pre><code data-trim data-noescape style="font-size:small;">-->
+<!--@POST-->
+<!--@Path("blob")-->
+<!--@Consumes(MediaType.MULTIPART_FORM_DATA)-->
+<!--public Response uploadFile(@Multipart(value = "vendor") String vendor,-->
+                               <!--@Multipart(value = "uploadedFile") @NonNull Attachment attachment)-->
+                                        <!--</code></pre>-->
+                                <!--</li>-->
+                                <!--<li> Add <em>blob-lab</em> in the service list in the <em>manifest.yml</em></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <section id="PythonBlob">
+                <h6>Lab - <span style="color:deeppink;"> Using Blob Service with Python - </span>
+                    <span style="color:crimson;font-size: large;"> Devbox </span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+
+                    <ul>
+                        <li>Make sur that you have cloned the repository :<em>https://github.com/BLaurent/predix-starter</em></li>
+                        <li>Go to the <em>simple-predix-service-python</em> directory</li>
+                        <li>Chechout the branch <em>blob</em>, <em>git checkout blob</em>
+                            <ul>
+                                <li>If you have issue with modified files locally execute <em>git stash</em></li>
+                            </ul>
+                        </li>
+                        <li>Check that <em>manifest.yml</em> file to make sure that you have everything setup
+                            <pre><code data-trim data-noescape>
+---
+applications:
+  - name: simple-predix-service-python
+    random-route: true
+    timeout: 160
+    memory: 256M
+    disk_quota: 512M
+    buildpack: https://github.com/cloudfoundry/python-buildpack.git
+    services:
+      - uaa-lab
+      - blob-lab
+    env:
+      PREDIX_APP_CLIENT_ID: timeseries-ingestion-service
+      PREDIX_APP_CLIENT_SECRET: timeseries-ingestion-service
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Blobstore with Python </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Clone the git repository <em>https://github.com/BLaurent/predix-starter</em></li>
-                        <li>Checkout the branch blob</li>
-                    </ul>
-                    <br/>
-                    <ul>
-                        <li>Edit the <em>pom.xml</em> and add in the <em>properties</em>
-                            <pre><code data-trim data-noescape>
-&ltjclouds.version&gt2.0.0&lt/jclouds.version&gt
-                            </code></pre>
+                        <li class="fragment fade-right">Wait there is no token here ?
+                            Indeed blobstore rely on a different security mechanism
                         </li>
-                        <li>In <em>dependencies</em> Add <em>JClouds</em>
-                            <pre><code data-trim data-noescape>
-&ltdependency&gt
-    &ltgroupId&gtorg.apache.jclouds&lt/groupId&gt
-    &ltartifactId&gtjclouds-all&lt/artifactId&gt
-    &ltversion&gt${jclouds.version}&lt/version&gt
-&lt/dependency&gt
-                            </code></pre>
+                        <li class="fragment fade-right">Predix py package will parse the environment of the application and figure out the credentials</li>
+                        <li class="fragment fade-right">Update the <em>POST</em> to allow a user to upload a file to blobstore using your api
+                            <ul>
+                                <li>You can find the documentation <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/services/index.html#module-predix.data.blobstore">here</a></li>
+                                <li>Flask can help you quite a lot in this process <a href="http://flask.pocoo.org/docs/0.12/patterns/fileuploads/">here</a></li>
+                            </ul>
                         </li>
-
-                        <li> Add logging engine for JClouds
-                            <pre><code data-trim data-noescape>
-&ltdependency&gt
-    &ltgroupId&gtorg.apache.jclouds.driver&lt/groupId&gt
-    &ltartifactId&gtjclouds-slf4j&lt/artifactId&gt
-    &ltversion&gt${jclouds.version}&lt/version&gt
-&lt/dependency&gt
-                            </code></pre>
-                        </li>
+                        <li class="fragment fade-right">You may need to investigate json parsing of <em>datetime</em> object</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h6>Lab - <span style="color:deeppink;font-size: x-large;"> Using Blob Service with Java - MultiPart Upload</span><span
-                        style="color:crimson;font-size: large;"> Non Devbox & Devbox </span></h6>
+                <h6>Lab - <span style="color:deeppink;">Blobstore with Python </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
-                        <li>Create a new class to handle the route <em>blob</em>
-                            <ul class="fragment fade-right">
-                                <li>Add a <em>POST</em> method to support <em>Multipart</em> Upload
-                                    <pre><code data-trim data-noescape style="font-size:small;">
-@POST
-@Path("blob")
-@Consumes(MediaType.MULTIPART_FORM_DATA)
-public Response uploadFile(@Multipart(value = "vendor") String vendor,
-                               @Multipart(value = "uploadedFile") @NonNull Attachment attachment)
-                                        </code></pre>
-                                </li>
-                                <li> Add <em>blob-lab</em> in the service list in the <em>manifest.yml</em></li>
+                        <li>Update the <em>GET</em> to list the content of the bucket uploaded in the blobstore using your api
+                            <ul>
+                                <li>You can find the documentation <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/services/index.html#module-predix.data.blobstore">here</a></li>
                             </ul>
                         </li>
+                        <li>Try to make the output pretty, avoid the double json encoding</li>
                     </ul>
                 </div>
             </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">Blobstore with Python </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <pre><code data-trim data-noescape>
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.isoformat()
+
+class DHandler(Resource):
+
+    def __init__(self):
+        self.bs = predix.data.blobstore.BlobStore()
+
+    def _allowed_file(self, filename):
+        return '.' in filename and \
+               filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+    def get(self):
+        logging.debug(request.headers)
+        return json.loads(json.dumps(self.bs.list_objects()['Contents'], cls=DateTimeEncoder)), 200
+
+    def post(self):
+        logging.debug(request.headers)
+        logging.debug(request.json)
+        for file in dict(request.files)['files[]']:
+            if self._allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                file.save(path)
+                return self.bs.upload_file(path, file.filename), 200
+            else:
+                return file.filename + ' not ingested. File type not allowed.'
+                    </code></pre>
+                </div>
+            </section>
+
         </section>
 
         <section>
