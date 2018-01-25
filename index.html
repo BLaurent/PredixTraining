@@ -2189,7 +2189,6 @@ rmdir $cftempapp_dir
                         <li class="fragment fade-up" > Automated way:
                             <div style="float: top;width:100%;font-size: x-large;">
                                 <pre><code data-trim data-noescape>
-predix uaa client create timeseries-ingestion-client -s timeseries-ingestion-client --authorized_grant_types client_credentials
 predix create-service predix-timeseries Free timeseries-lab uaa-lab -c timeseries-ingestion-client -s timeseries-ingestion-client
                                 </code></pre>
                             </div>
@@ -5394,12 +5393,12 @@ class DHandler(Resource):
                         <li class="fragment fade-up" > Automated way:
                             <div style="float: top;width:100%;font-size: x-large;">
                                 <pre><code data-trim data-noescape>
-predix uaa client create asset-client -s asset-client --authorized_grant_types client_credentials
 predix create-service predix-asset Free asset-lab uaa-lab -c asset-client -s asset-client
                                 </code></pre>
                             </div>
                         </li>
                         <li class="fragment fade-up">  The result should be:
+                            <div style="float: top;width:100%;font-size: x-large;">
                             <pre><code data-trim data-noescape>
 Checking if client asset-client exists on service instance uaa-lab
 Client asset-client exists. The required authorities will be added to it.
@@ -5427,10 +5426,137 @@ Getting info for service instance asset-lab
 Note: Depending on the service broker implementation this info may change
 Use the 'service-info' command to lookup the binding info for an app and service instance
                             </code></pre>
+                            </div>
                         </li>
                     </ul>
                 </div>
+            </section>
 
+            <section>
+                <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Go to the <em>simple-predix-service-python</em> directory</li>
+                        <li>Clean up you branch: <em>git checkout -- .</em></li>
+                        <li>Update your branch <em>git pull</em></li>
+                        <li>make sure you are using hte proper python version <em>pipenv shell</em></li>
+                        <li>Update your python packages</li>
+                        <li><em>pipenv update</em></li>
+                        <li><em>predix p</em></li>
+                        <li><em>predix cf env</em></li>
+                        <li>Copy the <em>VCAP_SERVICES</em> and save it to a file named <em>vcap_services.txt</em></li>
+                        <li><em>export VCAP_SERVICES=$(cat vcap_services.txt)</em></li>
+                        <li><em>export PREDIX_APP_CLIENT_ID=asset-client</em></li>
+                        <li><em>export PREDIX_APP_CLIENT_SECRET=asset-client</em></li>
+                        <li>go to the <em>asset-setup</em> directory</li>
+                        <li>execute <em>python app.py</em></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>Open Postman create a request <em>GET </em> with <em>https://predix-asset.run.aws-usw02-pr.ice.predix.io/{{collection}}</em></li>
+                        <li>Where collection is the name of the collection e.g engines, locomotives,...</li>
+                        <li>Update your credentials to use the <em>asset-client</em> and get a token</li>
+                        <li>Fetch the collection</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li> open a python shell and type
+                            <pre><code data-trim data-noescape>
+import predix.app
+import pprint
+manifest = predix.app.Manifest()
+asset = manifest.get_asset()
+print(asset.get_collections())
+pp = pprint.PrettyPrinter(indent=4)
+                            </code></pre>
+                        </li>
+                        <li>Asset Service support a mini query language: select all engines with <em>RPM=2400</em>
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+pp.pprint(asset.get_collection(collection='/engines', filter='RPM=2400'))
+                            </code></pre>
+                        </li>
+                        <li>Select all engines with RPM=2400 but display only horsepower field
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+pp.pprint(asset.get_collection(collection='/engines', filter='RPM=2400', fields='horsepower'))
+                            </code></pre>
+                        </li>
+                        <li>Select all locomotives of model SD70ACe and fleet up-5
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+pp.pprint(asset.get_collection(collection='/locomotives', filter='model=SD70ACe:fleet=/fleets/up-5'))
+                            </code></pre>
+                        </li>
+                        <li> Select all locomotives with an engine v16-2-5 or from fleet csx-1
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+pp.pprint(asset.get_collection(collection='/locomotives', filter='engine=/engines/v16-2-5|fleet=/fleets/csx-1'))
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>It's possible to enable <em>audit log</em></li>
+                        <li>To get the status : <em>https://predix-asset.run.aws-usw02-pr.ice.predix.io/system/configs</em></li>
+                        <li>With postman send a GET request to it,
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+{
+    "enableAudit": false
+}                           </code></pre>
+                        </li>
+                        <li>Send a POST to this same url with a body:
+                            <pre class="fragment fade-up"><code data-trim data-noescape>
+[
+{
+	"enableAudit" : true
+}
+]
+                            </code></pre>
+                        </li>
+                        <li>Do a GET to check that the audit has been enabled
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
+                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                    <ul>
+                        <li>You can update an asset by doing a <em>PUT</em></li>
+                        <li>On the shell do
+                            <pre><code data-trim data-noescape>
+ass2=asset.get_collection(collection='/locomotives', filter='engine=/engines/v16-2-5')
+pp.pprint(ass2)
+                            </code></pre>
+                            To fetch one locomotive asset
+                        </li>
+                        <li>We will change the hqLatLng
+                            <pre><code data-trim data-noescape>
+asset.patch_collection('locomotives/10', [{'op': 'replace', 'path': '/hqLatLng/lat', 'value': '40.941049'}])
+ass2 = asset.get_collection(collection='/locomotives', filter='engine=/engines/v16-2-5')
+pp.pprint(ass2)
+                            </code></pre>
+                        </li>
+                        <li>We can have display the list of change
+                            <pre><code data-trim data-noescape>
+pp.pprint(asset.get_audit())
+pp.pprint(asset.get_audit_changes())
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
             </section>
         </section>
 
@@ -5564,31 +5690,31 @@ Use the 'service-info' command to lookup the binding info for an app and service
                 </div>
             </section>
 
-            <section>
-                <h6>Lab - <span style="color:deeppink;"> Data Exploration </span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                    <ul>
-                        <li>Install docker for mac beta <a href="https://download.docker.com/mac/beta/Docker.dmg">install</a>
-                        </li>
-                        <li>In the pref of docker set the proxy <span
-                                style="color:crimson;font-size: large;"> (If on GE Network) </span>
-                            <ul>
-                                <li><em>http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80</em></li>
-                            </ul>
-                        </li>
-                        <li>Check that the network is working by doing:
-                            <ul>
-                                <li><em>docker run hello-world</em></li>
-                            </ul>
-                        </li>
-                        <li>Do <em>docker run -d -p 8888:8888 jupyter/datascience-notebook</em></li>
-                        <li>Wait ...</li>
-                        <li>Open your browser to <a href="http://localhost:8888">http://localhost:8888</a></li>
-                        <li>Import the following notebook <a
-                                href="./GillesS.Desplumes.ipynb">GillesS.Desplumes.ipynb</a></li>
-                    </ul>
-                </div>
-            </section>
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;"> Data Exploration </span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                    <!--<ul>-->
+                        <!--<li>Install docker for mac beta <a href="https://download.docker.com/mac/beta/Docker.dmg">install</a>-->
+                        <!--</li>-->
+                        <!--<li>In the pref of docker set the proxy <span-->
+                                <!--style="color:crimson;font-size: large;"> (If on GE Network) </span>-->
+                            <!--<ul>-->
+                                <!--<li><em>http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80</em></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li>Check that the network is working by doing:-->
+                            <!--<ul>-->
+                                <!--<li><em>docker run hello-world</em></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li>Do <em>docker run -d -p 8888:8888 jupyter/datascience-notebook</em></li>-->
+                        <!--<li>Wait ...</li>-->
+                        <!--<li>Open your browser to <a href="http://localhost:8888">http://localhost:8888</a></li>-->
+                        <!--<li>Import the following notebook <a-->
+                                <!--href="./GillesS.Desplumes.ipynb">GillesS.Desplumes.ipynb</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
 
             <section>
                 <h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>
