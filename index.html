@@ -5438,10 +5438,12 @@ Use the 'service-info' command to lookup the binding info for an app and service
                     <ul>
                         <li>Go to the <em>simple-predix-service-python</em> directory</li>
                         <li>Clean up you branch: <em>git checkout -- .</em></li>
-                        <li>Update your branch <em>git pull</em></li>
-                        <li>make sure you are using hte proper python version <em>pipenv shell</em></li>
+                        <li>Update your repository <em>git pull</em></li>
+                        <li>Update your branch <em>git checkout asset</em></li>
                         <li>Update your python packages</li>
                         <li><em>pipenv update</em></li>
+                        <li>make sure you are using the proper python version <em>pipenv shell</em></li>
+                        <li>Edit your manifest to make sure that you have the asset-lab in the services</li>
                         <li><em>predix p</em></li>
                         <li><em>predix cf env</em></li>
                         <li>Copy the <em>VCAP_SERVICES</em> and save it to a file named <em>vcap_services.txt</em></li>
@@ -5561,19 +5563,19 @@ pp.pprint(asset.get_audit_changes())
         </section>
 
         <section>
-            <section>
-                    <h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>
-                    <ul>
-                        <li><b style="color:grey">&nbsp;&nbsp;9:00 – 10:45</b> Make it real-time</li>
-                        <li><b style="color:grey">10:45 – 11:00</b> Break</li>
-                        <li><b style="color:grey">11:00 – 12:45</b> Deployment</li>
-                        <li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>
-                        <li><b style="color:grey">13:45 – 14:45</b> Data Science Methodology</li>
-                        <li><b style="color:grey">14:45 – 15:00</b> Break</li>
-                        <li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture
-                        </li>
-                    </ul>
-                </section>
+            <!--<section>-->
+                    <!--<h3>Data Vis Lvl 2 and Prescriptive Analytics Lvl1</h3>-->
+                    <!--<ul>-->
+                        <!--<li><b style="color:grey">&nbsp;&nbsp;9:00 – 10:45</b> Make it real-time</li>-->
+                        <!--<li><b style="color:grey">10:45 – 11:00</b> Break</li>-->
+                        <!--<li><b style="color:grey">11:00 – 12:45</b> Deployment</li>-->
+                        <!--<li><b style="color:grey">12:45 – 13:45</b> Lunch Break</li>-->
+                        <!--<li><b style="color:grey">13:45 – 14:45</b> Data Science Methodology</li>-->
+                        <!--<li><b style="color:grey">14:45 – 15:00</b> Break</li>-->
+                        <!--<li><b style="color:grey">15:00 – 17:00</b> Data Science Tooling & Predix Analytics Architecture-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</section>-->
 
             <section>
                 <h6>Prescriptive Analytics Lvl1- <span style="color:cadetblue;"> Overview Px Analytics </span></h6>
@@ -5716,28 +5718,64 @@ pp.pprint(asset.get_audit_changes())
                 <!--</div>-->
             <!--</section>-->
 
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                    <!--We will try to investigate the following scenario-->
+                    <!--<ul>-->
+                        <!--<li>We are creating a smart building application</li>-->
+                        <!--<li>We have measured the energy consumption of each flat</li>-->
+                        <!--<li>We want to predict the consumption for a given flat</li>-->
+                        <!--<li>We will run the prediction for a given window</li>-->
+                        <!--<li>We will use asset to store few information regarding the smart meter</li>-->
+                        <!--<li>We will use timeseries to store temporal information provided by the smart meter</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <!--<section>-->
+                <!--<h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>-->
+                <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                    <!--Let's first create our prediction model-->
+                    <!--<ul>-->
+                        <!--<li>Go to <a href="https://www.katacoda.com/courses/docker/playground/">lab docker</a></li>-->
+                        <!--<li>Press start Scenario</li>-->
+                        <!--<li>In the shell type :-->
+                            <!--<pre><code data-trim data-noescape>-->
+<!--docker run -d &#45;&#45;name jupyter -p 8888:8888 blaurent/jupyter-prophet start.sh jupyter lab-->
+                            <!--</code></pre>-->
+                        <!--</li>-->
+                        <!--<li>Once the command is complete you should have a long hash code</li>-->
+                        <!--<li>docker log </li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</section>-->
+
             <section>
                 <h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Clone the following repository
-                            <br/><em>https://github.com/PredixDev/predix-analytics-sample</em></li>
+                            <br/><em>https://github.com/PredixDev/predix-analytics-sample</em>
+                            <pre><code data-trim data-noescape>
+                                cd ${HOME} && git clone https://github.com/PredixDev/predix-analytics-sample
+                            </code></pre>
+                        </li>
+                        <li>In the <em>predix-analytics-sample</em> repository go to analytics</li>
+                        <li>Go to demo-adder-py
+                            <pre><code data-trim data-noescape>
+                                zip -q -r ../demo-adder-py.zip  .
+                            </code></pre>
+                        </li>
                         <li>Open postman and import the postman directory</li>
-                        <li>Setup OAuth2.0 with clientId <em>analytics-client</em> and clientSecret
-                            <em>analytics-client</em></li>
-                        <li>Explore some possibilities of the tools box
+                        <li>Setup OAuth2.0 with clientId
                             <ul>
-                                <li>To get all uris use :
-                                    <ul>
-                                        <li><em>cf service analytics-catalog-lab --guid</em></li>
-                                        <li><em>cf service analytics-runtime-lab --guid</em></li>
-                                        <li><em>cf service analytics-ui-lab --guid</em></li>
-                                        <li><em>cf service timeseries-lab --guid</em></li>
-                                        <li><em>./cfcred.sh uaa-lab</em></li>
-                                    </ul>
-                                </li>
+                                <li>Access Token URL: <em>https://foundry-eu.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token</em> </li>
+                                <li>client id: <em>framework-client-secret</em></li>
+                                <li>client secret: <em>client-secret</em></li>
                             </ul>
                         </li>
+                        <li>Explore some possibilities of the collection, there is a lot of feature !!!</li>
                     </ul>
                 </div>
             </section>
@@ -5747,18 +5785,27 @@ pp.pprint(asset.get_audit_changes())
                 <div style="float: top;width:100%;font-size: xx-large;" align="left">
                     <ul>
                         <li>Open the analytics UI
-                            <em>https://lab-ge.predix-analytics-ui.run.aws-usw02-pr.ice.predix.io</em>
+                            <em>https://foundry-eu.predix-analytics-ui.run.aws-usw02-pr.ice.predix.io</em>
                             <ul>
-                                <li>Login: <em>analytics-ui@ge.com</em></li>
-                                <li>Password: <em>analytics-ui</em></li>
+                                <li>Login: <em>operator</em></li>
+                                <li>Password: <em>operator</em></li>
                             </ul>
                         </li>
-                        <li>Import a new analytic <em>demo-adder</em>
+                        <li>Import a new analytic
                             <ul>
+                                <li>click on <em>New Analytic</em></li>
                                 <li>Name : <em>demo-adder-py-{Your Initials}</em></li>
-                                <li>Author Some name</li>
-                                <li>Version: <em>{Your name}</em></li>
+                                <li>Author {Your Name}</li>
+                                <li>Version: <em>v1</em></li>
                                 <li>Languages: <em>Python</em></li>
+                                <li>Select a file to attach pick the zip file we just created</li>
+                                <li>Check executable</li>
+                                <li>Select a file to attach pick the <em>demo-adder-template.json</em>
+                                    <ul>
+                                        <li>In type put Template</li>
+                                    </ul>
+                                </li>
+                                <li>Press save</li>
                             </ul>
                         </li>
                     </ul>
@@ -5769,24 +5816,245 @@ pp.pprint(asset.get_audit_changes())
                 <h6>Lab - <span style="color:deeppink;"> Test Analytics from catalog </span></h6>
                 <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
+                        <li>In the window Validate and Test
+                            <pre><code data-trim data-noescape>
+                                {"number1": 123, "number2": 456}
+                            </code></pre>
+                        </li>
+                        <li>Press Submit for Validation and Test</li>
+                        <li>Then Wait...</li>
+                    </ul><br>
+                    <ul class="fragment fade-up">
+                        <li>Why is it so freaking slow ? it's just an addition....</li>
+                        <li>Go to logs tab
+                            <ul>demo-adder-py-
+                                <li>If nothing is displayed press <em>Get Recent Logs</em></li>
+                            </ul>
+                        </li>
+                        <li>So much logs...</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Test Analytics from Postman </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
                         <li>Open Postman and select <em>Retrieve Analytic(s) By Name</em> in Analytics folder
                             <ul>
                                 <li>Should end up by <em>/api/v1/catalog/analytics/versions?name=demo-adder-py-{Your Initials}</em>
                             </ul>
                         </li>
-                        <li>Select <em>Execute Analytic</em> in the Validation Folder
+                        <li>Copy the id</li>
+                        <li>Open the Analytic Validation/Deployment/Execution directory in postman
                             <ul>
-                                <li>Name : <em>demo-adder-py-{Your Initials}</em></li>
-                                <li>Author Some name</li>
-                                <li>Version: <em>{Your name}</em></li>
-                                <li>Languages: <em>Python</em></li>
+                                <li>Click on Validate Analytics: URL: <em>{{catalog_uri}}/api/v1/catalog/analytics/8330e99d-9899-44d8-8498-12a18c0999a2/validation</em></li>
+                                <li>In the URL bar paste the ID of the analyticId</li>
+                                <li>Do not forget to update the token</li>
+                                <li>Press send
+                                    <pre><code data-trim data-noescape>
+{
+    "analyticId": "8330e99d-9899-44d8-8498-12a18c0999a2",
+    "validationRequestId": "fca0c0da-ec33-45a4-85c2-77aecfd306e9",
+    "status": "QUEUED",
+    "message": "Analytic validation request successfully queued - reference request id is fca0c0da-ec33-45a4-85c2-77aecfd306e9 for catalog entry id 8330e99d-9899-44d8-8498-12a18c0999a2",
+    "inputData": "{\"number1\":1,\"number2\":2}",
+    "result": null,
+    "createdTimestamp": "2018-01-26T08:39:51+00:00",
+    "updatedTimestamp": "2018-01-26T08:39:51+00:00"
+}
+                                    </code></pre>
+                                </li>
                             </ul>
                         </li>
-                        <li></li>
                     </ul>
                 </div>
             </section>
 
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Test Analytics from Postman </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Open Postman and select <em>Retrieve Validation Status</em> in Analytics Validation
+                        <li>In the URL bar paste the ID of the analyticId and the validationRequestId</li>
+                        <li>Do not forget to update the token</li>
+                        <li>Press send
+                            <pre><code data-trim data-noescape>
+{
+    "analyticId": "01cb012b-6aa6-4069-96a2-570c29d0b7d7",
+    "validationRequestId": "b685ea78-daae-420d-80ac-86ec4644de5e",
+    "status": "PROCESSING",
+    "message": "Processing analytic validation request for analytic id 01cb012b-6aa6-4069-96a2-570c29d0b7d7, request id b685ea78-daae-420d-80ac-86ec4644de5e",
+    "inputData": "{\"number1\":1,\"number2\":2}",
+    "result": null,
+    "createdTimestamp": "2018-01-26T08:52:00+00:00",
+    "updatedTimestamp": "2018-01-26T08:52:00+00:00"
+}
+                            </code></pre>
+                        </li>
+                        <li>After a while ..
+                            <pre><code data-trim data-noescape>
+{
+    "analyticId": "01cb012b-6aa6-4069-96a2-570c29d0b7d7",
+    "validationRequestId": "b685ea78-daae-420d-80ac-86ec4644de5e",
+    "status": "COMPLETED",
+    "message": "Analytic validation completed successfully.",
+    "inputData": "{\"number1\":1,\"number2\":2}",
+    "result": "{\"result\": 3}",
+    "createdTimestamp": "2018-01-26T08:52:00+00:00",
+    "updatedTimestamp": "2018-01-26T08:58:11+00:00"
+}
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Test Analytics from Postman </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Open Postman and select <em>Retrieve Analytic Log</em> in Analytics folder
+                        <li>In the URL bar paste the ID of the analyticId</li>
+                        <li>Do not forget to update the token</li>
+                        <li>Press send
+                            <pre><code data-trim data-noescape>
+Created app with guid f02af646-1911-4707-82dc-73b609fb7679
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"route"=>"d71604dc-6a25-483e-8b75-aa8af61ada07", :verb=>"add", :relation=>"routes", :related_guid=>"d71604dc-6a25-483e-8b75-aa8af61ada07"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"state"=>"STOPPED"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"environment_json"=>"PRIVATE DATA HIDDEN"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"environment_json"=>"PRIVATE DATA HIDDEN"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"environment_json"=>"PRIVATE DATA HIDDEN"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"environment_json"=>"PRIVATE DATA HIDDEN"})
+Updated app with guid f02af646-1911-4707-82dc-73b609fb7679 ({"state"=>"STARTED"})
+    -----> Preparing Python/Miniconda Environment (3.5.2)
+       installing: openssl-1.0.1h-1 ...
+       installing: pycosat-0.6.1-py27_0 ...
+       installing: pyyaml-3.11-py27_0 ...
+       installing: readline-6.2-2 ...
+       installing: conda-3.7.3-py27_0 ...
+Python 2.7.8 :: Continuum Analytics, Inc.
+                                ........
+2018-01-26 08:59:06,356 - CFAmqpClient - INFO - Connection to RabbitMQ successfully created/revived.
+2018-01-26 08:59:06,590 - CFAmqpClient - INFO - Consumers ready to consume messages
+2018-01-26 08:59:09,327 - CFAmqpClient - INFO - Connection to RabbitMQ successfully created/revived.
+2018-01-26 08:59:09,481 - CFAmqpClient - INFO - Consumers ready to consume messages
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6><span style="color:cadetblue;"> Anatomy of Analytics </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Python Package
+                        <ul>
+                            <li><em>config.json</em>
+                                <pre><code data-trim data-noescape>
+{
+  "entry-method": "analytic.demoAdder.add",
+  "non-conda-libs": [
+    "boto"
+  ],
+  "conda-libs": [
+    "numpy",
+    "scipy"
+  ]
+}
+                                </code></pre>
+                            </li>
+                            <li>directory containing the python code
+                                <pre><code data-trim data-noescape>
+__init__.py  demoAdder.py
+                                </code></pre>
+                            </li>
+                            <li>The Main class is <em>demoAdder</em> and the called method is <em>add</em></li>
+                            <li>The analytics framework will call the method <em>add</em></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;">  Deploy to production of an Analytics </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Return to the home page of the Analytics UI</li>
+                        <li>Click on your annalytics</li>
+                        <li>Click on <em>Deploy to Production</em>
+                            <ul>
+                                <li>Set memory to <em>128M</em></li>
+                                <li>Set disk to <em>512M</em></li>
+                                <li>Number of instances 1</li>
+                            </ul>
+                        </li>
+                        <li>Press Deploy to production</li>
+                        <li>Wait... and press Refresh</li>
+                        <li>We redo a full process of installing package...</li>
+                        <li>You have a status bar on the top part of the ui, try to save those ids
+                            <pre><code data-trim data-noescape>
+Analytic deployment request successfully queued - reference request id is 2e65f7be-e0e7-49eb-a48e-f7cfa0d98beb for catalog entry id 01cb012b-6aa6-4069-96a2-570c29d0b7d7
+                            </code></pre>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6><span style="color:cadetblue;"> Deployment of Analytics </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                <ul>
+                    <li>Once an analytics is deployed to production you cannot change it, you can only delete it...</li>
+                    <li>But the execution time is much faster</li>
+                    <li>You can check on the UI the state has changed</li>
+                    <li>If you redo a <em>Retrieve Analytic(s) By Name</em>
+                        <pre><code data-trim data-noescape>
+{
+    "analyticCatalogEntries": [
+        {
+            "id": "01cb012b-6aa6-4069-96a2-570c29d0b7d7",
+            "name": "demo-adder-py-bl",
+            "author": "Jack Daniels",
+            "description": "",
+            "version": "v1",
+            "supportedLanguage": "Python",
+            "customMetadata": null,
+            "taxonomyLocation": "/uncategorized",
+            "state": "PRODUCTION",
+            "access": "FULL",
+            "createdTimestamp": "2018-01-26T08:51:34+00:00",
+            "updatedTimestamp": "2018-01-26T09:16:30+00:00"
+        }
+    ]
+}
+                        </code></pre>
+                    </li>
+                    <li>If you want to change it you need to increment the version and redo the whole process</li>
+                </ul>
+                </div>
+            </section>
+
+            <section>
+                <h6>Lab - <span style="color:deeppink;"> Test of Deployed Analytics </span></h6>
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
+                    <ul>
+                        <li>Go back to you ui and press on the name of the analytics</li>
+                        <li>Click on test
+                            <ul>
+                                <li>In the Input field put :
+                                    <pre><code data-trim data-noescape>
+{"number1": 123, "number2": 456}
+                                    </code></pre>
+                                </li>
+                                <li>You will get the output immediatlly</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </section>
 
 
