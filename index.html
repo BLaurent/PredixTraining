@@ -5767,8 +5767,8 @@ pp.pprint(asset.get_audit_changes())
                                 zip -q -r ../demo-adder-py.zip  .
                             </code></pre>
                         </li>
-                        <li>Open postman and import the postman directory</li>
-                        <li>Setup OAuth2.0 with clientId
+                        <li>Open postman and import the postman directory from predix-analytics-sample</li>
+                        <li>Setup OAuth2.0 with
                             <ul>
                                 <li>Access Token URL: <em>https://foundry-eu.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token</em> </li>
                                 <li>client id: <em>framework-client-secret</em></li>
@@ -5776,6 +5776,7 @@ pp.pprint(asset.get_audit_changes())
                             </ul>
                         </li>
                         <li>Explore some possibilities of the collection, there is a lot of feature !!!</li>
+                        <li style="color:red"><b>For each request of this collection you have to delete the <em>Authorization</em> in the header</b></li>
                     </ul>
                 </div>
             </section>
