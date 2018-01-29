@@ -40,24 +40,24 @@
 
         <section data-markdown="slides/index.md"></section>
 
-        <section>
-            <h6>Plot - <span style="color:deeppink;">The Apps </span></h6>
-            <div style="float: top;width:100%;font-size: xx-large;" align="left">
-                During this training we will try to create an application that collect information coming from different
-                sources
-            </div>
-            <div style="float: bottom;width:100%;font-size: xx-large;" align="left">
-                <ul>
-                    <li>Place de la nation in Paris
-                        <ul>
-                            <li>Monitoring of pedestrians stream</li>
-                            <li>Monitoring of bicycle stream</li>
-                            <li>Monitoring of vehicle stream</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <!--<section>-->
+            <!--<h6>Plot - <span style="color:deeppink;">The Apps </span></h6>-->
+            <!--<div style="float: top;width:100%;font-size: xx-large;" align="left">-->
+                <!--During this training we will try to create an application that collect information coming from different-->
+                <!--sources-->
+            <!--</div>-->
+            <!--<div style="float: bottom;width:100%;font-size: xx-large;" align="left">-->
+                <!--<ul>-->
+                    <!--<li>Place de la nation in Paris-->
+                        <!--<ul>-->
+                            <!--<li>Monitoring of pedestrians stream</li>-->
+                            <!--<li>Monitoring of bicycle stream</li>-->
+                            <!--<li>Monitoring of vehicle stream</li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</section>-->
 
         <section>
             <h3>Startup and Ingestion Lvl 1</h3>
@@ -2772,7 +2772,6 @@ class DHandler(Resource):
         return 200
                             </code></pre>
                         </li>
-                        <li class="fragment fade-up"></li>
                         <li>This solution could be improve by taking advantage of the <em>ts.queue</em> method
                         see <a href="https://predixpy.run.aws-usw02-pr.ice.predix.io/cookbook/index.html#timeseries-cookbook"> here </a>
                         </li>
@@ -5412,7 +5411,7 @@ Updating client asset-client on Predix UAA instance uaa-lab
 OK
 
 Getting info for service instance asset-lab
-
+x§§§
 {
   "instanceId": "8fd77b47-8efe-474d-9533-b5d0273b50bc",
   "scriptEngine_uri": "https://8fd77b47-8efe-474d-9533-b5d0273b50bc.predix-script-engine.run.aws-usw02-pr.ice.predix.io",
@@ -5434,23 +5433,20 @@ Use the 'service-info' command to lookup the binding info for an app and service
 
             <section>
                 <h6>Lab- <span style="color:deeppink;">Asset - The other kind of database</span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
-                        <li>Go to the <em>simple-predix-service-python</em> directory</li>
                         <li>Clean up you branch: <em>git checkout -- .</em></li>
                         <li>Update your repository <em>git pull</em></li>
                         <li>Update your branch <em>git checkout asset</em></li>
+                        <li>Go to the <em>asset-setup</em> directory</li>
                         <li>Update your python packages</li>
                         <li><em>pipenv update</em></li>
-                        <li>make sure you are using the proper python version <em>pipenv shell</em></li>
-                        <li>Edit your manifest to make sure that you have the <em>asset-lab</em> in the services</li>
-                        <li><em>predix p</em></li>
-                        <li><em>predix cf env simple-predix-service-python</em></li>
-                        <li>Copy the <em>VCAP_SERVICES</em> and save it to a file named <em>vcap_services.txt</em></li>
-                        <li><em>export VCAP_SERVICES=$(cat vcap_services.txt)</em></li>
-                        <li><em>export PREDIX_APP_CLIENT_ID=asset-client</em></li>
-                        <li><em>export PREDIX_APP_CLIENT_SECRET=asset-client</em></li>
-                        <li>go to the <em>asset-setup</em> directory</li>
+                        <li>make sure you are using the proper python version execute <em>pipenv shell</em></li>
+                        <pre><code data-trim data-noescape>
+export VCAP_SERVICES=$(cat vcap_services.txt| jq --argjson asset_cred $(p si asset-lab | tail -n 12 | head -n 10 | jq -rc '.') -c '."predix-asset"[0].credentials=$asset_cred' | jq --argjson uaa_cred $(p si uaa-lab | tail -n 12 | head -n 10 | jq -rc '.') -c '."predix-uaa"[0].credentials=$uaa_cred')
+export PREDIX_APP_CLIENT_ID=asset-client
+export PREDIX_APP_CLIENT_SECRET=asset-client
+                        </code></pre>
                         <li>execute <em>python app.py</em></li>
                     </ul>
                 </div>
@@ -5753,7 +5749,7 @@ pp.pprint(asset.get_audit_changes())
 
             <section>
                 <h6>Lab - <span style="color:deeppink;"> Analytics Tools </span></h6>
-                <div style="float: top;width:100%;font-size: xx-large;" align="left">
+                <div style="float: top;width:100%;font-size: x-large;" align="left">
                     <ul>
                         <li>Clone the following repository
                             <br/><em>https://github.com/PredixDev/predix-analytics-sample</em>
@@ -5830,7 +5826,7 @@ pp.pprint(asset.get_audit_changes())
                     <ul class="fragment fade-up">
                         <li>Why is it so freaking slow ? it's just an addition....</li>
                         <li>Go to logs tab
-                            <ul>demo-adder-py-
+                            <ul>demo-adder-py-{initial}
                                 <li>If nothing is displayed press <em>Get Recent Logs</em></li>
                             </ul>
                         </li>
